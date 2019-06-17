@@ -7557,6 +7557,7 @@ case "פועל_מפורט":
       });
     }
 break
+
 case "פועל_מתורגל":
     this.setState({
       p1s: this.state.letter1+"ֻּ"+this.state.letter2+"ְ"+this.state.letter3+"ַּ"+this.state.letter4+"ְתִּי",
@@ -8499,8 +8500,1151 @@ case "הפעיל_הושיב":
        });
      }
 break
+case "הפעיל_הציל":
+    this.setState({
+      inf: "לְהַ"+this.state.letter2+"ִּי"+this.state.letter3, 
+      p1s: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתִּי",
+      p2sm: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתָּ",
+      p2sw: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתְּ",
+      p3sm: "הִ"+this.state.letter2+"ִּי"+this.state.letter3,
+      p3sw: "הִ"+this.state.letter2+"ִּי"+this.state.letter3+"ָה",
+      p1m: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְנוּ",
+      p2mm: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הִ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתֶּן",
+      p3m: "הִ"+this.state.letter2+"ִּי"+this.state.letter3+"וּ",
+      nsm: "מַ"+this.state.letter2+"ִּי"+this.state.letter3,
+      nsw: "מַ"+this.state.letter2+"ִּי"+this.state.letter3+"ָה",
+      nmm: "מַ"+this.state.letter2+"ִּי"+this.state.letter3+"ִים",
+      nmw: "מַ"+this.state.letter2+"ִּי"+this.state.letter3+"וֹת",
+      f1s: "אַ"+this.state.letter2+"ִּי"+this.state.letter3,
+      f2sm: "תַּ"+this.state.letter2+"ִּי"+this.state.letter3,
+      f2sw: "תַּ"+this.state.letter2+"ִּי"+this.state.letter3+"ִי",
+      f3sm: "יַ"+this.state.letter2+"ִּי"+this.state.letter3,
+      f3sw: "תַּ"+this.state.letter2+"ִּי"+this.state.letter3,
+      f1m: "נַ"+this.state.letter2+"ִּי"+this.state.letter3,
+      f2mm: "תַּ"+this.state.letter2+"ִּי"+this.state.letter3+"וּ",
+      f2mw: "תַּ"+this.state.letter2+"ֵּ"+this.state.letter3+"ְנָה",
+      f3m: "יַ"+this.state.letter2+"ִּי"+this.state.letter3+"וּ",
+      ism: "הַ"+this.state.letter2+"ֵּ"+this.state.letter3,
+      isw: "הַ"+this.state.letter2+"ִּי"+this.state.letter3+"ִי",
+      imm: "הַ"+this.state.letter2+"ִּי"+this.state.letter3+"וּ",
+      imw: "הַ"+this.state.letter2+"ֵּ"+this.state.letter3+"ְנָה",
+      ns: "הַ"+this.state.letter2+"ָּ"+this.state.letter3+"ָה",
+      nm: "הַ"+this.state.letter2+"ָּ"+this.state.letter3+"וֹת", 
+      infS: "לה"+this.state.letter2+"י"+this.state.letter3,
+      p1sS: "ה"+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "ה"+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "ה"+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "ה"+this.state.letter2+"י"+this.state.letter3,
+      p3swS: "ה"+this.state.letter2+"י"+this.state.letter3+"ה",
+      p1mS: "ה"+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "ה"+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "ה"+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "ה"+this.state.letter2+"י"+this.state.letter3+"ו",
+      nsmS: "מ"+this.state.letter2+"י"+this.state.letter3,
+      nswS: "מ"+this.state.letter2+"י"+this.state.letter3+"ה",
+      nmmS: "מ"+this.state.letter2+"י"+this.state.letter3+"ים",
+      nmwS: "מ"+this.state.letter2+"י"+this.state.letter3+"ות",
+      f1sS: "א"+this.state.letter2+"י"+this.state.letter3,
+      f2smS: "ת"+this.state.letter2+"י"+this.state.letter3,
+      f2swS: "ת"+this.state.letter2+"י"+this.state.letter3+"י",
+      f3smS: "י"+this.state.letter2+"י"+this.state.letter3,
+      f3swS: "ת"+this.state.letter2+"י"+this.state.letter3,
+      f1mS: "נ"+this.state.letter2+"י"+this.state.letter3,
+      f2mmS: "ת"+this.state.letter2+"י"+this.state.letter3+"ו",
+      f2mwS: "ת"+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "י"+this.state.letter2+"י"+this.state.letter3+"ו",
+      ismS: "ה"+this.state.letter2+this.state.letter3,
+      iswS: "ה"+this.state.letter2+"י"+this.state.letter3+"י",
+      immS: "ה"+this.state.letter2+"י"+this.state.letter3+"ו",
+      imwS: "ה"+this.state.letter2+this.state.letter3+"נה",
+      nsS: "ה"+this.state.letter2+this.state.letter3+"ה",
+      nmS: "ה"+this.state.letter2+this.state.letter3+"ות"
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter2+"ִּי"+"ן", 
+        p3sm: "הִ"+this.state.letter2+"ִּי"+"ן",
+        p1m: "הִ"+this.state.letter2+"ַּ"+"נּוּ",
+        nsm: "מַ"+this.state.letter2+"ִּי"+"ן",
+        f1s: "אַ"+this.state.letter2+"ִּי"+"ן",
+        f2sm: "תַּ"+this.state.letter2+"ִּי"+"ן",
+        f3sm: "יַ"+this.state.letter2+"ִּי"+"ן",
+        f3sw: "תַּ"+this.state.letter2+"ִּי"+"ן",
+        f1m: "נַ"+this.state.letter2+"ִּי"+"ן",
+        f2mw: "תַּ"+this.state.letter2+"ֵּ"+"נָּה",
+        ism: "הַ"+this.state.letter2+"ֵּ"+"ן",
+        imw: "הַ"+this.state.letter2+"ֵּ"+"נָּה", 
+        infS: "לה"+this.state.letter2+"י"+"ן",
+        p3smS: "ה"+this.state.letter2+"י"+"ן",
+        p1mS: "ה"+this.state.letter2+"נו",
+        nsmS: "מ"+this.state.letter2+"י"+"ן",
+        f1sS: "א"+this.state.letter2+"י"+"ן",
+        f2smS: "ת"+this.state.letter2+"י"+"ן",
+        f3smS: "י"+this.state.letter2+"י"+"ן",
+        f3swS: "ת"+this.state.letter2+"י"+"ן",
+        f1mS: "נ"+this.state.letter2+"י"+"ן",
+        f2mwS: "ת"+this.state.letter2+"נה",
+        ismS: "ה"+this.state.letter2+"ן",
+        imwS: "ה"+this.state.letter2+"נה"
+      });
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter2+"ִּי"+"ך", 
+        p3sm: "הִ"+this.state.letter2+"ִּי"+"ך",
+        nsm: "מַ"+this.state.letter2+"ִּי"+"ך",
+        f1s: "אַ"+this.state.letter2+"ִּי"+"ך",
+        f2sm: "תַּ"+this.state.letter2+"ִּי"+"ך",
+        f3sm: "יַ"+this.state.letter2+"ִּי"+"ך",
+        f3sw: "תַּ"+this.state.letter2+"ִּי"+"ך",
+        f1m: "נַ"+this.state.letter2+"ִּי"+"ך",
+        ism: "הַ"+this.state.letter2+"ֵּ"+"ך", 
+        infS: "לה"+this.state.letter2+"י"+"ך",
+        p3smS: "ה"+this.state.letter2+"י"+"ך",
+        nsmS: "מ"+this.state.letter2+"י"+"ך",
+        f1sS: "א"+this.state.letter2+"י"+"ך",
+        f2smS: "ת"+this.state.letter2+"י"+"ך",
+        f3smS: "י"+this.state.letter2+"י"+"ך",
+        f3swS: "ת"+this.state.letter2+"י"+"ך",
+        f1mS: "נ"+this.state.letter2+"י"+"ך",
+        ismS: "ה"+this.state.letter2+"ך"
+      });
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter2+"ִּי"+"ם", 
+        p3sm: "הִ"+this.state.letter2+"ִּי"+"ם",
+        nsm: "מַ"+this.state.letter2+"ִּי"+"ם",
+        f1s: "אַ"+this.state.letter2+"ִּי"+"ם",
+        f2sm: "תַּ"+this.state.letter2+"ִּי"+"ם",
+        f3sm: "יַ"+this.state.letter2+"ִּי"+"ם",
+        f3sw: "תַּ"+this.state.letter2+"ִּי"+"ם",
+        f1m: "נַ"+this.state.letter2+"ִּי"+"ם",
+        ism: "הַ"+this.state.letter2+"ֵּ"+"ם", 
+        infS: "לה"+this.state.letter2+"י"+"ם",
+        p3smS: "ה"+this.state.letter2+"י"+"ם",
+        nsmS: "מ"+this.state.letter2+"י"+"ם",
+        f1sS: "א"+this.state.letter2+"י"+"ם",
+        f2smS: "ת"+this.state.letter2+"י"+"ם",
+        f3smS: "י"+this.state.letter2+"י"+"ם",
+        f3swS: "ת"+this.state.letter2+"י"+"ם",
+        f1mS: "נ"+this.state.letter2+"י"+"ם",
+        ismS: "ה"+this.state.letter2+"ם"
+      });
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter2+"ִּי"+"ף", 
+        p3sm: "הִ"+this.state.letter2+"ִּי"+"ף",
+        nsm: "מַ"+this.state.letter2+"ִּי"+"ף",
+        f1s: "אַ"+this.state.letter2+"ִּי"+"ף",
+        f2sm: "תַּ"+this.state.letter2+"ִּי"+"ף",
+        f3sm: "יַ"+this.state.letter2+"ִּי"+"ף",
+        f3sw: "תַּ"+this.state.letter2+"ִּי"+"ף",
+        f1m: "נַ"+this.state.letter2+"ִּי"+"ף",
+        ism: "הַ"+this.state.letter2+"ֵּ"+"ף", 
+        infS: "לה"+this.state.letter2+"י"+"ף",
+        p3smS: "ה"+this.state.letter2+"י"+"ף",
+        nsmS: "מ"+this.state.letter2+"י"+"ף",
+        f1sS: "א"+this.state.letter2+"י"+"ף",
+        f2smS: "ת"+this.state.letter2+"י"+"ף",
+        f3smS: "י"+this.state.letter2+"י"+"ף",
+        f3swS: "ת"+this.state.letter2+"י"+"ף",
+        f1mS: "נ"+this.state.letter2+"י"+"ף",
+        ismS: "ה"+this.state.letter2+"ף"
+      });
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter2+"ִּי"+"ץ", 
+        p3sm: "הִ"+this.state.letter2+"ִּי"+"ץ",
+        nsm: "מַ"+this.state.letter2+"ִּי"+"ץ",
+        f1s: "אַ"+this.state.letter2+"ִּי"+"ץ",
+        f2sm: "תַּ"+this.state.letter2+"ִּי"+"ץ",
+        f3sm: "יַ"+this.state.letter2+"ִּי"+"ץ",
+        f3sw: "תַּ"+this.state.letter2+"ִּי"+"ץ",
+        f1m: "נַ"+this.state.letter2+"ִּי"+"ץ",
+        ism: "הַ"+this.state.letter2+"ֵּ"+"ץ", 
+        infS: "לה"+this.state.letter2+"י"+"ץ",
+        p3smS: "ה"+this.state.letter2+"י"+"ץ",
+        nsmS: "מ"+this.state.letter2+"י"+"ץ",
+        f1sS: "א"+this.state.letter2+"י"+"ץ",
+        f2smS: "ת"+this.state.letter2+"י"+"ץ",
+        f3smS: "י"+this.state.letter2+"י"+"ץ",
+        f3swS: "ת"+this.state.letter2+"י"+"ץ",
+        f1mS: "נ"+this.state.letter2+"י"+"ץ",
+        ismS: "ה"+this.state.letter2+"ץ"
+      });
+     } 
+break
+case "הפעיל_האכיל":
+    this.setState({
+      inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3, 
+      p1s: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+this.state.letter3,
+      p3sw: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      p1m: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      nsw: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      nmm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"ִים",
+      nmw: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"וֹת",
+      f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2mm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      f2mw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
+      f3m: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+this.state.letter3,
+      isw: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      imm: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      imw: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
+      ns: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ָ"+this.state.letter3+"ָה",
+      nm: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p1sS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      nswS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3,
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ות" 
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן", 
+        p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+"ן",
+        p1m: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ַ"+"נּוּ",
+        nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ן",
+        f2mw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"נָּה",
+        ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"ן",
+        imw: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"נָּה", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ן",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ן",
+        p1mS: "ה"+this.state.letter1+this.state.letter2+"נו",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f2mwS: "ת"+this.state.letter1+this.state.letter2+"נה",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ן",
+        imwS: "ה"+this.state.letter1+this.state.letter2+"י"+"נה"
+       });
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך", 
+        p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+"ך",
+        nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ך",
+        ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"ך", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ך",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ך",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ך",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ך"
+       });
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם", 
+        p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+"ם",
+        nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ם",
+        ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"ם", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ם",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ם",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ם",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ם"
+       });
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף", 
+        p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+"ף",
+        nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ף",
+        ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"ף", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ף",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ף",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ף",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ף"
+       });
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ", 
+        p3sm: "הֶ"+this.state.letter1+"ֱ"+this.state.letter2+"ִי"+"ץ",
+        nsm: "מַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        f1s: "אַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        f2sm: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        f3sm: "יַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        f3sw: "תַּ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        f1m: "נַ"+this.state.letter1+"ֲ"+this.state.letter2+"ִי"+"ץ",
+        ism: "הַ"+this.state.letter1+"ֲ"+this.state.letter2+"ֵ"+"ץ", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ץ"
+       });
+     }
+break
+case "הפעיל_החזיר":
+    this.setState({
+      inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3, 
+      p1s: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      p3sw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      p1m: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      nsw:  "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      nmm:  "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ִים",
+      nmw:  "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וֹת",
+      f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2mw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
+      f3m: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3,
+      isw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      imm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      imw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
+      ns: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter+"ָה",
+      nm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p1sS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      nswS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3,
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ות"
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן", 
+        p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        p1m: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"נּוּ",
+        nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ן",
+        f2mw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"נָּה",
+        ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"ן",
+        imw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"נָּה", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ן",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ן",
+        p1mS: "ה"+this.state.letter1+this.state.letter2+"נו",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ן",
+        f2mwS: "ת"+this.state.letter1+this.state.letter2+"נה",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ן",
+        imwS: "ה"+this.state.letter1+this.state.letter2+"י"+"נה"
+       });
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך", 
+        p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ך",
+        ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"ך", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ך",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ך",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ך",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ך",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ך"
+       });
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם", 
+        p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ם",
+        ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"ם", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ם",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ם",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ם",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ם",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ם"
+       });
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף", 
+        p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ף",
+        ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"ף", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ף",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ף",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ף",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ף",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ף"
+       });
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({
+        inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ", 
+        p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+"ץ",
+        ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+"ץ", 
+        infS: "לה"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f1sS: "א"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f3smS: "י"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+"ץ",
+        ismS: "ה"+this.state.letter1+this.state.letter2+"ץ"
+       });
+     }
+break
+case "הפעיל_הבין":
+    this.setState({
+      inf: "לְהָ"+this.state.letter1+"ִי"+this.state.letter3, 
+      p1s: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הֵ"+this.state.letter1+"ִי"+this.state.letter3,
+      p3sw: "הֵ"+this.state.letter1+"ִי"+this.state.letter3+"ָה",
+      p1m: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הֵ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הֵ"+this.state.letter1+"ִי"+this.state.letter3+"וּ",
+      nsm: "מֵ"+this.state.letter1+"ִי"+this.state.letter3,
+      nsw: "מְ"+this.state.letter1+"ִי"+this.state.letter3+"ָה",
+      nmm: "מְ"+this.state.letter1+"ִי"+this.state.letter3+"ִים",
+      nmw: "מְ"+this.state.letter1+"ִי"+this.state.letter3+"וֹת",
+      f1s: "אָ"+this.state.letter1+"ִי"+this.state.letter3,
+      f2sm: "תָּ"+this.state.letter1+"ִי"+this.state.letter3,
+      f2sw: "תָּ"+this.state.letter1+"ִי"+this.state.letter3+"ִי",
+      f3sm: "יָ"+this.state.letter1+"ִי"+this.state.letter3,
+      f3sw: "תָּ"+this.state.letter1+"ִי"+this.state.letter3,
+      f1m: "נָ"+this.state.letter1+"ִי"+this.state.letter3,
+      f2mm: "תָּ"+this.state.letter1+"ִי"+this.state.letter3+"וּ",
+      f2mw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter3+"ְנָה",
+      f3m: "יָ"+this.state.letter1+"ִי"+this.state.letter3+"וּ",
+      ism: "הָ"+this.state.letter1+"ֵ"+this.state.letter3,
+      isw: "הָ"+this.state.letter1+"ִי"+this.state.letter3+"ִי",
+      imm: "הָ"+this.state.letter1+"ִי"+this.state.letter3+"וּ",
+      imw: "הָ"+this.state.letter1+"ֵ"+this.state.letter3+"ְנָה",
+      ns: "הֲ"+this.state.letter1+"ָ"+this.state.letter3+"ָה",
+      nm: "הֲ"+this.state.letter1+"ָ"+this.state.letter3+"וֹת", 
+      infS: "לה"+this.state.letter1+"י"+this.state.letter3,
+      p1sS: "ה"+this.state.letter1+this.state.letter3+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter3+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter3+"ת",
+      p3smS: "ה"+this.state.letter1+"י"+this.state.letter3,
+      p3swS: "ה"+this.state.letter1+"י"+this.state.letter3+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter3+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter3+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter3+"תן",
+      p3mS: "ה"+this.state.letter1+"י"+this.state.letter3+"ו",
+      nsmS: "מ"+this.state.letter1+"י"+this.state.letter3,
+      nswS: "מ"+this.state.letter1+"י"+this.state.letter3+"ה",
+      nmmS: "מ"+this.state.letter1+"י"+this.state.letter3+"ים",
+      nmwS: "מ"+this.state.letter1+"י"+this.state.letter3+"ות",
+      f1sS: "א"+this.state.letter1+"י"+this.state.letter3,
+      f2smS: "ת"+this.state.letter1+"י"+this.state.letter3,
+      f2swS: "ת"+this.state.letter1+"י"+this.state.letter3+"י",
+      f3smS: "י"+this.state.letter1+"י"+this.state.letter3,
+      f3swS: "ת"+this.state.letter1+"י"+this.state.letter3,
+      f1mS: "נ"+this.state.letter1+"י"+this.state.letter3,
+      f2mmS: "ת"+this.state.letter1+"י"+this.state.letter3+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter3+"נה",
+      f3mS: "י"+this.state.letter1+"י"+this.state.letter3+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter3,
+      iswS: "ה"+this.state.letter1+"י"+this.state.letter3+"י",
+      immS: "ה"+this.state.letter1+"י"+this.state.letter3+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter3+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter3+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter3+"ות"
+     });
+     if(this.state.letter3=="נ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ִי"+"ן", 
+        p3sm: "הֵ"+this.state.letter1+"ִי"+"ן",
+        p1m: "הֵ"+this.state.letter1+"ַ"+"נּוּ",
+        nsm: "מֵ"+this.state.letter1+"ִי"+"ן",
+        f1s: "אָ"+this.state.letter1+"ִי"+"ן",
+        f2sm: "תָּ"+this.state.letter1+"ִי"+"ן",
+        f3sm: "יָ"+this.state.letter1+"ִי"+"ן",
+        f3sw: "תָּ"+this.state.letter1+"ִי"+"ן",
+        f1m: "נָ"+this.state.letter1+"ִי"+"ן",
+        f2mw: "תָּ"+this.state.letter1+"ֵ"+"נָּה",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ן",
+        imw: "הָ"+this.state.letter1+"ֵ"+"נָּה", 
+        infS: "לה"+this.state.letter1+"י"+"ן",
+        p3smS: "ה"+this.state.letter1+"י"+"ן",
+        p1mS: "ה"+this.state.letter1+"נו",
+        nsmS: "מ"+this.state.letter1+"י"+"ן",
+        f1sS: "א"+this.state.letter1+"י"+"ן",
+        f2smS: "ת"+this.state.letter1+"י"+"ן",
+        f3smS: "י"+this.state.letter1+"י"+"ן",
+        f3swS: "ת"+this.state.letter1+"י"+"ן",
+        f1mS: "נ"+this.state.letter1+"י"+"ן",
+        f2mwS: "ת"+this.state.letter1+"נה",
+        ismS: "ה"+this.state.letter1+"ן",
+        imwS: "ה"+this.state.letter1+"נה"
+       });
+     }
+     if(this.state.letter3=="כ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ִי"+"ך", 
+        p3sm: "הֵ"+this.state.letter1+"ִי"+"ך",
+        nsm: "מֵ"+this.state.letter1+"ִי"+"ך",
+        f1s: "אָ"+this.state.letter1+"ִי"+"ך",
+        f2sm: "תָּ"+this.state.letter1+"ִי"+"ך",
+        f3sm: "יָ"+this.state.letter1+"ִי"+"ך",
+        f3sw: "תָּ"+this.state.letter1+"ִי"+"ך",
+        f1m: "נָ"+this.state.letter1+"ִי"+"ך",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ך", 
+        infS: "לה"+this.state.letter1+"י"+"ך",
+        p3smS: "ה"+this.state.letter1+"י"+"ך",
+        nsmS: "מ"+this.state.letter1+"י"+"ך",
+        f1sS: "א"+this.state.letter1+"י"+"ך",
+        f2smS: "ת"+this.state.letter1+"י"+"ך",
+        f3smS: "י"+this.state.letter1+"י"+"ך",
+        f3swS: "ת"+this.state.letter1+"י"+"ך",
+        f1mS: "נ"+this.state.letter1+"י"+"ך",
+        ismS: "ה"+this.state.letter1+"ך"
+       });
+     }
+     if(this.state.letter3=="מ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ִי"+"ם", 
+        p3sm: "הֵ"+this.state.letter1+"ִי"+"ם",
+        nsm: "מֵ"+this.state.letter1+"ִי"+"ם",
+        f1s: "אָ"+this.state.letter1+"ִי"+"ם",
+        f2sm: "תָּ"+this.state.letter1+"ִי"+"ם",
+        f3sm: "יָ"+this.state.letter1+"ִי"+"ם",
+        f3sw: "תָּ"+this.state.letter1+"ִי"+"ם",
+        f1m: "נָ"+this.state.letter1+"ִי"+"ם",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ם", 
+        infS: "לה"+this.state.letter1+"י"+"ם",
+        p3smS: "ה"+this.state.letter1+"י"+"ם",
+        nsmS: "מ"+this.state.letter1+"י"+"ם",
+        f1sS: "א"+this.state.letter1+"י"+"ם",
+        f2smS: "ת"+this.state.letter1+"י"+"ם",
+        f3smS: "י"+this.state.letter1+"י"+"ם",
+        f3swS: "ת"+this.state.letter1+"י"+"ם",
+        f1mS: "נ"+this.state.letter1+"י"+"ם",
+        ismS: "ה"+this.state.letter1+"ם"
+       });
+     }
+     if(this.state.letter3=="פ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ִי"+"ף", 
+        p3sm: "הֵ"+this.state.letter1+"ִי"+"ף",
+        nsm: "מֵ"+this.state.letter1+"ִי"+"ף",
+        f1s: "אָ"+this.state.letter1+"ִי"+"ף",
+        f2sm: "תָּ"+this.state.letter1+"ִי"+"ף",
+        f3sm: "יָ"+this.state.letter1+"ִי"+"ף",
+        f3sw: "תָּ"+this.state.letter1+"ִי"+"ף",
+        f1m: "נָ"+this.state.letter1+"ִי"+"ף",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ף", 
+        infS: "לה"+this.state.letter1+"י"+"ף",
+        p3smS: "ה"+this.state.letter1+"י"+"ף",
+        nsmS: "מ"+this.state.letter1+"י"+"ף",
+        f1sS: "א"+this.state.letter1+"י"+"ף",
+        f2smS: "ת"+this.state.letter1+"י"+"ף",
+        f3smS: "י"+this.state.letter1+"י"+"ף",
+        f3swS: "ת"+this.state.letter1+"י"+"ף",
+        f1mS: "נ"+this.state.letter1+"י"+"ף",
+        ismS: "ה"+this.state.letter1+"ף"
+       });
+     }
+     if(this.state.letter3=="צ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ִי"+"ץ", 
+        p3sm: "הֵ"+this.state.letter1+"ִי"+"ץ",
+        nsm: "מֵ"+this.state.letter1+"ִי"+"ץ",
+        f1s: "אָ"+this.state.letter1+"ִי"+"ץ",
+        f2sm: "תָּ"+this.state.letter1+"ִי"+"ץ",
+        f3sm: "יָ"+this.state.letter1+"ִי"+"ץ",
+        f3sw: "תָּ"+this.state.letter1+"ִי"+"ץ",
+        f1m: "נָ"+this.state.letter1+"ִי"+"ץ",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ץ", 
+        infS: "לה"+this.state.letter1+"י"+"ץ",
+        p3smS: "ה"+this.state.letter1+"י"+"ץ",
+        nsmS: "מ"+this.state.letter1+"י"+"ץ",
+        f1sS: "א"+this.state.letter1+"י"+"ץ",
+        f2smS: "ת"+this.state.letter1+"י"+"ץ",
+        f3smS: "י"+this.state.letter1+"י"+"ץ",
+        f3swS: "ת"+this.state.letter1+"י"+"ץ",
+        f1mS: "נ"+this.state.letter1+"י"+"ץ",
+        ismS: "ה"+this.state.letter1+"ץ"
+       });
+     }
+break
+case "הפעיל_הרשה":
+    this.setState({
+      inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"וֹת", 
+      p1s: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתי",
+      p2sm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתָ",
+      p2sw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵית",
+      p3sm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ָה",
+      p3sw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ְתָה",
+      p1m: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵינוּ",
+      p2mm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתֶם",
+      p2mw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתֶן",
+      p3m: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      nsw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ָה",
+      nmm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִים",
+      nmw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"וֹת",
+      f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי",
+      f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      f2mw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶינָה",
+      f3m: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵה",
+      isw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי",
+      imm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      imw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶינָה",
+      ns: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָאָה",
+      nm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָאוֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2+"ות",
+      p1sS: "ה"+this.state.letter1+this.state.letter2+"יתי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+"ית",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+"ית",
+      p3smS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"תה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+"ינו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+"יתם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+"יתן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2+"ה",
+      nswS: "מ"+this.state.letter1+this.state.letter2+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2+"ה",
+      f2smS: "ת"+this.state.letter1+this.state.letter2+"ה",
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2+"ה",
+      f3swS: "ת"+this.state.letter1+this.state.letter2+"ה",
+      f1mS: "נ"+this.state.letter1+this.state.letter2+"ה",
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+"ינה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"ינה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+"אה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+"אות"
+     });
+break
+case "הפעיל_הראה":
+    this.setState({
+      inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"וֹת", 
+      p1s: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתי",
+      p2sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתָ",
+      p2sw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵית",
+      p3sm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ָה",
+      p3sw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֲתָה",
+      p1m: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵינוּ",
+      p2mm: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתֶם",
+      p2mw: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"ֵיתֶן",
+      p3m: "הֶ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      nsw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ָה",
+      nmm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִים",
+      nmw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"וֹת",
+      f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי",
+      f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶה",
+      f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      f2mw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶינָה",
+      f3m: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵה",
+      isw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי",
+      imm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"וּ",
+      imw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶינָה",
+      ns: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָיָה",
+      nm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָיוֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2+"ות",
+      p1sS: "ה"+this.state.letter1+this.state.letter2+"יתי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+"ית",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+"ית",
+      p3smS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"תה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+"ינו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+"יתם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+"יתן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2+"ה",
+      nswS: "מ"+this.state.letter1+this.state.letter2+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2+"ה",
+      f2smS: "ת"+this.state.letter1+this.state.letter2+"ה",
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2+"ה",
+      f3swS: "ת"+this.state.letter1+this.state.letter2+"ה",
+      f1mS: "נ"+this.state.letter1+this.state.letter2+"ה",
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+"ינה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"ינה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+"יה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+"יות"
+   });
+break
+case "הפעיל_הפר":
+    this.setState({
+      inf: "לְהָ"+this.state.letter1+"ֵ"+this.state.letter2, 
+      p1s: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתּי",
+      p2sm: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתָּ",
+      p2sw: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתְּ",
+      p3sm: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2,
+      p3sw: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2+"ָה",
+      p1m: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְנוּ",
+      p2mm: "הֲ"+this.state.letter1+"ַ"+this.state.letter2+"ְתֶּם",
+      p2mw: "הֲ"+this.state.letter1+"ַ"+this.state.letter2+"ְתֶּן",
+      p3m: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2+"וּ",
+      nsm: "מֵ"+this.state.letter1+"ֵ"+this.state.letter2,
+      nsw: "מְ"+this.state.letter1+"ֵ"+this.state.letter2+"ָה",
+      nmm: "מְ"+this.state.letter1+"ֵ"+this.state.letter2+"ִים",
+      nmw: "מְ"+this.state.letter1+"ֵ"+this.state.letter2+"וֹת",
+      f1s: "אָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2sm: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2sw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"ִי",
+      f3sm: "יָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f3sw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f1m: "נָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2mm: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"וּ",
+      f2mw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"ְנָה",
+      f3m: "יָ"+this.state.letter1+"ֵ"+this.state.letter2+"וּ",
+      ism: "הָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      isw: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"ִי",
+      imm: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"וּ",
+      imw: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"ְנָה",
+      ns: "הֲ"+this.state.letter1+"ָ"+this.state.letter2+"ָה",
+      nm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"וֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2,
+      p1sS: "ה"+this.state.letter1+this.state.letter2+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+"ת",
+      p3smS: "ה"+this.state.letter1+this.state.letter2,
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+"תן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2,
+      nswS: "מ"+this.state.letter1+this.state.letter2+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2,
+      f2smS: "ת"+this.state.letter1+this.state.letter2,
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2,
+      f3swS: "ת"+this.state.letter1+this.state.letter2,
+      f1mS: "נ"+this.state.letter1+this.state.letter2,
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+"נה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2,
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+"ות"
+     });
+break
+case "הפעיל_המציא":
+    this.setState({
+      inf: "לְהַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3, 
+      p1s: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תִי",
+      p2sm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תָ",
+      p2sw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"ת",
+      p3sm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      p3sw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      p1m: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"נוּ",
+      p2mm: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תֶם",
+      p2mw: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תֶן",
+      p3m: "הִ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      nsm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      nsw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ָה",
+      nmm: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ים",
+      nmw: "מַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וֹת",
+      f1s: "אַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      f3sm: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f3sw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f1m: "נַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3,
+      f2mm: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      f2mw: "תַּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶ"+this.state.letter3+"נָה",
+      f3m: "יַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      ism: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3,
+      isw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"ִי",
+      imm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ִי"+this.state.letter3+"וּ",
+      imw: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ֶ"+this.state.letter3+"נָה",
+      ns: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"ָה",
+      nm: "הַ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p1sS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      nswS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ה",
+      nmmS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ים",
+      nmwS: "מ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2smS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f3swS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f1mS: "נ"+this.state.letter1+this.state.letter2+"י"+this.state.letter3,
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3,
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"י"+this.state.letter3+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+this.state.letter3+"ות"
+     });
+break
+case "הפעיל_הגן":
+    this.setState({
+      inf: "לְהָ"+this.state.letter1+"ֵ"+this.state.letter2, 
+      p1s: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתִּי",
+      p2sm: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתָּ",
+      p2sw: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְתְּ",
+      p3sm: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2,
+      p3sw: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2+"ָּה",
+      p1m: "הֵ"+this.state.letter1+"ַ"+this.state.letter2+"ְנוּ",
+      p2mm: "הֲ"+this.state.letter1+"ַ"+this.state.letter2+"ְתֶּם",
+      p2mw: "הֲ"+this.state.letter1+"ַ"+this.state.letter2+"ְתֶּן",
+      p3m: "הֵ"+this.state.letter1+"ֵ"+this.state.letter2+"ּוּ",
+      nsm: "מֵ"+this.state.letter1+"ֵ"+this.state.letter2,
+      nsw: "מְ"+this.state.letter1+"ִ"+this.state.letter2+"ָּה",
+      nmm: "מְ"+this.state.letter1+"ִ"+this.state.letter2+"ִּים",
+      nmw: "מְ"+this.state.letter1+"ִ"+this.state.letter2+"ּוֹת",
+      f1s: "אָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2sm: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2sw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"ִּי",
+      f3sm: "יָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f3sw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f1m: "נָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      f2mm: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"ּוּ",
+      f2mw: "תָּ"+this.state.letter1+"ֵ"+this.state.letter2+"ְנָה",
+      f3m: "יָ"+this.state.letter1+"ֵ"+this.state.letter2+"ּוּ",
+      ism: "הָ"+this.state.letter1+"ֵ"+this.state.letter2,
+      isw: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"ִּי",
+      imm: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"ּוּ",
+      imw: "הָ"+this.state.letter1+"ֵ"+this.state.letter2+"ְנָה",
+      ns: "הֲ"+this.state.letter1+"ָ"+this.state.letter2+"ָה",
+      nm: "הֲ"+this.state.letter1+"ָ"+this.state.letter2+"וֹת", 
+      infS: "לה"+this.state.letter1+this.state.letter2,
+      p1sS: "ה"+this.state.letter1+this.state.letter2+"תי",
+      p2smS: "ה"+this.state.letter1+this.state.letter2+"ת",
+      p2swS: "ה"+this.state.letter1+this.state.letter2+"ת",
+      p3smS: "ה"+this.state.letter1+this.state.letter2,
+      p3swS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      p1mS: "ה"+this.state.letter1+this.state.letter2+"נו",
+      p2mmS: "ה"+this.state.letter1+this.state.letter2+"תם",
+      p2mwS: "ה"+this.state.letter1+this.state.letter2+"תן",
+      p3mS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      nsmS: "מ"+this.state.letter1+this.state.letter2,
+      nswS: "מ"+this.state.letter1+"י"+this.state.letter2+"ה",
+      nmmS: "מ"+this.state.letter1+"י"+this.state.letter2+"ים",
+      nmwS: "מ"+this.state.letter1+"י"+this.state.letter2+"ות",
+      f1sS: "א"+this.state.letter1+this.state.letter2,
+      f2smS: "ת"+this.state.letter1+this.state.letter2,
+      f2swS: "ת"+this.state.letter1+this.state.letter2+"י",
+      f3smS: "י"+this.state.letter1+this.state.letter2,
+      f3swS: "ת"+this.state.letter1+this.state.letter2,
+      f1mS: "נ"+this.state.letter1+this.state.letter2,
+      f2mmS: "ת"+this.state.letter1+this.state.letter2+"ו",
+      f2mwS: "ת"+this.state.letter1+this.state.letter2+"נה",
+      f3mS: "י"+this.state.letter1+this.state.letter2+"ו",
+      ismS: "ה"+this.state.letter1+this.state.letter2,
+      iswS: "ה"+this.state.letter1+this.state.letter2+"י",
+      immS: "ה"+this.state.letter1+this.state.letter2+"ו",
+      imwS: "ה"+this.state.letter1+this.state.letter2+"נה",
+      nsS: "ה"+this.state.letter1+this.state.letter2+"ה",
+      nmS: "ה"+this.state.letter1+this.state.letter2+"ות"
+     });
+     if(this.state.letter3=="נ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ֵ"+"ן", 
+        p3sm: "הֵ"+this.state.letter1+"ֵ"+"ן",
+        p1m: "הֵ"+this.state.letter1+"ַ"+"נּוּ",
+        nsm: "מֵ"+this.state.letter1+"ֵ"+"ן",
+        f1s: "אָ"+this.state.letter1+"ֵ"+"ן",
+        f2sm: "תָּ"+this.state.letter1+"ֵ"+"ן",
+        f3sm: "יָ"+this.state.letter1+"ֵ"+"ן",
+        f3sw: "תָּ"+this.state.letter1+"ֵ"+"ן",
+        f1m: "נָ"+this.state.letter1+"ֵ"+"ן",
+        f2mw: "תָּ"+this.state.letter1+"ֵ"+"נָּה",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ן",
+        imw: "הָ"+this.state.letter1+"ֵ"+"נָּה", 
+        infS: "לה"+this.state.letter1+"ן",
+        p3smS: "ה"+this.state.letter1+"ן",
+        p1mS: "ה"+this.state.letter1+"נו",
+        nsmS: "מ"+this.state.letter1+"ן",
+        f1sS: "א"+this.state.letter1+"ן",
+        f2smS: "ת"+this.state.letter1+"ן",
+        f3smS: "י"+this.state.letter1+"ן",
+        f3swS: "ת"+this.state.letter1+"ן",
+        f1mS: "נ"+this.state.letter1+"ן",
+        f2mwS: "ת"+this.state.letter1+"נה",
+        ismS: "ה"+this.state.letter1+"ן",
+        imwS: "ה"+this.state.letter1+"נה"
+       });
+     }
+     if(this.state.letter3=="מ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ֵ"+"ם", 
+        p3sm: "הֵ"+this.state.letter1+"ֵ"+"ם",
+        nsm: "מֵ"+this.state.letter1+"ֵ"+"ם",
+        f1s: "אָ"+this.state.letter1+"ֵ"+"ם",
+        f2sm: "תָּ"+this.state.letter1+"ֵ"+"ם",
+        f3sm: "יָ"+this.state.letter1+"ֵ"+"ם",
+        f3sw: "תָּ"+this.state.letter1+"ֵ"+"ם",
+        f1m: "נָ"+this.state.letter1+"ֵ"+"ם",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ם", 
+        infS: "לה"+this.state.letter1+"ם",
+        p3smS: "ה"+this.state.letter1+"ם",
+        nsmS: "מ"+this.state.letter1+"ם",
+        f1sS: "א"+this.state.letter1+"ם",
+        f2smS: "ת"+this.state.letter1+"ם",
+        f3smS: "י"+this.state.letter1+"ם",
+        f3swS: "ת"+this.state.letter1+"ם",
+        f1mS: "נ"+this.state.letter1+"ם",
+        ismS: "ה"+this.state.letter1+"ם"
+       });
+     }
+     if(this.state.letter3=="כ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ֵ"+"ך", 
+        p3sm: "הֵ"+this.state.letter1+"ֵ"+"ך",
+        nsm: "מֵ"+this.state.letter1+"ֵ"+"ך",
+        f1s: "אָ"+this.state.letter1+"ֵ"+"ך",
+        f2sm: "תָּ"+this.state.letter1+"ֵ"+"ך",
+        f3sm: "יָ"+this.state.letter1+"ֵ"+"ך",
+        f3sw: "תָּ"+this.state.letter1+"ֵ"+"ך",
+        f1m: "נָ"+this.state.letter1+"ֵ"+"ך",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ך", 
+        infS: "לה"+this.state.letter1+"ך",
+        p3smS: "ה"+this.state.letter1+"ך",
+        nsmS: "מ"+this.state.letter1+"ך",
+        f1sS: "א"+this.state.letter1+"ך",
+        f2smS: "ת"+this.state.letter1+"ך",
+        f3smS: "י"+this.state.letter1+"ך",
+        f3swS: "ת"+this.state.letter1+"ך",
+        f1mS: "נ"+this.state.letter1+"ך",
+        ismS: "ה"+this.state.letter1+"ך"
+       });
+     }
+     if(this.state.letter3=="פ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ֵ"+"ף", 
+        p3sm: "הֵ"+this.state.letter1+"ֵ"+"ף",
+        nsm: "מֵ"+this.state.letter1+"ֵ"+"ף",
+        f1s: "אָ"+this.state.letter1+"ֵ"+"ף",
+        f2sm: "תָּ"+this.state.letter1+"ֵ"+"ף",
+        f3sm: "יָ"+this.state.letter1+"ֵ"+"ף",
+        f3sw: "תָּ"+this.state.letter1+"ֵ"+"ף",
+        f1m: "נָ"+this.state.letter1+"ֵ"+"ף",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ף", 
+        infS: "לה"+this.state.letter1+"ף",
+        p3smS: "ה"+this.state.letter1+"ף",
+        nsmS: "מ"+this.state.letter1+"ף",
+        f1sS: "א"+this.state.letter1+"ף",
+        f2smS: "ת"+this.state.letter1+"ף",
+        f3smS: "י"+this.state.letter1+"ף",
+        f3swS: "ת"+this.state.letter1+"ף",
+        f1mS: "נ"+this.state.letter1+"ף",
+        ismS: "ה"+this.state.letter1+"ף"
+       });
+     }
+     if(this.state.letter3=="צ"){
+      this.setState({
+        inf: "לְהָ"+this.state.letter1+"ֵ"+"ץ", 
+        p3sm: "הֵ"+this.state.letter1+"ֵ"+"ץ",
+        nsm: "מֵ"+this.state.letter1+"ֵ"+"ץ",
+        f1s: "אָ"+this.state.letter1+"ֵ"+"ץ",
+        f2sm: "תָּ"+this.state.letter1+"ֵ"+"ץ",
+        f3sm: "יָ"+this.state.letter1+"ֵ"+"ץ",
+        f3sw: "תָּ"+this.state.letter1+"ֵ"+"ץ",
+        f1m: "נָ"+this.state.letter1+"ֵ"+"ץ",
+        ism: "הָ"+this.state.letter1+"ֵ"+"ץ", 
+        infS: "לה"+this.state.letter1+"ץ",
+        p3smS: "ה"+this.state.letter1+"ץ",
+        nsmS: "מ"+this.state.letter1+"ץ",
+        f1sS: "א"+this.state.letter1+"ץ",
+        f2smS: "ת"+this.state.letter1+"ץ",
+        f3smS: "י"+this.state.letter1+"ץ",
+        f3swS: "ת"+this.state.letter1+"ץ",
+        f1mS: "נ"+this.state.letter1+"ץ",
+        ismS: "ה"+this.state.letter1+"ץ"
+       });
+     }
+break
 case "הופעל_מוזמן":
-if(this.state.letter1 == "ב" || this.state.letter1 == "כ" || this.state.letter1 == "פ" ||  this.state.letter1 == "ת"){
+if(this.state.letter2 == "ב" || this.state.letter2 == "כ" || this.state.letter2 == "פ" ||  this.state.letter2 == "ת"){
 this.setState({
   p1s: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתִּי",
   p2sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתָּ",
@@ -8746,6 +9890,694 @@ if(this.state.letter3 == "צ"){
     f1mS: "נו"+this.state.letter1+this.state.letter2+"ץ"
   });
 }
+break
+case "הופעל_מופרע":
+
+  this.setState({
+    p1s: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתִּי",
+    p2sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתָּ",
+    p2sw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתְּ",
+    p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    p3sw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"ָה",
+    p1m: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְנוּ",
+    p2mm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּם",
+    p2mw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּן",
+    p3m: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+    nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+    nsw: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ַת",
+    nmm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"ִים",
+    nmw: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת",
+    f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    f2sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"ִי",
+    f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3,
+    f2mm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+    f2mw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+this.state.letter3+"ְנָה",
+    f3m: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"וּ"
+  });
+  if(this.state.letter3 == "כ"){
+    this.setState({
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+"ך",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך",
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך",
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך",
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ך"
+    });
+  }
+  if(this.state.letter3 == "מ"){
+    this.setState({
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+"ם",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם",
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם",
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם",
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ם"
+    });
+  }
+  if(this.state.letter3 == "נ"){
+    this.setState({
+      f2mw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"נָּה",
+      p1m: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"נּוּ",
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+"ן",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן",
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן",
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן",
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ן"
+    });
+  }
+  if(this.state.letter3 == "פ"){
+    this.setState({
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+"ף",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף",
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף",
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף",
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ף"
+    });
+  }
+  if(this.state.letter3 == "צ"){
+    this.setState({
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+"ץ",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ",
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ",
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ",
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ַ"+"ץ"
+    });
+  }
+
+this.setState({
+  p1sS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+  p2smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+  p2swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+  p3smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  p3swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+  p1mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+  p2mmS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+  p2mwS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+  p3mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+  nsmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  nswS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+  nmmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ים",
+  nmwS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ות",
+  f1sS: "או"+this.state.letter1+this.state.letter2+this.state.letter3,
+  f2smS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  f2swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"י",
+  f3smS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  f3swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  f1mS: "נו"+this.state.letter1+this.state.letter2+this.state.letter3,
+  f2mmS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+  f2mwS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+  f3mS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו"
+});
+if(this.state.letter3 == "כ"){
+  this.setState({
+    p3smS: "הו"+this.state.letter1+this.state.letter2+"ך",
+    nsmS: "מו"+this.state.letter1+this.state.letter2+"ך",
+    f1sS: "או"+this.state.letter1+this.state.letter2+"ך",
+    f2smS: "תו"+this.state.letter1+this.state.letter2+"ך",
+    f3smS: "יו"+this.state.letter1+this.state.letter2+"ך",
+    f3swS: "תו"+this.state.letter1+this.state.letter2+"ך",
+    f1mS: "נו"+this.state.letter1+this.state.letter2+"ך"
+  });
+}
+if(this.state.letter3 == "מ"){
+  this.setState({
+    p3smS: "הו"+this.state.letter1+this.state.letter2+"ם",
+    nsmS: "מו"+this.state.letter1+this.state.letter2+"ם",
+    f1sS: "או"+this.state.letter1+this.state.letter2+"ם",
+    f2smS: "תו"+this.state.letter1+this.state.letter2+"ם",
+    f3smS: "יו"+this.state.letter1+this.state.letter2+"ם",
+    f3swS: "תו"+this.state.letter1+this.state.letter2+"ם",
+    f1mS: "נו"+this.state.letter1+this.state.letter2+"ם"
+  });
+}
+if(this.state.letter3 == "נ"){
+  this.setState({
+    f2mwS: "תו"+this.state.letter1+this.state.letter2+"נה",
+    p1mS: "הו"+this.state.letter1+this.state.letter2+"נו",
+    p3smS: "הו"+this.state.letter1+this.state.letter2+"ן",
+    nsmS: "מו"+this.state.letter1+this.state.letter2+"ן",
+    f1sS: "או"+this.state.letter1+this.state.letter2+"ן",
+    f2smS: "תו"+this.state.letter1+this.state.letter2+"ן",
+    f3smS: "יו"+this.state.letter1+this.state.letter2+"ן",
+    f3swS: "תו"+this.state.letter1+this.state.letter2+"ן",
+    f1mS: "נו"+this.state.letter1+this.state.letter2+"ן"
+  });
+}
+if(this.state.letter3 == "פ"){
+  this.setState({
+    p3smS: "הו"+this.state.letter1+this.state.letter2+"ף",
+    nsmS: "מו"+this.state.letter1+this.state.letter2+"ף",
+    f1sS: "או"+this.state.letter1+this.state.letter2+"ף",
+    f2smS: "תו"+this.state.letter1+this.state.letter2+"ף",
+    f3smS: "יו"+this.state.letter1+this.state.letter2+"ף",
+    f3swS: "תו"+this.state.letter1+this.state.letter2+"ף",
+    f1mS: "נו"+this.state.letter1+this.state.letter2+"ף"
+  });
+}
+if(this.state.letter3 == "צ"){
+  this.setState({
+    p3smS: "הו"+this.state.letter1+this.state.letter2+"ץ",
+    nsmS: "מו"+this.state.letter1+this.state.letter2+"ץ",
+    f1sS: "או"+this.state.letter1+this.state.letter2+"ץ",
+    f2smS: "תו"+this.state.letter1+this.state.letter2+"ץ",
+    f3smS: "יו"+this.state.letter1+this.state.letter2+"ץ",
+    f3swS: "תו"+this.state.letter1+this.state.letter2+"ץ",
+    f1mS: "נו"+this.state.letter1+this.state.letter2+"ץ"
+  });
+}
+break
+case "הופעל_מוצע":
+    this.setState({ 
+      p1s: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתִּי",
+      p2sm: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתָּ",
+      p2sw: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתְּ",
+      p3sm: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3,
+      p3sw: "הֻ"+this.state.letter2+"ְּ"+this.state.letter3+"ָה",
+      p1m: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְנוּ",
+      p2mm: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ְתֶּן",
+      p3m: "הֻ"+this.state.letter2+"ְּ"+this.state.letter3+"וּ",
+      nsm: "מֻ"+this.state.letter2+"ָּ"+this.state.letter3,
+      nsw: "מֻ"+this.state.letter2+"ַּ"+this.state.letter3+"ַת",
+      nmm: "מֻ"+this.state.letter2+"ָּ"+this.state.letter3+"ִים",
+      nmw: "מֻ"+this.state.letter2+"ָּ"+this.state.letter3+"וֹת",
+      f1s: "אֻ"+this.state.letter2+"ַּ"+this.state.letter3,
+      f2sm: "תֻּ"+this.state.letter2+"ַּ"+this.state.letter3,
+      f2sw: "תֻּ"+this.state.letter2+"ְּ"+this.state.letter3+"ִי",
+      f3sm: "יֻ"+this.state.letter2+"ַּ"+this.state.letter3,
+      f3sw: "תֻּ"+this.state.letter2+"ַּ"+this.state.letter3,
+      f1m: "נֻ"+this.state.letter2+"ַּ"+this.state.letter3,
+      f2mm: "תֻּ"+this.state.letter2+"ְּ"+this.state.letter3+"וּ",
+      f2mw: "תֻּ"+this.state.letter2+"ַּ"+this.state.letter3+"ְנָה",
+      f3m: "יֻ"+this.state.letter2+"ְּ"+this.state.letter3+"וּ",
+      p1sS: "הו"+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "הו"+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "הו"+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "הו"+this.state.letter2+this.state.letter3,
+      p3swS: "הו"+this.state.letter2+this.state.letter3+"ה",
+      p1mS: "הו"+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "הו"+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "הו"+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "הו"+this.state.letter2+this.state.letter3+"ו",
+      nsmS: "מו"+this.state.letter2+this.state.letter3,
+      nswS: "מו"+this.state.letter2+this.state.letter3+"ת",
+      nmmS: "מו"+this.state.letter2+this.state.letter3+"ים",
+      nmwS: "מו"+this.state.letter2+this.state.letter3+"ות",
+      f1sS: "או"+this.state.letter2+this.state.letter3,
+      f2smS: "תו"+this.state.letter2+this.state.letter3,
+      f2swS: "תו"+this.state.letter2+this.state.letter3+"י",
+      f3smS: "יו"+this.state.letter2+this.state.letter3,
+      f3swS: "תו"+this.state.letter2+this.state.letter3,
+      f1mS: "נו"+this.state.letter2+this.state.letter3,
+      f2mmS: "תו"+this.state.letter2+this.state.letter3+"ו",
+      f2mwS: "תו"+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "יו"+this.state.letter2+this.state.letter3+"ו"
+     });
+break
+case "הופעל_מוכן":
+    this.setState({ 
+      p1s: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      p3sw: "הוּ"+this.state.letter1+"ְ"+this.state.letter3+"ָה",
+      p1m: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      nsm: "מוּ"+this.state.letter1+"ָ"+this.state.letter3,
+      nsw: "מוּ"+this.state.letter1+"ָ"+this.state.letter3+"ָה",
+      nmm: "מוּ"+this.state.letter1+"ָ"+this.state.letter3+"ִים",
+      nmw: "מוּ"+this.state.letter1+"ָ"+this.state.letter3+"וֹת",
+      f1s: "אוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2sm: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2sw: "תּוּ"+this.state.letter1+"ְ"+this.state.letter3+"י",
+      f3sm: "יוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f3sw: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f1m: "נוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2mm: "תּוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      f2mw: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְנָה",
+      f3m: "יוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      p1sS: "הו"+this.state.letter1+this.state.letter3+"תי",
+      p2smS: "הו"+this.state.letter1+this.state.letter3+"ת",
+      p2swS: "הו"+this.state.letter1+this.state.letter3+"ת",
+      p3smS: "הו"+this.state.letter1+this.state.letter3,
+      p3swS: "הו"+this.state.letter1+this.state.letter3+"ה",
+      p1mS: "הו"+this.state.letter1+this.state.letter3+"נו",
+      p2mmS: "הו"+this.state.letter1+this.state.letter3+"תם",
+      p2mwS: "הו"+this.state.letter1+this.state.letter3+"תן",
+      p3mS: "הו"+this.state.letter1+this.state.letter3+"ו",
+      nsmS: "מו"+this.state.letter1+this.state.letter3,
+      nswS: "מו"+this.state.letter1+this.state.letter3+"ה",
+      nmmS: "מו"+this.state.letter1+this.state.letter3+"ים",
+      nmwS: "מו"+this.state.letter1+this.state.letter3+"ות",
+      f1sS: "או"+this.state.letter1+this.state.letter3,
+      f2smS: "תו"+this.state.letter1+this.state.letter3,
+      f2swS: "תו"+this.state.letter1+this.state.letter3+"י",
+      f3smS: "יו"+this.state.letter1+this.state.letter3,
+      f3swS: "תו"+this.state.letter1+this.state.letter3,
+      f1mS: "נו"+this.state.letter1+this.state.letter3,
+      f2mmS: "תו"+this.state.letter1+this.state.letter3+"ו",
+      f2mwS: "תו"+this.state.letter1+this.state.letter3+"נה",
+      f3mS: "יו"+this.state.letter1+this.state.letter3+"ו"
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ן",
+        p1m: "הוּ"+this.state.letter1+"ַ"+"נּוּ",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ן",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ן",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ן",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ן",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ן",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ן",
+        f2mw: "תּוּ"+this.state.letter1+"ַ"+"נָּה",
+        p3smS: "הו"+this.state.letter1+"ן",
+        p1mS: "הו"+this.state.letter1+"נו",
+        nsmS: "מו"+this.state.letter1+"ן",
+        f1sS: "או"+this.state.letter1+"ן",
+        f2smS: "תו"+this.state.letter1+"ן",
+        f3smS: "יו"+this.state.letter1+"ן",
+        f3swS: "תו"+this.state.letter1+"ן",
+        f1mS: "נו"+this.state.letter1+"ן",
+        f2mwS: "תו"+this.state.letter1+"נה"
+       });  
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ך",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ך",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ך",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ך",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ך",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ך",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ך",
+        p3smS: "הו"+this.state.letter1+"ך",
+        nsmS: "מו"+this.state.letter1+"ך",
+        f1sS: "או"+this.state.letter1+"ך",
+        f2smS: "תו"+this.state.letter1+"ך",
+        f3smS: "יו"+this.state.letter1+"ך",
+        f3swS: "תו"+this.state.letter1+"ך",
+        f1mS: "נו"+this.state.letter1+"ך"
+       });  
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ם",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ם",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ם",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ם",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ם",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ם",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ם",
+        p3smS: "הו"+this.state.letter1+"ם",
+        nsmS: "מו"+this.state.letter1+"ם",
+        f1sS: "או"+this.state.letter1+"ם",
+        f2smS: "תו"+this.state.letter1+"ם",
+        f3smS: "יו"+this.state.letter1+"ם",
+        f3swS: "תו"+this.state.letter1+"ם",
+        f1mS: "נו"+this.state.letter1+"ם"
+       });  
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ף",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ף",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ף",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ף",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ף",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ף",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ף",
+        p3smS: "הו"+this.state.letter1+"ף",
+        nsmS: "מו"+this.state.letter1+"ף",
+        f1sS: "או"+this.state.letter1+"ף",
+        f2smS: "תו"+this.state.letter1+"ף",
+        f3smS: "יו"+this.state.letter1+"ף",
+        f3swS: "תו"+this.state.letter1+"ף",
+        f1mS: "נו"+this.state.letter1+"ף"
+       });  
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ץ",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ץ",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ץ",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ץ",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ץ",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ץ",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ץ",
+        p3smS: "הו"+this.state.letter1+"ץ",
+        nsmS: "מו"+this.state.letter1+"ץ",
+        f1sS: "או"+this.state.letter1+"ץ",
+        f2smS: "תו"+this.state.letter1+"ץ",
+        f3smS: "יו"+this.state.letter1+"ץ",
+        f3swS: "תו"+this.state.letter1+"ץ",
+        f1mS: "נו"+this.state.letter1+"ץ"
+       });  
+     }
+break
+case "הופעל_מובן":
+    this.setState({ 
+      p1s: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      p3sw: "הוּ"+this.state.letter1+"ְ"+this.state.letter3+"ָה",
+      p1m: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      nsm: "מוּ"+this.state.letter1+"ָ"+this.state.letter3,
+      nsw: "מוּ"+this.state.letter1+"ֶ"+this.state.letter3+"ֶת",
+      nmm: "מוּ"+this.state.letter1+"ָ"+this.state.letter3+"ִים",
+      nmw: "מוּ"+this.state.letter1+"ָ"+this.state.letter3+"וֹת",
+      f1s: "אוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2sm: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2sw: "תּוּ"+this.state.letter1+"ְ"+this.state.letter3+"י",
+      f3sm: "יוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f3sw: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f1m: "נוּ"+this.state.letter1+"ַ"+this.state.letter3,
+      f2mm: "תּוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      f2mw: "תּוּ"+this.state.letter1+"ַ"+this.state.letter3+"ְנָה",
+      f3m: "יוּ"+this.state.letter1+"ְ"+this.state.letter3+"וּ",
+      p1sS: "הו"+this.state.letter1+this.state.letter3+"תי",
+      p2smS: "הו"+this.state.letter1+this.state.letter3+"ת",
+      p2swS: "הו"+this.state.letter1+this.state.letter3+"ת",
+      p3smS: "הו"+this.state.letter1+this.state.letter3,
+      p3swS: "הו"+this.state.letter1+this.state.letter3+"ה",
+      p1mS: "הו"+this.state.letter1+this.state.letter3+"נו",
+      p2mmS: "הו"+this.state.letter1+this.state.letter3+"תם",
+      p2mwS: "הו"+this.state.letter1+this.state.letter3+"תן",
+      p3mS: "הו"+this.state.letter1+this.state.letter3+"ו",
+      nsmS: "מו"+this.state.letter1+this.state.letter3,
+      nswS: "מו"+this.state.letter1+this.state.letter3+"ת",
+      nmmS: "מו"+this.state.letter1+this.state.letter3+"ים",
+      nmwS: "מו"+this.state.letter1+this.state.letter3+"ות",
+      f1sS: "או"+this.state.letter1+this.state.letter3,
+      f2smS: "תו"+this.state.letter1+this.state.letter3,
+      f2swS: "תו"+this.state.letter1+this.state.letter3+"י",
+      f3smS: "יו"+this.state.letter1+this.state.letter3,
+      f3swS: "תו"+this.state.letter1+this.state.letter3,
+      f1mS: "נו"+this.state.letter1+this.state.letter3,
+      f2mmS: "תו"+this.state.letter1+this.state.letter3+"ו",
+      f2mwS: "תו"+this.state.letter1+this.state.letter3+"נה",
+      f3mS: "יו"+this.state.letter1+this.state.letter3+"ו"
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ן",
+        p1m: "הוּ"+this.state.letter1+"ַ"+"נּוּ",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ן",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ן",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ן",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ן",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ן",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ן",
+        f2mw: "תּוּ"+this.state.letter1+"ַ"+"נָּה",
+        p3smS: "הו"+this.state.letter1+"ן",
+        p1mS: "הו"+this.state.letter1+"נו",
+        nsmS: "מו"+this.state.letter1+"ן",
+        f1sS: "או"+this.state.letter1+"ן",
+        f2smS: "תו"+this.state.letter1+"ן",
+        f3smS: "יו"+this.state.letter1+"ן",
+        f3swS: "תו"+this.state.letter1+"ן",
+        f1mS: "נו"+this.state.letter1+"ן",
+        f2mwS: "תו"+this.state.letter1+"נה"
+       });  
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ך",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ך",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ך",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ך",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ך",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ך",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ך",
+        p3smS: "הו"+this.state.letter1+"ך",
+        nsmS: "מו"+this.state.letter1+"ך",
+        f1sS: "או"+this.state.letter1+"ך",
+        f2smS: "תו"+this.state.letter1+"ך",
+        f3smS: "יו"+this.state.letter1+"ך",
+        f3swS: "תו"+this.state.letter1+"ך",
+        f1mS: "נו"+this.state.letter1+"ך"
+       });  
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ם",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ם",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ם",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ם",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ם",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ם",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ם",
+        p3smS: "הו"+this.state.letter1+"ם",
+        nsmS: "מו"+this.state.letter1+"ם",
+        f1sS: "או"+this.state.letter1+"ם",
+        f2smS: "תו"+this.state.letter1+"ם",
+        f3smS: "יו"+this.state.letter1+"ם",
+        f3swS: "תו"+this.state.letter1+"ם",
+        f1mS: "נו"+this.state.letter1+"ם"
+       });  
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ף",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ף",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ף",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ף",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ף",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ף",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ף",
+        p3smS: "הו"+this.state.letter1+"ף",
+        nsmS: "מו"+this.state.letter1+"ף",
+        f1sS: "או"+this.state.letter1+"ף",
+        f2smS: "תו"+this.state.letter1+"ף",
+        f3smS: "יו"+this.state.letter1+"ף",
+        f3swS: "תו"+this.state.letter1+"ף",
+        f1mS: "נו"+this.state.letter1+"ף"
+       });  
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({ 
+        p3sm: "הוּ"+this.state.letter1+"ַ"+"ץ",
+        nsm: "מוּ"+this.state.letter1+"ָ"+"ץ",
+        f1s: "אוּ"+this.state.letter1+"ַ"+"ץ",
+        f2sm: "תּוּ"+this.state.letter1+"ַ"+"ץ",
+        f3sm: "יוּ"+this.state.letter1+"ַ"+"ץ",
+        f3sw: "תּוּ"+this.state.letter1+"ַ"+"ץ",
+        f1m: "נוּ"+this.state.letter1+"ַ"+"ץ",
+        p3smS: "הו"+this.state.letter1+"ץ",
+        nsmS: "מו"+this.state.letter1+"ץ",
+        f1sS: "או"+this.state.letter1+"ץ",
+        f2smS: "תו"+this.state.letter1+"ץ",
+        f3smS: "יו"+this.state.letter1+"ץ",
+        f3swS: "תו"+this.state.letter1+"ץ",
+        f1mS: "נו"+this.state.letter1+"ץ"
+       });  
+     }
+break
+case "הופעל_מומצא":
+    this.setState({ 
+      p1s: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תִי",
+      p2sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תָ",
+      p2sw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"ת",
+      p3sm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      p3sw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"ָה",
+      p1m: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"נוּ",
+      p2mm: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תֶם",
+      p2mw: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"תֶן",
+      p3m: "הֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+      nsm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      nsw: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ֵ"+this.state.letter3+"ת",
+      nmm: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"ִים",
+      nmw: "מֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת",
+      f1s: "אֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      f2sm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      f2sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"ִי",
+      f3sm: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      f3sw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      f1m: "נֻ"+this.state.letter1+"ְ"+this.state.letter2+"ָ"+this.state.letter3,
+      f2mm: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+      f2mw: "תֻּ"+this.state.letter1+"ְ"+this.state.letter2+"ֶ"+this.state.letter3+"נָה",
+      f3m: "יֻ"+this.state.letter1+"ְ"+this.state.letter2+"ְ"+this.state.letter3+"ןּ",
+      p1sS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      p3swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+      p1mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+      p2mwS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+      nsmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      nswS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      nmmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ים",
+      nmwS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ות",
+      f1sS: "או"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2smS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"י",
+      f3smS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f3swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f1mS: "נו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2mmS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+      f2mwS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו"
+     });
+break
+case "הופעל_מוערך":
+    this.setState({ 
+      p1s: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      p3sw: "הָ"+this.state.letter1+"ָ"+this.state.letter2+"ְ"+this.state.letter3+"ָה",
+      p1m: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הָ"+this.state.letter1+"ָ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+      nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+this.state.letter3+"ְ",
+      nsw: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ֶ"+this.state.letter3+"ֶת",
+      nmm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+this.state.letter3+"ִים",
+      nmw: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+this.state.letter3+"וֹת",
+      f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      f2sw: "תָּ"+this.state.letter1+"ָ"+this.state.letter2+"ְ"+this.state.letter3+"ִי",
+      f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+this.state.letter3+"ְ",
+      f2mm: "תָּ"+this.state.letter1+"ָ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+      f2mw: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+this.state.letter3+"ְנָה",
+      f3m: "יָ"+this.state.letter1+"ָ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
+      p1sS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תי",
+      p2smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p2swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      p3smS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      p3swS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ה",
+      p1mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"נו",
+      p2mmS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"תם",
+      p2mwS:"הו"+ this.state.letter1+this.state.letter2+this.state.letter3+"תן",
+      p3mS: "הו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+      nsmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      nswS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ת",
+      nmmS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ים",
+      nmwS: "מו"+this.state.letter1+this.state.letter2+this.state.letter3+"ות",
+      f1sS: "או"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2smS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"י",
+      f3smS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f3swS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f1mS: "נו"+this.state.letter1+this.state.letter2+this.state.letter3,
+      f2mmS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו",
+      f2mwS: "תו"+this.state.letter1+this.state.letter2+this.state.letter3+"נה",
+      f3mS: "יו"+this.state.letter1+this.state.letter2+this.state.letter3+"ו"
+     });
+     if(this.state.letter3 == "נ"){
+      this.setState({ 
+        p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        p1m: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"נּוּ",
+        nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+"ן"+"ְ",
+        f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ן"+"ְ",
+        f2mw: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"נָּה",
+        p3smS: "הו"+this.state.letter1+this.state.letter2+"ן",
+        p1mS: "הו"+this.state.letter1+this.state.letter2+"נו",
+        nsmS: "מו"+this.state.letter1+this.state.letter2+"ן",
+        f1sS: "או"+this.state.letter1+this.state.letter2+"ן",
+        f2smS: "תו"+this.state.letter1+this.state.letter2+"ן",
+        f3smS: "יו"+this.state.letter1+this.state.letter2+"ן",
+        f3swS: "תו"+this.state.letter1+this.state.letter2+"ן",
+        f1mS: "נו"+this.state.letter1+this.state.letter2+"ן",
+        f2mwS: "תו"+this.state.letter1+this.state.letter2+"נה"
+       });
+     }
+     if(this.state.letter3 == "כ"){
+      this.setState({ 
+        p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+"ך"+"ְ",
+        f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ך"+"ְ",
+        p3smS: "הו"+this.state.letter1+this.state.letter2+"ך",
+        nsmS: "מו"+this.state.letter1+this.state.letter2+"ך",
+        f1sS: "או"+this.state.letter1+this.state.letter2+"ך",
+        f2smS: "תו"+this.state.letter1+this.state.letter2+"ך",
+        f3smS: "יו"+this.state.letter1+this.state.letter2+"ך",
+        f3swS: "תו"+this.state.letter1+this.state.letter2+"ך",
+        f1mS: "נו"+this.state.letter1+this.state.letter2+"ך"
+       });
+     }
+     if(this.state.letter3 == "מ"){
+      this.setState({ 
+        p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+"ם"+"ְ",
+        f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ם"+"ְ",
+        p3smS: "הו"+this.state.letter1+this.state.letter2+"ם",
+        nsmS: "מו"+this.state.letter1+this.state.letter2+"ם",
+        f1sS: "או"+this.state.letter1+this.state.letter2+"ם",
+        f2smS: "תו"+this.state.letter1+this.state.letter2+"ם",
+        f3smS: "יו"+this.state.letter1+this.state.letter2+"ם",
+        f3swS: "תו"+this.state.letter1+this.state.letter2+"ם",
+        f1mS: "נו"+this.state.letter1+this.state.letter2+"ם"
+       });
+     }
+     if(this.state.letter3 == "פ"){
+      this.setState({ 
+        p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+"ף"+"ְ",
+        f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ף"+"ְ",
+        p3smS: "הו"+this.state.letter1+this.state.letter2+"ף",
+        nsmS: "מו"+this.state.letter1+this.state.letter2+"ף",
+        f1sS: "או"+this.state.letter1+this.state.letter2+"ף",
+        f2smS: "תו"+this.state.letter1+this.state.letter2+"ף",
+        f3smS: "יו"+this.state.letter1+this.state.letter2+"ף",
+        f3swS: "תו"+this.state.letter1+this.state.letter2+"ף",
+        f1mS: "נו"+this.state.letter1+this.state.letter2+"ף"
+       });
+     }
+     if(this.state.letter3 == "צ"){
+      this.setState({ 
+        p3sm: "הָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        nsm: "מָ"+this.state.letter1+"ֳ"+this.state.letter2+"ָ"+"ץ"+"ְ",
+        f1s: "אָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        f2sm: "תָּ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        f3sm: "יָ"+this.state.letter1+"ֳ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        f3sw: "תָּ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        f1m: "נָ"+this.state.letter1+"ֲ"+this.state.letter2+"ַ"+"ץ"+"ְ",
+        p3smS: "הו"+this.state.letter1+this.state.letter2+"ץ",
+        nsmS: "מו"+this.state.letter1+this.state.letter2+"ץ",
+        f1sS: "או"+this.state.letter1+this.state.letter2+"ץ",
+        f2smS: "תו"+this.state.letter1+this.state.letter2+"ץ",
+        f3smS: "יו"+this.state.letter1+this.state.letter2+"ץ",
+        f3swS: "תו"+this.state.letter1+this.state.letter2+"ץ",
+        f1mS: "נו"+this.state.letter1+this.state.letter2+"ץ"
+       });
+     }
 break
 case "התפעל_התקדם":
 if(this.state.letter1 == "ב" || this.state.letter1 == "כ" || this.state.letter1 == "פ" ||  this.state.letter1 == "ת"){
@@ -10522,7 +12354,22 @@ break
                               <option>הפעיל_הזמין</option>
                               <option>הפעיל_הרגיש</option>
                               <option>הפעיל_הושיב</option>
+                              <option>הפעיל_הבין</option>
+                              <option>הפעיל_הציל</option>
+                              <option>הפעיל_החזיר</option>
+                              <option>הפעיל_האכיל</option>
+                              <option>הפעיל_הרשה</option>
+                              <option>הפעיל_הראה</option>
+                              <option>הפעיל_הפר</option>
+                              <option>הפעיל_המציא</option>
+                              <option>הפעיל_הגן</option>
                               <option>הופעל_מוזמן</option>
+                              <option>הופעל_מופרע</option>
+                              <option>הופעל_מוצע</option>
+                              <option>הופעל_מוכן</option>
+                              <option>הופעל_מובן</option>
+                              <option>הופעל_מומצא</option>
+                              <option>הופעל_מוערך</option>
                               <option>התפעל_התקדם</option>
                             </select></label></p>
           </div>
