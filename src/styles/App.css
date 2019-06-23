@@ -139,3 +139,8 @@ span{
 select{
   max-height: 200px;
 }
+.password{
+  width: 20%;
+  float: left;
+  margin-right: -20%;
+}

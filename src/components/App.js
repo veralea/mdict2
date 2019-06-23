@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
+
 var arr = [];
 var arrOfRootsId = [];
 var root_id = "№№";
+
+
 class App extends Component {
   constructor(props) {
       super(props);
@@ -21,6 +24,7 @@ class App extends Component {
           antonymId: '',
           phraseId: '',
           sound: 'sound.wav',
+          password: '',
           benjan: '',
           letter1: '',
           letter2: '',
@@ -129,7 +133,8 @@ class App extends Component {
           activepassivesByNumber1:[],
           verbsbyletters:[]
       };
-
+      this.checkPassword = this.checkPassword.bind(this);
+      this.onPasswordChange = this.onPasswordChange.bind(this);
       this.onBenjanChange = this.onBenjanChange.bind(this);
       this.onLetter1Change = this.onLetter1Change.bind(this);
       this.onLetter2Change = this.onLetter2Change.bind(this);
@@ -265,6 +270,14 @@ class App extends Component {
       this.renderSwitch2 = this.renderSwitch2.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
       this.createDump = this.createDump.bind(this);
+    }
+
+    checkPassword(){
+      if(this.state.password == "VaMoDimRaGoShaRal2019Nik"){
+        this.createDump();
+      }else{
+        alert("שגיאה");
+      }
     }
 
     getAllForms(e){
@@ -12546,6 +12559,10 @@ break
       event.preventDefault();     
     }
 
+    onPasswordChange(event){
+      this.setState({password: event.target.value});
+    }
+
     onBenjanChange(event){    
       this.setState({benjan: event.target.value});
     }
@@ -12858,9 +12875,15 @@ break
             })
         });
     }
-    createDump(e){
-      e.preventDefault();
-       fetch('http://localhost:8000/createdump/')
+
+    createDump(){
+      fetch('http://localhost:8000/createdump/').then(response=>{
+      if(response) { 
+        alert("נתונים הועתקו");
+      }else{
+        alert("נתונים לא הועתקו");
+      }
+      })
     }
     getVerbByRootId (rootNumber,e) {
       e.preventDefault();
@@ -13951,10 +13974,16 @@ break
       }
     }
     render() {
-      return (  
+      return (
+      <div>  
+  
       <form onSubmit={this.onSubmit} >
       <h1>אנחנו ממלאים את המילון מורשה</h1>
-      <button  onClick = {(e) => this.createDump(e)}>להעתיק נתונים</button>
+      <div dir="ltr" className="password">
+      <input name="password"  type="password" placeholder="סיסמה"
+                               value={this.state.password} onChange={this.onPasswordChange}/>
+      <div><button onClick={this.checkPassword}>להעתיק נתונים</button></div>
+      </div>
       <div className="topFlexContainer">
        <div className="topFlexItem2"> {/* начало левой части страницы */}
        <div>{root_id}</div>
@@ -14486,7 +14515,7 @@ break
       </div> {/* конец большого флекс контейнера */} 
       </form>
 
-          
+      </div>    
       )
     }
 
