@@ -14,12 +14,14 @@ class App extends Component {
           readyToAdditionals: "default",
           thisIsNewTranslation: '1',
           thisIsNewFamily: '1',
+          thisIsNewFamilyverb: '1',
           thisIsNewSynonym: '1',
           thisIsNewAntonym: '1',
           thisIsNewPhrase: '1',
           thisIsPassive: '0',
           translationId: '',
           familyId: '',
+          familyverbId: '',
           synonymId: '',
           antonymId: '',
           phraseId: '',
@@ -109,6 +111,10 @@ class App extends Component {
           familyTranslateRu: '_',
           familyTranslateEn: '_',
           familyTranslateFr: '_',
+          familyverb: '_',
+          familyverbTranslateRu: '_',
+          familyverbTranslateEn: '_',
+          familyverbTranslateFr: '_',
           synonym: '_',
           synonymTranslateRu: '_',
           synonymTranslateEn: '_',
@@ -126,6 +132,7 @@ class App extends Component {
           translationsByNumber:[],
           phrasesByNumber:[],
           familiesByNumber:[],
+          familiesverbsByNumber:[],
           synonymsByNumber:[],
           antonymsByNumber:[],
           sentenciesByNumber:[],
@@ -219,6 +226,10 @@ class App extends Component {
       this.onFamilyTranslateRuChange = this.onFamilyTranslateRuChange.bind(this);
       this.onFamilyTranslateEnChange = this.onFamilyTranslateEnChange.bind(this);
       this.onFamilyTranslateFrChange = this.onFamilyTranslateFrChange.bind(this);
+      this.onFamilyverbChange = this.onFamilyverbChange.bind(this);
+      this.onFamilyverbTranslateRuChange = this.onFamilyverbTranslateRuChange.bind(this);
+      this.onFamilyverbTranslateEnChange = this.onFamilyverbTranslateEnChange.bind(this);
+      this.onFamilyverbTranslateFrChange = this.onFamilyverbTranslateFrChange.bind(this);
       this.onAntonymChange = this.onAntonymChange.bind(this);
       this.onAntonymTranslateRuChange = this.onAntonymTranslateRuChange.bind(this);
       this.onAntonymTranslateEnChange = this.onAntonymTranslateEnChange.bind(this);
@@ -236,12 +247,14 @@ class App extends Component {
       this.getVerbByRootId = this.getVerbByRootId.bind(this);
       this.getAllTranslations = this.getAllTranslations.bind(this);
       this.getAllFamilies = this.getAllFamilies.bind(this);
+      this.getAllFamiliesverbs = this.getAllFamiliesverbs.bind(this);
       this.getAllSynonyms = this.getAllSynonyms.bind(this);
       this.getAllAntonyms = this.getAllAntonyms.bind(this);
       this.getAllPhrases = this.getAllPhrases.bind(this);
       this.getAllActivePassives = this.getAllActivePassives.bind(this);
       this.getTranslationById = this.getTranslationById.bind(this);
       this.getFamilyById = this.getFamilyById.bind(this);
+      this.getFamilyverbById = this.getFamilyverbById.bind(this);
       this.getSynonymById = this.getSynonymById.bind(this);
       this.getAntonymById = this.getAntonymById.bind(this);
       this.getPhraseById = this.getPhraseById.bind(this);
@@ -249,6 +262,7 @@ class App extends Component {
       this.addNewWord = this.addNewWord.bind(this);
       this.addNewPhrase = this.addNewPhrase.bind(this);
       this.addNewFamily = this.addNewFamily.bind(this);
+      this.addNewFamilyverb = this.addNewFamilyverb.bind(this);
       this.addNewSynonym = this.addNewSynonym.bind(this);
       this.addNewAntonym = this.addNewAntonym.bind(this);
       this.addNewSentence = this.addNewSentence.bind(this);
@@ -256,11 +270,13 @@ class App extends Component {
       this.updateWord = this.updateWord.bind(this); 
       this.updateTranslation = this.updateTranslation.bind(this);
       this.updateFamily = this.updateFamily.bind(this);
+      this.updateFamilyverb = this.updateFamilyverb.bind(this);
       this.updateSynonym = this.updateSynonym.bind(this);
       this.updateAntonym = this.updateAntonym.bind(this);
       this.updatePhrase = this.updatePhrase.bind(this);
       this.deleteTranslationbById = this.deleteTranslationbById.bind(this);
       this.deleteFamilyById = this.deleteFamilyById.bind(this);
+      this.deleteFamilyverbById = this.deleteFamilyverbById.bind(this);
       this.deleteSynonymById = this.deleteSynonymById.bind(this);
       this.deleteAntonymById = this.deleteAntonymById.bind(this);
       this.deletePhraseById = this.deletePhraseById.bind(this);
@@ -12584,206 +12600,206 @@ break
     }
 
     onDescriptChange(event) {
-      this.setState({descript: event.target.value});
+      this.setState({descript: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     
     onInfChange(event){
-      this.setState({inf: event.target.value});
+      this.setState({inf: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onInfSChange(event){
-      this.setState({infS: event.target.value});
+      this.setState({infS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP1sChange(event){
-      this.setState({p1s: event.target.value});
+      this.setState({p1s: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP1sSChange(event){
-      this.setState({p1sS: event.target.value});
+      this.setState({p1sS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2smChange(event){
-      this.setState({p2sm: event.target.value});
+      this.setState({p2sm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2smSChange(event){
-      this.setState({p2smS: event.target.value});
+      this.setState({p2smS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2swChange(event){
-      this.setState({p2sw: event.target.value});
+      this.setState({p2sw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2swSChange(event){
-      this.setState({p2swS: event.target.value});
+      this.setState({p2swS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3smChange(event){
-      this.setState({p3sm: event.target.value});
+      this.setState({p3sm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3smSChange(event){
-      this.setState({p3smS: event.target.value});
+      this.setState({p3smS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3swChange(event){
-      this.setState({p3sw: event.target.value});
+      this.setState({p3sw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3swSChange(event){
-      this.setState({p3swS: event.target.value});
+      this.setState({p3swS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP1mChange(event){
-      this.setState({p1m: event.target.value});
+      this.setState({p1m: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP1mSChange(event){
-      this.setState({p1mS: event.target.value});
+      this.setState({p1mS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2mmChange(event){
-      this.setState({p2mm: event.target.value});
+      this.setState({p2mm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2mmSChange(event){
-      this.setState({p2mmS: event.target.value});
+      this.setState({p2mmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2mwChange(event){
-      this.setState({p2mw: event.target.value});
+      this.setState({p2mw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP2mwSChange(event){
-      this.setState({p2mwS: event.target.value});
+      this.setState({p2mwS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3mChange(event){
-      this.setState({p3m: event.target.value});
+      this.setState({p3m: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onP3mSChange(event){
-      this.setState({p3mS: event.target.value});
+      this.setState({p3mS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNsmChange(event){
-      this.setState({nsm: event.target.value});
+      this.setState({nsm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNsmSChange(event){
-      this.setState({nsmS: event.target.value});
+      this.setState({nsmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNswChange(event){
-      this.setState({nsw: event.target.value});
+      this.setState({nsw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNswSChange(event){
-      this.setState({nswS: event.target.value});
+      this.setState({nswS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmmChange(event){
-      this.setState({nmm: event.target.value});
+      this.setState({nmm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmmSChange(event){
-      this.setState({nmmS: event.target.value});
+      this.setState({nmmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmwChange(event){
-      this.setState({nmw: event.target.value});
+      this.setState({nmw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmwSChange(event){
-      this.setState({nmwS: event.target.value});
+      this.setState({nmwS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF1sChange(event){
-      this.setState({f1s: event.target.value});
+      this.setState({f1s: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF1sSChange(event){
-      this.setState({f1sS: event.target.value});
+      this.setState({f1sS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2smChange(event){
-      this.setState({f2sm: event.target.value});
+      this.setState({f2sm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2smSChange(event){
-      this.setState({f2smS: event.target.value});
+      this.setState({f2smS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2swChange(event){
-      this.setState({f2sw: event.target.value});
+      this.setState({f2sw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2swSChange(event){
-      this.setState({f2swS: event.target.value});
+      this.setState({f2swS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3smChange(event){
-      this.setState({f3sm: event.target.value});
+      this.setState({f3sm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3smSChange(event){
-      this.setState({f3smS: event.target.value});
+      this.setState({f3smS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3swChange(event){
-      this.setState({f3sw: event.target.value});
+      this.setState({f3sw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3swSChange(event){
-      this.setState({f3swS: event.target.value});
+      this.setState({f3swS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF1mChange(event){
-      this.setState({f1m: event.target.value});
+      this.setState({f1m: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF1mSChange(event){
-      this.setState({f1mS: event.target.value});
+      this.setState({f1mS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2mmChange(event){
-      this.setState({f2mm: event.target.value});
+      this.setState({f2mm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2mmSChange(event){
-      this.setState({f2mmS: event.target.value});
+      this.setState({f2mmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2mwChange(event){
-      this.setState({f2mw: event.target.value});
+      this.setState({f2mw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF2mwSChange(event){
-      this.setState({f2mwS: event.target.value});
+      this.setState({f2mwS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3mChange(event){
-      this.setState({f3m: event.target.value});
+      this.setState({f3m: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onF3mSChange(event){
-      this.setState({f3mS: event.target.value});
+      this.setState({f3mS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onIsmChange(event){
-      this.setState({ism: event.target.value});
+      this.setState({ism: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onIsmSChange(event){
-      this.setState({ismS: event.target.value});
+      this.setState({ismS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onIswChange(event){
-      this.setState({isw: event.target.value});
+      this.setState({isw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onIswSChange(event){
-      this.setState({iswS: event.target.value});
+      this.setState({iswS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onImmChange(event){
-      this.setState({imm: event.target.value});
+      this.setState({imm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onImmSChange(event){
-      this.setState({immS: event.target.value});
+      this.setState({immS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onImwChange(event){
-      this.setState({imw: event.target.value});
+      this.setState({imw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onImwSChange(event){
-      this.setState({imwS: event.target.value});
+      this.setState({imwS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNsChange(event){
-      this.setState({ns: event.target.value});
+      this.setState({ns: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNsSChange(event){
-      this.setState({nsS: event.target.value});
+      this.setState({nsS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmChange(event){
-      this.setState({nm: event.target.value});
+      this.setState({nm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onNmSChange(event){
-      this.setState({nmS: event.target.value});
+      this.setState({nmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAsmChange(event){
-      this.setState({asm: event.target.value});
+      this.setState({asm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAsmSChange(event){
-      this.setState({asmS: event.target.value});
+      this.setState({asmS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAswChange(event){
-      this.setState({asw: event.target.value});
+      this.setState({asw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAswSChange(event){
-      this.setState({aswS: event.target.value});
+      this.setState({aswS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAmmChange(event){
-      this.setState({amm: event.target.value});
+      this.setState({amm: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAmmSChange(event){
-      this.setState({ammS: event.target.value});
+      this.setState({ammS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAmwChange(event){
-      this.setState({amw: event.target.value});
+      this.setState({amw: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onAmwSChange(event){
-      this.setState({amwS: event.target.value});
+      this.setState({amwS: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onPrepositionChange(event){
       this.setState({preposition: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
@@ -12820,6 +12836,19 @@ break
     }
     onFamilyTranslateFrChange(event){
       this.setState({familyTranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+
+    onFamilyverbChange(event){
+      this.setState({familyverb: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onFamilyverbTranslateRuChange(event){
+      this.setState({familyverbTranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onFamilyverbTranslateEnChange(event){
+      this.setState({familyverbTranslateEn: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onFamilyverbTranslateFrChange(event){
+      this.setState({familyverbTranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     onSynonymChange(event){
       this.setState({synonym: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
@@ -12932,6 +12961,13 @@ break
               familiesByNumber:data4
               })
       });
+      fetch('http://localhost:8000/getfamiliesverbs/'+rootNumber).then(response => {
+        return response.json();
+      }).then(data10 => {
+          this.setState({
+              familiesverbsByNumber:data10
+              })
+      });
       fetch('http://localhost:8000/getsynonyms/'+rootNumber).then(response => {
         return response.json();
       }).then(data5 => {
@@ -13014,6 +13050,29 @@ break
               
       }); 
     }
+
+    getFamilyverbById(familyverbId,e){
+      e.preventDefault();
+      fetch('http://localhost:8000/getfamilyverb/'+familyverbId).then(response => {
+        if(response.ok){
+        return response.json();
+        }else{
+          alert("שגיאה. תנסה שוב");
+        }
+      }).then(data1 => {
+        
+          this.setState({
+            thisIsNewFamilyverb: '0',
+            familyverbId: data1[0]._id,
+            familyverb: data1[0].familyverb,
+            familyverbTranslateRu: data1[0].familyverbTranslateRu,
+            familyverbTranslateEn: data1[0].familyverbTranslateEn,
+            familyverbTranslateFr: data1[0].familyverbTranslateFr
+          })
+              
+      }); 
+    }
+
     getSynonymById(synonymId,e){
       e.preventDefault();
       fetch('http://localhost:8000/getsynonym/'+synonymId).then(response => {
@@ -13118,6 +13177,17 @@ break
               })
       }); 
     }
+
+    getAllFamiliesverbs(){
+      fetch('http://localhost:8000/getfamiliesverbs/'+root_id).then(response => {
+        return response.json();
+      }).then(data2 => {
+          this.setState({
+              familiesverbsByNumber:data2
+              })
+      }); 
+    }
+
     getAllSynonyms(){
       fetch('http://localhost:8000/getsynonyms/'+root_id).then(response => {
         return response.json();
@@ -13221,6 +13291,26 @@ break
         this.getAllFamilies();
       });
     }
+
+    addNewFamilyverb(){
+      fetch('http://localhost:8000/newfamilyverb/'+root_id+'/'+this.state.familyverb +'/'+this.state.familyverbTranslateRu+
+      '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'POST' }).then(response => {
+      if(response.ok){ 
+        this.setState({
+          familyverb: '_',
+          familyverbTranslateRu: '_',
+          familyverbTranslateEn: '_',
+          familyverbTranslateFr: '_'
+         }); 
+           return response.json();
+      }else{
+        alert("שגיאה. תנסה שוב");
+      } 
+       }).then(()=>{
+        this.getAllFamiliesverbs();
+      });
+    }
+
     addNewSynonym(){
       fetch('http://localhost:8000/newsynonym/'+root_id+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
       '/'+this.state.synonymTranslateEn+'/'+this.state.synonymTranslateFr,{method:'POST' }).then(response => {
@@ -13391,6 +13481,27 @@ break
        }).then(()=>{this.getAllFamilies()});
  
     }
+    updateFamilyverb(familyverbId,e){
+      e.preventDefault();
+      
+      fetch('http://localhost:8000/updatefamilyverb/'+familyverbId+'/'+this.state.familyverb +'/'+this.state.familyverbTranslateRu+
+      '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'PUT' }).then(response => {
+      if(response.ok){
+        this.setState ({
+          thisIsNewFamilyverb:"1",
+          familyverb: '_',
+          familyverbTranslateRu: '_',
+          familyverbTranslateEn: '_',
+          familyverbTranslateFr: '_'        
+          });  
+           return response.json();
+      }else{
+        this.setState({thisIsNewFamilyverb:"0"});
+        alert("שגיאה. תנסה שוב");
+      } 
+       }).then(()=>{this.getAllFamiliesverbs()});
+ 
+    }
     updateSynonym(synonymId,e){
       e.preventDefault();
       
@@ -13502,6 +13613,23 @@ break
         }    
         }).then(() => {this.getAllFamilies()})   
     }
+    deleteFamilyverbById(familyverbId,e){
+      e.preventDefault();
+      this.setState({thisIsNewFamilyverb:"1"});
+      fetch('http://localhost:8000/deletefamilyverb/'+familyverbId,{method:'DELETE'}).then((response) => {
+        if(response.ok){
+          this.setState ({
+            familyverb: '_',
+            familyverbTranslateRu: '_',
+            familyverbTranslateEn: '_',
+            familyverbTranslateFr: '_'        
+            });
+            return response.json();         
+        }else{
+          alert("שגיאה. תנסה שוב");
+        }    
+        }).then(() => {this.getAllFamiliesverbs()})   
+    }
     deleteSynonymById(synonymId,e){
       e.preventDefault();
       this.setState({thisIsNewSynonym:"1"});
@@ -13606,36 +13734,37 @@ break
             <br/>
             <div className="remark">הוספו תרגומים, משפחה, הפכים, מילים נרדפות</div>
             <br/>
-            <div className="flexItem22">{/* начало первой строки дополнений */}
-              <div className="flexItem221" dir="ltr">
+            
+            <div className="flexItem22"> {/* begin of addishions row 1 */}
+              <div className="flexItem221" dir="ltr">  {/* begin of translations */}
                 <div className="flexItem2211">
                   <p>תרגומים</p>
                 </div>
                   <div id="translation" className="finded">
                   <p>כבר רשום במילון:</p>
                   {
-                                  this.state.translationsByNumber.map((translate, ind) =>{
-                                    return(<div>
-                                            <div className="topFlexContainer"> 
-                                              <div className="flexItem221">                                    
-                                                <div key={"Ru"+ind}>{ind+1} Ru. {translate.translateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                                <div key={"RuS"+ind}>{translate.sentenceTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                              </div>
-                                              <div className="flexItem221">
-                                                <div key={"En"+ind}>{ind+1} En. {translate.translateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                                <div key={"EnS"+ind}>{translate.sentenceTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                              </div>
-                                              <div className="flexItem221">
-                                                <div key={"Fr"+ind}>{ind+1} Fr. {translate.translateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                                <div key={"FrS"+ind}>{translate.sentenceTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                              </div>
-                                            </div>
-                                            <div className="topFlexContainer">
-                                              <button className="rootBtn" onClick = {(e) => this.getTranslationById(translate._id,e)}>לבחור</button>
-                                              <button className="rootBtn" onClick = {(e) => this.deleteTranslationbById(translate._id,e)}>למחוק</button> 
-                                            </div>
-                                         </div> );
-                                  })
+                    this.state.translationsByNumber.map((translate, ind) =>{
+                      return(<div>
+                              <div className="topFlexContainer"> 
+                                <div className="flexItem221">                                    
+                                  <div key={"Ru"+ind}>{ind+1} Ru. {translate.translateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"RuS"+ind}>{translate.sentenceTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                </div>
+                                <div className="flexItem221">
+                                  <div key={"En"+ind}>{ind+1} En. {translate.translateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"EnS"+ind}>{translate.sentenceTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                </div>
+                                <div className="flexItem221">
+                                  <div key={"Fr"+ind}>{ind+1} Fr. {translate.translateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"FrS"+ind}>{translate.sentenceTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                </div>
+                              </div>
+                              <div className="topFlexContainer">
+                                <button className="rootBtn" onClick = {(e) => this.getTranslationById(translate._id,e)}>לבחור</button>
+                                <button className="rootBtn" onClick = {(e) => this.deleteTranslationbById(translate._id,e)}>למחוק</button> 
+                              </div>
+                            </div> );
+                    })
                   }
                   </div>
                   <p>תרגום חדש</p>
@@ -13666,40 +13795,81 @@ break
                 <br />                  
                 <div className="remark">הקלט משפט. הכנס שם הקובץ <span dir="ltr">{root_id}S_{this.state.translationsByNumber.length+1}.wav</span></div>                                                    
                 {this.renderSwitch2(this.state.thisIsNewTranslation)} 
-              </div>
+            </div> {/* end of translations */}
 
-              <div className="flexItem221"  dir="ltr">
-                <div className="flexItem2211">
-                  <p>משפחה</p>
+              <div className="flexItem221"  dir="ltr">  {/* begin of family */}
+
+            <div className="flexItem2211">
+              <p>משפחה</p>
+            </div>  
+            <div id="families" className="finded">
+            <p>כבר רשום במילון:</p>
+            {
+            this.state.familiesByNumber.map((family, ind) =>{
+              return(<div>
+              <div key={ind}>{ind+1}. {family.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+              <div className="topFlexContainer">
+                  <button className="rootBtn" onClick = {(e) => this.getFamilyById(family._id,e)}>לבחור</button>
+                  <button className="rootBtn" onClick = {(e) => this.deleteFamilyById(family._id,e)}>למחוק</button> 
+              </div>
+              </div>
+                ); 
+            })
+            }
+            </div>       
+            <div>מילה חדשה ששייכת לאותה משפחה:</div>
+            <div><input type="text" name="family" value={this.state.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                              onChange={this.onFamilyChange} dir="rtl"/></div> 
+            <div> Ru תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
+            <div><input type="text" name="familyTranslateRu" value={this.state.familyTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                              onChange={this.onFamilyTranslateRuChange} dir="ltr"/></div>  
+            <div> En תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
+            <div><input type="text" name="familyTranslateEn" value={this.state.familyTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                              onChange={this.onFamilyTranslateEnChange} dir="ltr"/></div>
+            <div> Fr תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
+            <div><input type="text" name="familyTranslateFr" value={this.state.familyTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                              onChange={this.onFamilyTranslateFrChange} dir="ltr"/></div>
+            {this.renderSwitch3(this.state.thisIsNewFamily)}
+            </div>{/* end of family */}              
+            
+              <div className="flexItem221"  dir="ltr"> {/* begin of family verbs */}
+
+<div className="flexItem2211">
+                  <p>משפחה-פעלים</p>
                 </div>  
                 <div id="families" className="finded">
                 <p>כבר רשום במילון:</p>
                 {
-                this.state.familiesByNumber.map((family, ind) =>{
+                this.state.familiesverbsByNumber.map((familyverb, ind) =>{
                   return(<div>
-                  <div key={ind}>{ind+1}. {family.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                  <div key={ind}>{ind+1}. {familyverb.familyverb.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                   <div className="topFlexContainer">
-                      <button className="rootBtn" onClick = {(e) => this.getFamilyById(family._id,e)}>לבחור</button>
-                      <button className="rootBtn" onClick = {(e) => this.deleteFamilyById(family._id,e)}>למחוק</button> 
+                      <button className="rootBtn" onClick = {(e) => this.getFamilyverbById(familyverb._id,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deleteFamilyverbById(familyverb._id,e)}>למחוק</button> 
                   </div>
                   </div>
                     ); 
                 })
                 }
                 </div>       
-                <div>מילה חדשה ששייכת לאותה משפחה:</div>
-                <div><input type="text" name="family" value={this.state.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onFamilyChange} dir="rtl"/></div> 
-                <div> Ru תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
-                <div><input type="text" name="familyTranslateRu" value={this.state.familyTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onFamilyTranslateRuChange} dir="ltr"/></div>  
-                <div> En תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
-                <div><input type="text" name="familyTranslateEn" value={this.state.familyTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onFamilyTranslateEnChange} dir="ltr"/></div>
-                <div> Fr תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
-                <div><input type="text" name="familyTranslateFr" value={this.state.familyTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onFamilyTranslateFrChange} dir="ltr"/></div>
-                {this.renderSwitch3(this.state.thisIsNewFamily)}                                      
+                <div>פועל חדש ששייך לאותה משפחה:</div>
+                <div><input type="text" name="familyverb" value={this.state.familyverb.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onFamilyverbChange} dir="rtl"/></div> 
+                <div> Ru תרגום של פועל חדש ששייך לאותה משפחה:</div>
+                <div><input type="text" name="familyverbTranslateRu" value={this.state.familyverbTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onFamilyverbTranslateRuChange} dir="ltr"/></div>  
+                <div> En תרגום של פועל חדש ששייך לאותה משפחה:</div>
+                <div><input type="text" name="familyverbTranslateEn" value={this.state.familyverbTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onFamilyverbTranslateEnChange} dir="ltr"/></div>
+                <div> Fr תרגום של פועל חדש ששייך לאותה משפחה:</div>
+                <div><input type="text" name="familyverbTranslateFr" value={this.state.familyverbTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onFamilyverbTranslateFrChange} dir="ltr"/></div>
+                {this.renderSwitch31(this.state.thisIsNewFamilyverb)}
+                </div> {/* end of family verbs */}
+
+            </div> {/* end of addishions row 1 */}
+            <div className="flexItem22"> {/* begin of addishions row 2 */}
+              <div className="flexItem221" dir="ltr"> {/* begin of sinonyms */}
                 <div className="flexItem2211">
                   <p>מילים נרדפות</p>
                 </div>  
@@ -13731,25 +13901,24 @@ break
                 <div><input type="text" name="synonymTranslateFr" value={this.state.synonymTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onSynonymTranslateFrChange} dir="ltr"/></div> 
                 {this.renderSwitch4(this.state.thisIsNewSynonym)} 
-              </div>
-              <div className="flexItem221"  dir="ltr">
-              <div className="flexItem2211">
+              </div> {/* end of sinonyms */}  
+              <div className="flexItem221" dir="ltr"> {/* begin of antonyms */}
+                <div className="flexItem2211">
                   <p>הפכים</p>
                 </div>  
                 <div id="antonyms" className="finded">
-                <p>כבר רשום במילון:</p>
-                {/* {this.renderAntonyms()} */}
-                {
-                this.state.antonymsByNumber.map((antonym, ind) =>{
-                  return(<div>
-                  <div key={ind}>{ind+1}. {antonym.antonym.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                  <div className="topFlexContainer">
-                    <button className="rootBtn" onClick = {(e) => this.getAntonymById(antonym._id,e)}>לבחור</button>
-                    <button className="rootBtn" onClick = {(e) => this.deleteAntonymById(antonym._id,e)}>למחוק</button> 
-                  </div>
-                   </div> );
-                 })          
-                }        
+                  <p>כבר רשום במילון:</p>
+                  {
+                  this.state.antonymsByNumber.map((antonym, ind) =>{
+                    return(<div>
+                    <div key={ind}>{ind+1}. {antonym.antonym.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                    <div className="topFlexContainer">
+                      <button className="rootBtn" onClick = {(e) => this.getAntonymById(antonym._id,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deleteAntonymById(antonym._id,e)}>למחוק</button> 
+                    </div>
+                    </div> );
+                  })          
+                  }        
                 </div>       
                 <div>הפך חדש:</div>
                 <div><input type="text" name="antonym" value={this.state.antonym.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
@@ -13764,6 +13933,8 @@ break
                 <div><input type="text" name="antonymTranslateFr" value={this.state.antonymTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAntonymTranslateFrChange} dir="ltr"/></div> 
                 {this.renderSwitch5(this.state.thisIsNewAntonym)}
+              </div> {/* end of antonyms */}
+              <div className="flexItem221" dir="ltr"> {/* begin of expressions */}
                 <div className="flexItem2211">
                   <p>ביטוים</p>
                 </div>
@@ -13793,12 +13964,11 @@ break
                   <div> Fr תרגום של דוגמה חדשה:</div>                  
                   <div><textarea name="phraseTranslateFr" value={this.state.phraseTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onPhraseTranslateFrChange} dir="ltr"/></div> 
-                  {this.renderSwitch6(this.state.thisIsNewPhrase)} 
-              </div>
-            </div>{/* конец первой строки дополнений */}
-            <div className="flexItem22">
-
-              <div className="flexItem221"  dir="ltr">
+                  {this.renderSwitch6(this.state.thisIsNewPhrase)}
+              </div> {/* end of expressions */}
+            </div> {/* end of addishions row 2 */}
+            <div className="flexItem22"> {/* begin of addishions row 3 */}
+              <div className="flexItem221"  dir="ltr">  {/* begin of active/passive */}
                 <div className="flexItem2211">
                   <p>אקטיבי\פסיבי</p>
                 </div>  
@@ -13823,10 +13993,10 @@ break
                         }
  
                 })
+                }  
+              </div> {/* end of active/passive */}
+            </div> {/* end of addishions row 3 */}
 
-              }  
-              </div>
-            </div>
           </div>
         );
         default:
@@ -13867,6 +14037,25 @@ break
           <div>
             <div className="flexItem24">                    
               <button onClick= {(e) => this.updateFamily(this.state.familyId,e)} id="btnAddNewWord">לחדש את המישפחה</button> 
+            </div> 
+          </div>)
+            
+        default:
+          return (<div> </div>);
+          
+      }
+    }
+    renderSwitch31(param){
+      switch(param) {
+        case '1':
+          return (
+            <div><p><button onClick={(e) => this.addNewFamilyverb(this.state.familiesverbsByNumber.length+1,e)}>הוסף פועל חדש ששייך לאותה משפחה</button></p></div>);
+          
+        case '0':
+          return (
+          <div>
+            <div className="flexItem24">                    
+              <button onClick= {(e) => this.updateFamilyverb(this.state.familyverbId,e)} id="btnAddNewWord"> לחדש את המישפחה-פועל</button> 
             </div> 
           </div>)
             
@@ -13986,7 +14175,7 @@ break
       </div>
       <div className="topFlexContainer">
        <div className="topFlexItem2"> {/* начало левой части страницы */}
-       <div>{root_id}</div>
+       <div className="mainRootNumber">{root_id}</div>
        
        <div className="flexItem14">
           <p><input type="submit" value="Submit" /></p>
@@ -14109,7 +14298,7 @@ break
                   return (
                           <div className="root" key={index} dir="ltr">
                             <div id="rootNumber">{root.root_id}</div>
-                            <div id="rootDescript">{root.descript}</div>
+                            <div id="rootDescript">{root.descript.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                             <button className="rootBtn" onClick = {(e) => this.getVerbByRootId(root.root_id,e)}>לבחור</button>
                             <button className="rootBtn" onClick = {(e) => this.deleteVerbByRootId(root.root_id,e)}>למחוק</button>
                           </div>
@@ -14119,7 +14308,7 @@ break
               } 
               <div className="root" dir="ltr">
                 <div id="rootNumber">№№</div>
-                <div id="rootDescript"><input required type="text" name="descript" value={this.state.descript}
+                <div id="rootDescript"><input required type="text" name="descript" value={this.state.descript.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                             onChange={this.onDescriptChange}/></div>
                 <button className="rootBtn" onClick={(e) => this.getAllForms(e)}>מילה חדשה</button> 
               </div>
@@ -14135,12 +14324,12 @@ break
               <div className="flexItem212">
                 <div className="flexItem2121">
                   <p> הצג בכתיב מנוקד: </p>
-                  <p><input type="text" id="forms" name="inf" value={this.state.inf}
+                  <p><input type="text" id="forms" name="inf" value={this.state.inf.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onInfChange} dir="rtl"/></p>
                 </div> 
                 <div className="flexItem2121">                
                   <p> הצג בכתיב מלא: </p>
-                  <p><input type="text" id="forms" name="infS" value={this.state.infS}
+                  <p><input type="text" id="forms" name="infS" value={this.state.infS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onInfSChange} dir="rtl"/></p>
                 </div> 
               </div>                  
@@ -14156,39 +14345,39 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">אני:</div><input id="forms" type="text" name="p1s" value={this.state.p1s}
+                    <div id="label">אני:</div><input id="forms" type="text" name="p1s" value={this.state.p1s.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP1sChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">אתה:</div><input  id="forms" type="text" name="p2sm" value={this.state.p2sm}
+                    <div id="label">אתה:</div><input  id="forms" type="text" name="p2sm" value={this.state.p2sm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2smChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">את:</div><input id="forms" type="text" name="p2sw" value={this.state.p2sw}
+                    <div id="label">את:</div><input id="forms" type="text" name="p2sw" value={this.state.p2sw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2swChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הוא:</div><input id="forms" type="text" name="p3sm" value={this.state.p3sm}
+                      <div id="label">הוא:</div><input id="forms" type="text" name="p3sm" value={this.state.p3sm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3smChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">היא:</div><input id="forms" type="text" name="p3sw" value={this.state.p3sw}
+                      <div id="label">היא:</div><input id="forms" type="text" name="p3sw" value={this.state.p3sw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3swChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212"> 
-                      <div id="label">אנחנו:</div><input id="forms" type="text" name="p1m" value={this.state.p1m}
+                      <div id="label">אנחנו:</div><input id="forms" type="text" name="p1m" value={this.state.p1m.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP1mChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתם:</div><input id="forms" type="text" name="p2mm" value={this.state.p2mm}
+                      <div id="label">אתם:</div><input id="forms" type="text" name="p2mm" value={this.state.p2mm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2mmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212"> 
-                      <div id="label">אתן:</div><input id="forms" type="text" name="p2mw" value={this.state.p2mw}
+                      <div id="label">אתן:</div><input id="forms" type="text" name="p2mw" value={this.state.p2mw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2mwChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הם:</div><input id="forms" type="text" name="p3m" value={this.state.p3m}
+                      <div id="label">הם:</div><input id="forms" type="text" name="p3m" value={this.state.p3m.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3mChange} dir="rtl"/>
                     </div>                                                                                                                                                                                                                            
                   </div>
@@ -14197,39 +14386,39 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אני:</div><input id="forms" type="text" name="p1sS" value={this.state.p1sS}
+                      <div id="label">אני:</div><input id="forms" type="text" name="p1sS" value={this.state.p1sS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP1sSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתה:</div><input id="forms" type="text" name="p2smS" value={this.state.p2smS}
+                      <div id="label">אתה:</div><input id="forms" type="text" name="p2smS" value={this.state.p2smS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2smSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">את:</div><input id="forms" type="text" name="p2swS" value={this.state.p2swS}
+                      <div id="label">את:</div><input id="forms" type="text" name="p2swS" value={this.state.p2swS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2swSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הוא:</div><input id="forms" type="text" name="p3smS" value={this.state.p3smS}
+                      <div id="label">הוא:</div><input id="forms" type="text" name="p3smS" value={this.state.p3smS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3smSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">היא:</div><input id="forms" type="text" name="p3swS" value={this.state.p3swS}
+                      <div id="label">היא:</div><input id="forms" type="text" name="p3swS" value={this.state.p3swS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3swSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212"> 
-                      <div id="label">אנחנו:</div><input id="forms" type="text" name="p1mS" value={this.state.p1mS}
+                      <div id="label">אנחנו:</div><input id="forms" type="text" name="p1mS" value={this.state.p1mS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP1mSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתם:</div><input id="forms" type="text" name="p2mmS" value={this.state.p2mmS}
+                      <div id="label">אתם:</div><input id="forms" type="text" name="p2mmS" value={this.state.p2mmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2mmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתן:</div><input id="forms" type="text" name="p2mwS" value={this.state.p2mwS}
+                      <div id="label">אתן:</div><input id="forms" type="text" name="p2mwS" value={this.state.p2mwS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP2mwSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הם\הן:</div><input id="forms" type="text" name="p3mS" value={this.state.p3mS}
+                      <div id="label">הם\הן:</div><input id="forms" type="text" name="p3mS" value={this.state.p3mS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onP3mSChange} dir="rtl"/>
                     </div>                                                                                                                                                                                                
                   </div>
@@ -14245,19 +14434,19 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">ז' יחיד:</div> <input id="forms" type="text" name="nsm" value={this.state.nsm}
+                    <div id="label">ז' יחיד:</div> <input id="forms" type="text" name="nsm" value={this.state.nsm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNsmChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">נ' יחיד:</div><input id="forms" type="text" name="nsw" value={this.state.nsw}
+                    <div id="label">נ' יחיד:</div><input id="forms" type="text" name="nsw" value={this.state.nsw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNswChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">זי רבים:</div><input id="forms" type="text" name="nmm" value={this.state.nmm}
+                    <div id="label">זי רבים:</div><input id="forms" type="text" name="nmm" value={this.state.nmm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmmChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">נ' רבים:</div><input id="forms" type="text" name="nmw" value={this.state.nmw}
+                    <div id="label">נ' רבים:</div><input id="forms" type="text" name="nmw" value={this.state.nmw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmwChange} dir="rtl"/>                
                     </div>
                   </div>
@@ -14266,19 +14455,19 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">ז' יחיד:</div><input id="forms" type="text" name="nsmS" value={this.state.nsmS}
+                    <div id="label">ז' יחיד:</div><input id="forms" type="text" name="nsmS" value={this.state.nsmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNsmSChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">נ' יחיד:</div><input id="forms" type="text" name="nswS" value={this.state.nswS}
+                    <div id="label">נ' יחיד:</div><input id="forms" type="text" name="nswS" value={this.state.nswS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNswSChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">זי רבים:</div><input id="forms" type="text" name="nmmS" value={this.state.nmmS}
+                    <div id="label">זי רבים:</div><input id="forms" type="text" name="nmmS" value={this.state.nmmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmmSChange} dir="rtl"/>               
                     </div>
                     <div className="flexItem221212">
-                    <div id="label">נ' רבים:</div><input id="forms" type="text" name="nmwS" value={this.state.nmwS}
+                    <div id="label">נ' רבים:</div><input id="forms" type="text" name="nmwS" value={this.state.nmwS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmwSChange} dir="rtl"/>                
                     </div>
                   </div>                  
@@ -14294,39 +14483,39 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אני:</div><input id="forms" type="text" name="f1s" value={this.state.f1s}
+                      <div id="label">אני:</div><input id="forms" type="text" name="f1s" value={this.state.f1s.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF1sChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתה:</div><input id="forms" type="text" name="f2sm" value={this.state.f2sm}
+                      <div id="label">אתה:</div><input id="forms" type="text" name="f2sm" value={this.state.f2sm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2smChange} dir="rtl"/>
                     </div>              
                     <div className="flexItem221212">
-                      <div id="label">את:</div><input id="forms" type="text" name="f2sw" value={this.state.f2sw}
+                      <div id="label">את:</div><input id="forms" type="text" name="f2sw" value={this.state.f2sw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2swChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הוא:</div><input id="forms" type="text" name="f3sm" value={this.state.f3sm}
+                      <div id="label">הוא:</div><input id="forms" type="text" name="f3sm" value={this.state.f3sm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF3smChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">היא:</div><input id="forms" type="text" name="f3sw" value={this.state.f3sw}
+                      <div id="label">היא:</div><input id="forms" type="text" name="f3sw" value={this.state.f3sw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF3swChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אנחנו:</div><input id="forms" type="text" name="f1m" value={this.state.f1m}
+                      <div id="label">אנחנו:</div><input id="forms" type="text" name="f1m" value={this.state.f1m.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF1mChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתם:</div><input id="forms" type="text" name="f2mm" value={this.state.f2mm}
+                      <div id="label">אתם:</div><input id="forms" type="text" name="f2mm" value={this.state.f2mm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2mmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתן\הן:</div><input id="forms" type="text" name="f2mw" value={this.state.f2mw}
+                      <div id="label">אתן\הן:</div><input id="forms" type="text" name="f2mw" value={this.state.f2mw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2mwChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הם:</div><input id="forms" type="text" name="f3m" value={this.state.f3m}
+                      <div id="label">הם:</div><input id="forms" type="text" name="f3m" value={this.state.f3m.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF3mChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14335,39 +14524,39 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אני:</div><input id="forms" type="text" name="f1sS" value={this.state.f1sS}
+                      <div id="label">אני:</div><input id="forms" type="text" name="f1sS" value={this.state.f1sS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF1sSChange} dir="rtl"/>                
                     </div>              
                     <div className="flexItem221212">
-                      <div id="label">אתה:</div><input id="forms" type="text" name="f2smS" value={this.state.f2smS}
+                      <div id="label">אתה:</div><input id="forms" type="text" name="f2smS" value={this.state.f2smS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2smSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">את:</div><input id="forms" type="text" name="f2swS" value={this.state.f2swS}
+                      <div id="label">את:</div><input id="forms" type="text" name="f2swS" value={this.state.f2swS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2swSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הוא:</div><input id="forms" type="text" name="f3smS" value={this.state.f3smS}
+                      <div id="label">הוא:</div><input id="forms" type="text" name="f3smS" value={this.state.f3smS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF3smSChange} dir="rtl"/>                
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">היא:</div><input id="forms" type="text" name="f3swS" value={this.state.f3swS}
+                      <div id="label">היא:</div><input id="forms" type="text" name="f3swS" value={this.state.f3swS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF3swSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אנחנו:</div><input id="forms" type="text" name="f1mS" value={this.state.f1mS}
+                      <div id="label">אנחנו:</div><input id="forms" type="text" name="f1mS" value={this.state.f1mS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF1mSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתם:</div><input id="forms" type="text" name="f2mmS" value={this.state.f2mmS}
+                      <div id="label">אתם:</div><input id="forms" type="text" name="f2mmS" value={this.state.f2mmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2mmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">אתן\הן:</div><input id="forms" type="text" name="f2mwS" value={this.state.f2mwS}
+                      <div id="label">אתן\הן:</div><input id="forms" type="text" name="f2mwS" value={this.state.f2mwS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onF2mwSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">הם:</div><input id="forms" type="text" name="f3mS" value={this.state.f3mS}
+                      <div id="label">הם:</div><input id="forms" type="text" name="f3mS" value={this.state.f3mS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                       onChange={this.onF3mSChange} dir="rtl"/>
                     </div>
                   </div>          
@@ -14385,19 +14574,19 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="ism" value={this.state.ism}
+                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="ism" value={this.state.ism.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onIsmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="isw" value={this.state.isw}
+                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="isw" value={this.state.isw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onIswChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">            
-                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="imm" value={this.state.imm}
+                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="imm" value={this.state.imm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onImmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="imw" value={this.state.imw}
+                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="imw" value={this.state.imw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onImwChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14406,19 +14595,19 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="ismS" value={this.state.ismS}
+                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="ismS" value={this.state.ismS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onIsmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="iswS" value={this.state.iswS}
+                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="iswS" value={this.state.iswS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onIswSChange} dir="rtl"/> 
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="immS" value={this.state.immS}
+                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="immS" value={this.state.immS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onImmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' רבים:</div> <input id="forms" type="text" name="imwS" value={this.state.imwS}
+                      <div id="label">נ' רבים:</div> <input id="forms" type="text" name="imwS" value={this.state.imwS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onImwSChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14434,11 +14623,11 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">יחיד:</div><input id="forms" type="text" name="ns" value={this.state.ns}
+                      <div id="label">יחיד:</div><input id="forms" type="text" name="ns" value={this.state.ns.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNsChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">רבים:</div><input id="forms" type="text" name="nm" value={this.state.nm}
+                      <div id="label">רבים:</div><input id="forms" type="text" name="nm" value={this.state.nm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14447,11 +14636,11 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">יחיד:</div><input id="forms" type="text" name="nsS" value={this.state.nsS}
+                      <div id="label">יחיד:</div><input id="forms" type="text" name="nsS" value={this.state.nsS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNsSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">רבים:</div><input id="forms" type="text" name="nmS" value={this.state.nmS}
+                      <div id="label">רבים:</div><input id="forms" type="text" name="nmS" value={this.state.nmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onNmSChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14467,19 +14656,19 @@ break
                       <p> הצג בכתיב מנוקד: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="asm" value={this.state.asm}
+                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="asm" value={this.state.asm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAsmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="asw" value={this.state.asw}
+                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="asw" value={this.state.asw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAswChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' רבים:</div> <input id="forms" type="text" name="amm" value={this.state.amm}
+                      <div id="label">ז' רבים:</div> <input id="forms" type="text" name="amm" value={this.state.amm.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAmmChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="amw" value={this.state.amw}
+                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="amw" value={this.state.amw.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAmwChange} dir="rtl"/>
                     </div>
                   </div>
@@ -14488,19 +14677,19 @@ break
                       <p> הצג בכתיב מלא: </p>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="asmS" value={this.state.asmS}
+                      <div id="label">ז' יחיד:</div><input id="forms" type="text" name="asmS" value={this.state.asmS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAsmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="aswS" value={this.state.aswS}
+                      <div id="label">נ' יחיד:</div><input id="forms" type="text" name="aswS" value={this.state.aswS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAswSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="ammS" value={this.state.ammS}
+                      <div id="label">ז' רבים:</div><input id="forms" type="text" name="ammS" value={this.state.ammS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAmmSChange} dir="rtl"/>
                     </div>
                     <div className="flexItem221212">
-                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="amwS" value={this.state.amwS}
+                      <div id="label">נ' רבים:</div><input id="forms" type="text" name="amwS" value={this.state.amwS.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onAmwSChange} dir="rtl"/>
                     </div>
                   </div>

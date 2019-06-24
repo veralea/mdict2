@@ -141,6 +141,10 @@ select{
 }
 .password{
   width: 20%;
-  float: left;
-  margin-right: -20%;
+margin-right:80%;
+}
+.mainRootNumber{
+  position: fixed;
+  left:97%;
+  top: 10px;
 }
