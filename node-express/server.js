@@ -5,6 +5,8 @@ const MongoClient = require('mongodb').MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url = "mongodb://mordict-6518:V5p6ZxwtJnGrKVSPCcogji6nURiR0a@db-mordict-6518.nodechef.com:5421/mordict";
 
+//TODO:(Tal) will start to work on passport....
+
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
