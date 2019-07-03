@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url = "mongodb://mordict-6518:V5p6ZxwtJnGrKVSPCcogji6nURiR0a@db-mordict-6518.nodechef.com:5421/mordict";
 
-//TODO:(Tal) will start to work on passport....
+
 
 const app = express();
 app.use(express.static('public'));
@@ -78,6 +78,15 @@ app.use(cors());
    });
 
 });
+
+app.post('/register', async (req, res)=>{
+  
+    // validate the request body first
+    const { error } = validate(req.body);
+    if (error) return res.send({error:error.details[0].message});
+    
+    console.log(req.body);
+})
 
 app.get('/gettranslation/:_id',(req,res)=>{
    const _id = req.params._id;
