@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './MainPage.css';
+import './MainTheacherPage.css';
 
 var arr = [];
 var arrOfRootsId = [];
 var root_id = "№№";
 
 
-class App extends Component {
+class MainTheacherPage extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -14710,4 +14710,4 @@ break
 
 }
 
-export default App;
+export default MainTheacherPage;
