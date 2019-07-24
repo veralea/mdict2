@@ -8,10 +8,12 @@ class Password extends Component {
         this.state = {
             username: '',
             password: '',
+            language: 'RU',
             link: '/'
         }
         this.onUsernameChange = this.onUsernameChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.onLanguageChange = this.onLanguageChange.bind(this);
         this.checkPassword = this.checkPassword.bind(this);
     }
 
@@ -23,15 +25,25 @@ class Password extends Component {
         this.setState({password: event.target.value});
     }
 
+    onLanguageChange(event){
+        this.setState({language: event.target.value});
+    }    
+
     checkPassword(){
         if(this.state.username === "theacher" && this.state.password === "11111"){
             this.setState({link: '/MainTheacherPage'})
         }
-        else if(this.state.username === "student" && this.state.password === "11111"){
-            this.setState({link: '/MainStudentPage'})
+        else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "RU"){
+            this.setState({link: '/MainStudentRuPage'})
+        }
+        else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "EN"){
+            this.setState({link: '/MainStudentEnPage'})
+        }
+        else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "FR"){
+            this.setState({link: '/MainStudentFrPage'})
         }
         else{
-            alert ("username: "+this.state.username+"\npassword: "+this.state.password+"\nentrance isn't allow");
+            alert ("username: "+this.state.username+"\npassword: "+this.state.password+"\nlanguage:  "+this.state.language+"\nentrance isn't allow");
         }
     }
 
@@ -50,6 +62,13 @@ class Password extends Component {
                         <div>
                             PASSWORD:   <input name="password"  type="password" placeholder='password: "11111"'
                                value={this.state.password} onChange={this.onPasswordChange}/>
+                        </div>
+                        <div>
+                            LANGUAGE:   <select name="language" value={this.state.language} onChange={this.onLanguageChange}>
+                                            <option>RU</option>
+                                            <option>EN</option>
+                                            <option>FR</option>
+                                        </select>
                         </div>
                         <div className="button"><a href={this.state.link} onClick={this.checkPassword}>ENTRANCE</a></div>
                     </div>    

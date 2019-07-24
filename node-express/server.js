@@ -340,6 +340,23 @@ app.get('/getroots/:benjan/:letter1/:letter2/:letter3/:letter4', (req, res)=>{
       });
     }); 
 })
+
+app.get('/getrootsbysearch/:search', (req, res)=>{
+  const search = req.params.search;
+
+  MongoClient.connect(url, function(err, db) {
+     if (err) throw err;
+     var dbo = db.db("mordict");
+     var query = {p3smS: search};
+     dbo.collection("roots").find(query).toArray(function(err, result) {
+       if (err) throw err;
+       res.send(result)
+       console.dir(result);
+       db.close();
+     });
+   }); 
+})
+
 app.get('/getverbsbyletters/:benjan/:root_id/:letter1/:letter2/:letter3/:letter4', (req, res)=>{
   const benjan = req.params.benjan;
   const root_id = req.params.root_id;

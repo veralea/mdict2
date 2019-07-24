@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './Password.css';
 
-class MainStudentPage extends Component {
+class MainStudentEnPage extends Component {
     render(){
         return(
             <div>
-                <h1>here will be main student page</h1>
+                <h1>here will be main student EN page</h1>
                 
             </div>
         )
     }
 }
 
-export default MainStudentPage; 
+export default MainStudentEnPage;
