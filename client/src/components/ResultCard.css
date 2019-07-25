@@ -1,0 +1,11 @@
+.ResultCard{
+    width: 30vw;
+    border: 4px double black; /* Параметры границы */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+p{
+    font-size: 16px;
+    color: black;
+}

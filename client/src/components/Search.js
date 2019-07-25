@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ResultCard from './ResultCard'
 
 class Search extends Component {
 state = {
@@ -32,6 +33,8 @@ getRootsBySearch(e){
               RootsBySearch: data,
               query: this.state.query
           })
+      }).then(data1 =>{
+
       });
   }
 
@@ -50,12 +53,10 @@ getRootsBySearch(e){
      {
       this.state.RootsBySearch.map((RootBySearch, index) => {
         
-        return (
-                <div key={index}>
-                <div>{RootBySearch.root_id}</div>
-                <div >{RootBySearch.inf}</div>
-                </div>
+        // getDescriptionByRootId({root_id});
+        return ( <ResultCard rootId = {RootBySearch.root_id} key={index} />
         );
+  
 
       })
      }
