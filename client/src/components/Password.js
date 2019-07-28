@@ -30,6 +30,7 @@ class Password extends Component {
 
   checkPassword() {
     let passwordObj = this.state;
+    passwordObj.email = this.state.username;
 
     fetch("http://localhost:8000/auth/login", {
       method: "POST",

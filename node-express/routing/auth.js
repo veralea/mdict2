@@ -10,43 +10,74 @@ const url =
 const validateUser = require("../utils/user").validateUser;
 
 router.post("/register", async (req, res) => {
-    // validate the request body first
-    if (validateUser(req.body)) {
-      console.log(req.body);   
+  // validate the request body first
+  if (validateUser(req.body)) {
+    console.log(req.body);
+
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+
+      dbo
+        .collection("users")
+        .findOne({ email: req.body.email }, function(err, result) {
+          if (err) throw err;
+          if (result === null) {
+            console.log("user is not registerd yet");
+            //insert to DB
+            dbo.collection("users").insertOne(req.body, (err, result) => {
+              if (err) throw err;
+              console.log("user registerd");
+              res.send({ sucess: "new user registerd" });
+            });
+          } else {
+            res.send({ error: "User is allredy registerd" });
+          }
+
+          // res.send(result);
+          db.close();
+        });
+    });
+  } else {
+    res.send({ error: "not a valid rgistration object" });
+  }
+});
+
+router.post("/login", async (req, res) => {
   
+  try {
+    if (Object.prototype.toString.call(req.body) !== "[object Object]")
+      throw "request body is not an object";
+
       MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("mordict");
-        
+        var dbo = db.db("mordict");  
         dbo
           .collection("users")
-          .findOne({ email: req.body.email }, function(err, result) {
+          .findOne({ email: req.body.email }, (err, result)=> {
             if (err) throw err;
-            if(result === null){
-              console.log('user is not registerd yet')
-              //insert to DB
-              dbo.collection('users').insertOne(req.body, (err, result)=>{
-                if (err) throw err;
-                console.log('user registerd')
-                res.send({sucess:"new user registerd"});
-              })
-            } else{
-              res.send({error:"User is allredy registerd"});
+           
+            if (result !== null) {
+             
+              if(req.body.password === result.password){
+                res.send({sucess:"user match password"})
+              } else {
+                res.send({error:"user do not match password"})
+              }
+              
+            } else {
+              console.log("user is not in DataBase");
+              res.send({ error: "User is not registerd" });
             }
   
             // res.send(result);
             db.close();
-          });
+          })
       });
-  
     
-    } else {
-      res.send({ error: "not a valid rgistration object" });
-    }
-  })
-
-
-  router.post("/login", async(req, res)=>{
-    console.log(req.body)
-  })
-  module.exports = router;
+  } catch (err) {
+    console.log(err);
+    console.dir(req.body);
+  }
+});
+module.exports = router;
