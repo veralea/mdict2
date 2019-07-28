@@ -5,6 +5,9 @@ const MongoClient = require('mongodb').MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url = "mongodb://mordict-6518:V5p6ZxwtJnGrKVSPCcogji6nURiR0a@db-mordict-6518.nodechef.com:5421/mordict";
 
+//util
+const validateUser= require('./utils/user').validateUser;
+
 
 
 const app = express();
@@ -82,10 +85,15 @@ app.use(cors());
 app.post('/register', async (req, res)=>{
   
     // validate the request body first
-    // const { error } = validate(req.body);
-    // if (error) return res.send({error:error.details[0].message});
+    if(validateUser(req.body)){
+      console.log(req.body);
+      res.send({success:'success'})
+    } else {
+      res.send({error:'not a valid rgistration object'});
+    }
     
-    console.log(req.body);
+    
+    
 })
 
 app.get('/gettranslation/:_id',(req,res)=>{
