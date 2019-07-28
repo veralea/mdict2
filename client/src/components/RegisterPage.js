@@ -57,13 +57,13 @@ function validateRegistration(e, registerObj) {
   e.preventDefault();
   console.dir(registerObj);
 
-  fetch("http://localhost:8000/register", {
+  fetch("http://localhost:8000/auth/register", {
     method: "POST",
     body: JSON.stringify(registerObj), 
     headers: {
       "Content-Type": "application/json"
     }
   }).then(res => res.json())
-  .then(response => console.log('Success:', JSON.stringify(response)))
+  .then(response => console.dir(response))
   .catch(error => console.error('Error:', error));
 }
