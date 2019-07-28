@@ -82,8 +82,8 @@ app.use(cors());
 app.post('/register', async (req, res)=>{
   
     // validate the request body first
-    const { error } = validate(req.body);
-    if (error) return res.send({error:error.details[0].message});
+    // const { error } = validate(req.body);
+    // if (error) return res.send({error:error.details[0].message});
     
     console.log(req.body);
 })

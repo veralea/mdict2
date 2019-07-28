@@ -6,6 +6,7 @@ import MainTheacherPage from './components/MainTheacherPage';
 import MainStudentRuPage from './components/MainStudentRuPage';
 import MainStudentEnPage from './components/MainStudentEnPage';
 import MainStudentFrPage from './components/MainStudentFrPage';
+import RegisterPage from './components/RegisterPage';
 import Password from './components/Password';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/MainStudentRuPage' component={MainStudentRuPage}/>
         <Route path='/MainStudentEnPage' component={MainStudentEnPage}/>
         <Route path='/MainStudentFrPage' component={MainStudentFrPage}/>
+        <Route path='/register' component={RegisterPage}/>
        </div> 
       </Router>
   );
