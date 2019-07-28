@@ -21,11 +21,11 @@ function RegisterPage(props) {
           }}
         >
           <input
-            type="text"
-            placeholder="username"
+            type="email"
+            placeholder="email"
             required
             onBlur={e => {
-              setRegister({ ...registerObj, username: e.target.value });
+              setRegister({ ...registerObj, email: e.target.value });
             }}
           />
           <input
@@ -36,14 +36,7 @@ function RegisterPage(props) {
               setRegister({ ...registerObj, password: e.target.value });
             }}
           />
-          <input
-            type="email"
-            placeholder="email"
-            required
-            onBlur={e => {
-              setRegister({ ...registerObj, email: e.target.value });
-            }}
-          />
+
           <input type="submit" value="Register" />
         </form>
       </div>
@@ -59,11 +52,12 @@ function validateRegistration(e, registerObj) {
 
   fetch("http://localhost:8000/auth/register", {
     method: "POST",
-    body: JSON.stringify(registerObj), 
+    body: JSON.stringify(registerObj),
     headers: {
       "Content-Type": "application/json"
     }
-  }).then(res => res.json())
-  .then(response => console.dir(response))
-  .catch(error => console.error('Error:', error));
+  })
+    .then(res => res.json())
+    .then(response => console.dir(response))
+    .catch(error => console.error("Error:", error));
 }
