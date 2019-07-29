@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
+const jwt = require('jwt-simple');
+const secret = require('../utils/config').myprivatekey;
 const MongoClient = require("mongodb").MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url =
@@ -10,6 +12,7 @@ const url =
 const validateUser = require("../utils/user").validateUser;
 
 router.post("/register", async (req, res) => {
+  console.log(secret)
   // validate the request body first
   if (validateUser(req.body)) {
     console.log(req.body);
@@ -25,7 +28,12 @@ router.post("/register", async (req, res) => {
           if (result === null) {
             console.log("user is not registerd yet");
             //insert to DB
-            dbo.collection("users").insertOne(req.body, (err, result) => {
+            let userObj = req.body;
+            
+            const token = jwt.encode(userObj.password, secret);
+            userObj.password = token;
+
+            dbo.collection("users").insertOne(userObj, (err, result) => {
               if (err) throw err;
               console.log("user registerd");
               res.send({ sucess: "new user registerd" });
@@ -59,7 +67,9 @@ router.post("/login", async (req, res) => {
            
             if (result !== null) {
              
-              if(req.body.password === result.password){
+              let passwordFromDB = jwt.decode(result.password, secret)
+
+              if(req.body.password === passwordFromDB){
                 res.send({sucess:"user match password"})
               } else {
                 res.send({error:"user do not match password"})
