@@ -54,7 +54,7 @@ getRootsBySearch(e){
       this.state.RootsBySearch.map((RootBySearch, index) => {
         
         // getDescriptionByRootId({root_id});
-        return ( <ResultCard rootId = {RootBySearch.root_id} translate = {RootBySearch.translateRu} key={index} />
+        return ( <ResultCard rootId = {RootBySearch.root_id} inf = {RootBySearch.inf} translation = {RootBySearch.translations.translateRu} key={index} />
         );
   
 

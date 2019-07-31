@@ -14,7 +14,8 @@ class ResultCard extends Component {
         return(<div className="ResultCard">
             <p>here will be result card</p>
             {this.props.rootId}
-            {this.props.translate} 
+            {this.props.inf}
+            {this.props.translation} 
         </div>
         )
     }
