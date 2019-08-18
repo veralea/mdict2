@@ -11,12 +11,13 @@ const url =
 //util
 const validateUser = require("../utils/user").validateUser;
 
+let usersAttempt = {}
+
 router.post("/register", async (req, res) => {
-  console.log(secret)
+  
   // validate the request body first
   if (validateUser(req.body)) {
-    console.log(req.body);
-
+   
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
@@ -77,7 +78,7 @@ router.post("/login", async (req, res) => {
               
             } else {
               console.log("user is not in DataBase");
-              res.send({ error: "User is not registerd" });
+              res.send({ error: "User or Password is inncorect" });
             }
   
             // res.send(result);
