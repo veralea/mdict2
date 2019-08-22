@@ -123,7 +123,7 @@ span{
 #inputLetter{
   padding:20px;
 }
-#longForm{
+.longForm{
   width: inherit;
   height: inherit;
   }

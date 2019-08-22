@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './MainTheacherPage.css';
 
-var arr = [];
 var arrOfRootsId = [];
 var root_id = "№№";
 
@@ -108,10 +107,12 @@ class MainTheacherPage extends Component {
           phraseTranslateEn: '_',
           phraseTranslateFr: '_',
           family: '_',
+          familyPosition: '_',
           familyTranslateRu: '_',
           familyTranslateEn: '_',
           familyTranslateFr: '_',
           familyverb: '_',
+          familyverbPosition: '_',
           familyverbTranslateRu: '_',
           familyverbTranslateEn: '_',
           familyverbTranslateFr: '_',
@@ -123,21 +124,37 @@ class MainTheacherPage extends Component {
           antonymTranslateRu: '_',
           antonymTranslateEn: '_',
           antonymTranslateFr: '_',
-          sentence: '_',
-          sentenceTranslateRu: '_',
-          sentenceTranslateEn: '_',
-          sentenceTranslateFr: '_',
+          sentence1: '_',
+          sentence2: '_',
+          sentence3: '_',
+          sentence1TranslateRu: '_',
+          sentence2TranslateRu: '_',
+          sentence3TranslateRu: '_',
+          sentence1TranslateEn: '_',
+          sentence2TranslateEn: '_',
+          sentence3TranslateEn: '_',
+          sentence1TranslateFr: '_',
+          sentence2TranslateFr: '_',
+          sentence3TranslateFr: '_',
           roots:[],
           rootByNumber:[],
-          translationsByNumber:[],
+          translations:[],
+          // translationsByNumber:[],
           phrasesByNumber:[],
-          familiesByNumber:[],
-          familiesverbsByNumber:[],
-          synonymsByNumber:[],
-          antonymsByNumber:[],
-          sentenciesByNumber:[],
-          activepassivesByNumber:[],
-          activepassivesByNumber1:[],
+          families:[],
+          // familiesByNumber:[],
+          familiesverbs:[],
+          // familiesverbsByNumber:[],
+          synonyms:[],
+          // synonymsByNumber:[],
+          antonyms:[],
+          // antonymsByNumber:[],
+          phrases:[],
+          // sentenciesByNumber:[],
+          passive_id:'_',
+          // activepassivesByNumber:[],
+          active_id:'_',
+          // activepassivesByNumber1:[],
           verbsbyletters:[]
       };
       this.checkPassword = this.checkPassword.bind(this);
@@ -223,10 +240,12 @@ class MainTheacherPage extends Component {
       this.onPhraseTranslateEnChange = this.onPhraseTranslateEnChange.bind(this);
       this.onPhraseTranslateFrChange = this.onPhraseTranslateFrChange.bind(this);
       this.onFamilyChange = this.onFamilyChange.bind(this);
+      this.onFamilyPositionChange = this.onFamilyPositionChange.bind(this);
       this.onFamilyTranslateRuChange = this.onFamilyTranslateRuChange.bind(this);
       this.onFamilyTranslateEnChange = this.onFamilyTranslateEnChange.bind(this);
       this.onFamilyTranslateFrChange = this.onFamilyTranslateFrChange.bind(this);
       this.onFamilyverbChange = this.onFamilyverbChange.bind(this);
+      this.onFamilyverbPositionChange = this.onFamilyverbPositionChange.bind(this);
       this.onFamilyverbTranslateRuChange = this.onFamilyverbTranslateRuChange.bind(this);
       this.onFamilyverbTranslateEnChange = this.onFamilyverbTranslateEnChange.bind(this);
       this.onFamilyverbTranslateFrChange = this.onFamilyverbTranslateFrChange.bind(this);
@@ -238,10 +257,18 @@ class MainTheacherPage extends Component {
       this.onSynonymTranslateRuChange = this.onSynonymTranslateRuChange.bind(this);
       this.onSynonymTranslateEnChange = this.onSynonymTranslateEnChange.bind(this);
       this.onSynonymTranslateFrChange = this.onSynonymTranslateFrChange.bind(this);
-      this.onSentenceChange = this.onSentenceChange.bind(this);
-      this.onSentenceTranslateRuChange = this.onSentenceTranslateRuChange.bind(this);
-      this.onSentenceTranslateEnChange = this.onSentenceTranslateEnChange.bind(this);
-      this.onSentenceTranslateFrChange = this.onSentenceTranslateFrChange.bind(this);
+      this.onSentence1Change = this.onSentence1Change.bind(this);
+      this.onSentence2Change = this.onSentence2Change.bind(this);
+      this.onSentence3Change = this.onSentence3Change.bind(this);
+      this.onSentence1TranslateRuChange = this.onSentence1TranslateRuChange.bind(this);
+      this.onSentence2TranslateRuChange = this.onSentence2TranslateRuChange.bind(this);
+      this.onSentence3TranslateRuChange = this.onSentence3TranslateRuChange.bind(this);
+      this.onSentence1TranslateEnChange = this.onSentence1TranslateEnChange.bind(this);
+      this.onSentence2TranslateEnChange = this.onSentence2TranslateEnChange.bind(this);
+      this.onSentence3TranslateEnChange = this.onSentence3TranslateEnChange.bind(this);
+      this.onSentence1TranslateFrChange = this.onSentence1TranslateFrChange.bind(this);
+      this.onSentence2TranslateFrChange = this.onSentence2TranslateFrChange.bind(this);
+      this.onSentence3TranslateFrChange = this.onSentence3TranslateFrChange.bind(this);
       this.getAllForms = this.getAllForms.bind(this);
       this.getRoots = this.getRoots.bind(this);
       this.getVerbByRootId = this.getVerbByRootId.bind(this);
@@ -11832,181 +11859,181 @@ case "התפעל_התארגן":
        });
      }
 break
-case "התפעל_התגונן":
+case "התפעל_התלונן":
     this.setState({
-      inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3, 
-      p1s: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְתִּי",
-      p2sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְתָּ",
-      p2sw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְתְּ",
-      p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      p3sw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"ָה",
-      p1m: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְנוּ",
-      p2mm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּם",
-      p2mw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַ"+this.state.letter3+"ְתֶּן",
-      p3m: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
-      nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      nsw: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֶ"+this.state.letter3+"ֶת",
-      nmm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"ִים",
-      nmw: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וֹת",
-      f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      f2sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"י",
-      f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      f2mm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
-      f2mw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
-      f3m: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
-      ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3,
-      isw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"ִי",
-      imm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וּ",
-      imw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵ"+this.state.letter3+"ְנָה",
-      ns: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"וּת",
-      nm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ְ"+this.state.letter3+"ֻיּוֹת", 
-      infS: "להת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      p1sS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"תי",
-      p2smS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ת",
-      p2swS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ת",
-      p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      p3swS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ה",
-      p1mS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"נו",
-      p2mmS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"תם",
-      p2mwS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"תן",
-      p3mS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ו",
-      nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      nswS: "מת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ת",
-      nmmS: "מת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ים",
-      nmwS: "מת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ות",
-      f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      f2swS: "תת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"י",
-      f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      f2mmS: "תת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ו",
-      f2mwS: "תת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"נה",
-      f3mS: "ית"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ו",
-      ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3,
-      iswS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"י",
-      immS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ו",
-      imwS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"נה",
-      nsS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"ות",
-      nmS: "הת"+this.state.letter1+"ו"+this.state.letter2+this.state.letter3+"יות"
+      inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3, 
+      p1s: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְתִּי",
+      p2sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְתָּ",
+      p2sw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְתְּ",
+      p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      p3sw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"ָה",
+      p1m: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְנוּ",
+      p2mm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְתֶּם",
+      p2mw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַ"+this.state.letter3+"ְתֶּן",
+      p3m: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וּ",
+      nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      nsw: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֶ"+this.state.letter3+"ֶת",
+      nmm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"ִים",
+      nmw: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וֹת",
+      f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      f2sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"י",
+      f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      f2mm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וּ",
+      f2mw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3+"ְנָה",
+      f3m: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וּ",
+      ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3,
+      isw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"ִי",
+      imm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וּ",
+      imw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵ"+this.state.letter3+"ְנָה",
+      ns: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"וּת",
+      nm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ְ"+this.state.letter3+"ֻיּוֹת", 
+      infS: "להת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      p1sS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"תי",
+      p2smS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ת",
+      p2swS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ת",
+      p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      p3swS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ה",
+      p1mS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"נו",
+      p2mmS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"תם",
+      p2mwS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"תן",
+      p3mS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ו",
+      nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      nswS: "מת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ת",
+      nmmS: "מת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ים",
+      nmwS: "מת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ות",
+      f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      f2swS: "תת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"י",
+      f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      f2mmS: "תת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ו",
+      f2mwS: "תת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"נה",
+      f3mS: "ית"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ו",
+      ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3,
+      iswS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"י",
+      immS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ו",
+      imwS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"נה",
+      nsS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"ות",
+      nmS: "הת"+this.state.letter1+"ו"+this.state.letter3+this.state.letter3+"יות"
      });
      if(this.state.letter3 === "נ"){
       this.setState({
-        inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן", 
-        p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        p1m: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ַנּוּ",
-        nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        f2mw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵנָּה",
-        ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵן",
-        imw: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵנָּה", 
-        infS: "להת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        p1mS: "הת"+this.state.letter1+"ו"+this.state.letter2+"נו",
-        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        f2mwS: "תת"+this.state.letter1+"ו"+this.state.letter2+"נה",
-        ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ן",
-        imwS: "הת"+this.state.letter1+"ו"+this.state.letter2+"נה"
+        inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן", 
+        p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        p1m: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ַנּוּ",
+        nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        f2mw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵנָּה",
+        ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵן",
+        imw: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵנָּה", 
+        infS: "להת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        p1mS: "הת"+this.state.letter1+"ו"+this.state.letter3+"נו",
+        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        f2mwS: "תת"+this.state.letter1+"ו"+this.state.letter3+"נה",
+        ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ן",
+        imwS: "הת"+this.state.letter1+"ו"+this.state.letter3+"נה"
        });
      }
      if(this.state.letter3 === "כ"){
       this.setState({
-        inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך", 
-        p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך",
-        ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵך", 
-        infS: "להת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+"ך",
-        ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ך"
+        inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך", 
+        p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך",
+        ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵך", 
+        infS: "להת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+"ך",
+        ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ך"
        });
      }
      if(this.state.letter3 === "מ"){
       this.setState({
-        inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם", 
-        p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם",
-        ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵם", 
-        infS: "להת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+"ם",
-        ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ם"
+        inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם", 
+        p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם",
+        ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵם", 
+        infS: "להת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+"ם",
+        ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ם"
        });
      }
      if(this.state.letter3 === "פ"){
       this.setState({
-        inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף", 
-        p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף",
-        ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵף", 
-        infS: "להת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+"ף",
-        ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ף"
+        inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף", 
+        p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף",
+        ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵף", 
+        infS: "להת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+"ף",
+        ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ף"
        });
      }
      if(this.state.letter3 === "צ"){
       this.setState({
-        inf: "לְהִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ", 
-        p3sm: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        nsm: "מִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        f1s: "אֶתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        f2sm: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        f3sm: "יִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        f3sw: "תִּתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        f1m: "נִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ",
-        ism: "הִתְ"+this.state.letter1+"ּוֹ"+this.state.letter2+"ֵץ", 
-        infS: "להת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        f1sS: "את"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter2+"ץ",
-        ismS: "הת"+this.state.letter1+"ו"+this.state.letter2+"ץ"
+        inf: "לְהִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ", 
+        p3sm: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        nsm: "מִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        f1s: "אֶתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        f2sm: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        f3sm: "יִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        f3sw: "תִּתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        f1m: "נִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ",
+        ism: "הִתְ"+this.state.letter1+"וֹ"+this.state.letter3+"ֵץ", 
+        infS: "להת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        p3smS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        nsmS: "מת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        f1sS: "את"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        f2smS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        f3smS: "ית"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        f3swS: "תת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        f1mS: "נת"+this.state.letter1+"ו"+this.state.letter3+"ץ",
+        ismS: "הת"+this.state.letter1+"ו"+this.state.letter3+"ץ"
        });
      }
 break
@@ -12828,6 +12855,10 @@ break
     onFamilyChange(event){
       this.setState({family: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
+    onFamilyPositionChange(event){
+      this.setState({familyPosition: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+
     onFamilyTranslateRuChange(event){
       this.setState({familyTranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
@@ -12841,6 +12872,10 @@ break
     onFamilyverbChange(event){
       this.setState({familyverb: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
+    onFamilyverbPositionChange(event){
+      this.setState({familyverbPosition: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+
     onFamilyverbTranslateRuChange(event){
       this.setState({familyverbTranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
@@ -12874,17 +12909,41 @@ break
     onAntonymTranslateFrChange(event){
       this.setState({antonymTranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
-    onSentenceChange(event){
-      this.setState({sentence: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    onSentence1Change(event){
+      this.setState({sentence1: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
-    onSentenceTranslateRuChange(event){
-      this.setState({sentenceTranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    onSentence2Change(event){
+      this.setState({sentence2: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
-    onSentenceTranslateEnChange(event){
-      this.setState({sentenceTranslateEn: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    onSentence3Change(event){
+      this.setState({sentence3: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
-    onSentenceTranslateFrChange(event){
-      this.setState({sentenceTranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    onSentence1TranslateRuChange(event){
+      this.setState({sentence1TranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence2TranslateRuChange(event){
+      this.setState({sentence2TranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence3TranslateRuChange(event){
+      this.setState({sentence3TranslateRu: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence1TranslateEnChange(event){
+      this.setState({sentence1TranslateEn: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence2TranslateEnChange(event){
+      this.setState({sentence2TranslateEn: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence3TranslateEnChange(event){
+      this.setState({sentence3TranslateEn: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence1TranslateFrChange(event){
+      this.setState({sentence1TranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence2TranslateFrChange(event){
+      this.setState({sentence2TranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
+    }
+    onSentence3TranslateFrChange(event){
+      this.setState({sentence3TranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     getRoots(){
       fetch('http://localhost:8000/getroots/'+this.state.benjan+"/"+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
@@ -12896,7 +12955,7 @@ break
         });
     }
     getVerbsByLetters(){
-      fetch('http://localhost:8000/getverbsbyletters/'+this.state.benjan+'/'+root_id+'/'+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
+      fetch('http://localhost:8000/getverbsbyletters/'+root_id+'/'+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
               return response.json();
         }).then(data => {
             this.setState({
@@ -12937,222 +12996,248 @@ break
               ism: data1[0].ism,ismS: data1[0].ismS,isw: data1[0].isw,iswS: data1[0].iswS,imm: data1[0].imm,
               immS: data1[0].immS,imw: data1[0].imw,imwS: data1[0].imwS,ns: data1[0].ns,nsS: data1[0].nsS,
               nm: data1[0].nm,nmS: data1[0].nmS,asm: data1[0].asm,asmS: data1[0].asmS,asw: data1[0].asw,
-              aswS: data1[0].aswS,amm: data1[0].amm,ammS: data1[0].ammS,amw: data1[0].amw,amwS: data1[0].amwS             
+              aswS: data1[0].aswS,amm: data1[0].amm,ammS: data1[0].ammS,amw: data1[0].amw,amwS: data1[0].amwS, translations: data1[0].translations,
+              families: data1[0].families, familiesverbs: data1[0].familiesverbs, synonyms: data1[0].synonyms, antonyms: data1[0].antonyms, phrases: data1[0].phrases,
+              active_id: data1[0].active_id, passive_id: data1[0].passive_id      
               })  
       });
-      fetch('http://localhost:8000/gettranslations/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data2 => {
-          this.setState({
-              translationsByNumber:data2
-              })
-      });
-      fetch('http://localhost:8000/getphrases/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data3 => {
-          this.setState({
-              phrasesByNumber:data3
-              })
-      });      
-      fetch('http://localhost:8000/getfamilies/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data4 => {
-          this.setState({
-              familiesByNumber:data4
-              })
-      });
-      fetch('http://localhost:8000/getfamiliesverbs/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data10 => {
-          this.setState({
-              familiesverbsByNumber:data10
-              })
-      });
-      fetch('http://localhost:8000/getsynonyms/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data5 => {
-          this.setState({
-              synonymsByNumber:data5
-              })
-      });
-      fetch('http://localhost:8000/getantonyms/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data6 => {
-          this.setState({
-              antonymsByNumber:data6
-              })
-      }); 
-      fetch('http://localhost:8000/getsentencies/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data7 => {
-          this.setState({
-              sentenciesByNumber:data7
-              })
-      });
-      fetch('http://localhost:8000/getactivepassives/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data8 => {
-          this.setState({
-            activepassivesByNumber:data8
-              })
-      });
-      fetch('http://localhost:8000/getactivepassives1/'+rootNumber).then(response => {
-        return response.json();
-      }).then(data9 => {
-          this.setState({
-            activepassivesByNumber1:data9
-              })
-      });          
+      // fetch('http://localhost:8000/gettranslations/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data2 => {
+      //     this.setState({
+      //         translationsByNumber:data2
+      //         })
+      // });
+      // fetch('http://localhost:8000/getphrases/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data3 => {
+      //     this.setState({
+      //         phrasesByNumber:data3
+      //         })
+      // });      
+      // fetch('http://localhost:8000/getfamilies/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data4 => {
+      //     this.setState({
+      //         familiesByNumber:data4
+      //         })
+      // });
+      // fetch('http://localhost:8000/getfamiliesverbs/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data10 => {
+      //     this.setState({
+      //         familiesverbsByNumber:data10
+      //         })
+      // });
+      // fetch('http://localhost:8000/getsynonyms/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data5 => {
+      //     this.setState({
+      //         synonymsByNumber:data5
+      //         })
+      // });
+      // fetch('http://localhost:8000/getantonyms/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data6 => {
+      //     this.setState({
+      //         antonymsByNumber:data6
+      //         })
+      // }); 
+      // fetch('http://localhost:8000/getactivepassives/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data8 => {
+      //     this.setState({
+      //       activepassivesByNumber:data8
+      //         })
+      // });
+      // fetch('http://localhost:8000/getactivepassives1/'+rootNumber).then(response => {
+      //   return response.json();
+      // }).then(data9 => {
+      //     this.setState({
+      //       activepassivesByNumber1:data9
+      //         })
+      // });          
     }
     getTranslationById(translationId,e){
       e.preventDefault();
-      fetch('http://localhost:8000/gettranslation/'+translationId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/gettranslation/'+this.state.rootId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+        console.dir(this.state.translations);
+        let trs = this.state.translations;
+        trs.map((tr)=>{
+          if(tr.translationId === translationId){
           this.setState({
             thisIsNewTranslation: '0',
-            translationId: data1[0]._id,
-            preposition: data1[0].preposition,
-            translateRu: data1[0].translateRu,
-            translateEn: data1[0].translateEn,
-            translateFr: data1[0].translateFr,
-            sentence: data1[0].sentence,
-            sentenceTranslateRu: data1[0].sentenceTranslateRu,
-            sentenceTranslateEn: data1[0].sentenceTranslateEn,
-            sentenceTranslateFr: data1[0].sentenceTranslateFr          
+            translationId: tr.translationId,
+            preposition: tr.preposition,
+            translateRu: tr.translateRu,
+            translateEn: tr.translateEn,
+            translateFr: tr.translateFr,
+            sentence1: tr.sentence1,
+            sentence2: tr.sentence2,
+            sentence3: tr.sentence3,
+            sentence1TranslateRu: tr.sentence1TranslateRu,
+            sentence2TranslateRu: tr.sentence2TranslateRu,
+            sentence3TranslateRu: tr.sentence3TranslateRu,
+            sentence1TranslateEn: tr.sentence1TranslateEn,
+            sentence2TranslateEn: tr.sentence2TranslateEn,
+            sentence3TranslateEn: tr.sentence3TranslateEn,
+            sentence1TranslateFr: tr.sentence1TranslateFr,
+            sentence2TranslateFr: tr.sentence2TranslateFr,
+            sentence3TranslateFr: tr.sentence3TranslateFr          
           })
-              
-      }); 
+          }
+        });      
+      // }); 
     }
     getFamilyById(familyId,e){
       e.preventDefault();
-      fetch('http://localhost:8000/getfamily/'+familyId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/getfamily/'+familyId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+        let fms = this.state.families;
+        fms.map((fm)=>{
+          if(fm.familyId === familyId){
           this.setState({
             thisIsNewFamily: '0',
-            familyId: data1[0]._id,
-            family: data1[0].family,
-            familyTranslateRu: data1[0].familyTranslateRu,
-            familyTranslateEn: data1[0].familyTranslateEn,
-            familyTranslateFr: data1[0].familyTranslateFr
+            familyId: fm.familyId,
+            family: fm.family,
+            familyPosition: fm.familyPosition,
+            familyTranslateRu: fm.familyTranslateRu,
+            familyTranslateEn: fm.familyTranslateEn,
+            familyTranslateFr: fm.familyTranslateFr      
           })
-              
-      }); 
+          }
+        });          
+      // }); 
     }
 
     getFamilyverbById(familyverbId,e){
       e.preventDefault();
-      fetch('http://localhost:8000/getfamilyverb/'+familyverbId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/getfamilyverb/'+familyverbId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+        console.dir(this.state.familiesverbs);
+        let fmvs = this.state.familiesverbs;
+        fmvs.map((fmv)=>{
+          if(fmv.familyverbId === familyverbId){
           this.setState({
             thisIsNewFamilyverb: '0',
-            familyverbId: data1[0]._id,
-            familyverb: data1[0].familyverb,
-            familyverbTranslateRu: data1[0].familyverbTranslateRu,
-            familyverbTranslateEn: data1[0].familyverbTranslateEn,
-            familyverbTranslateFr: data1[0].familyverbTranslateFr
+            familyverbId: fmv.familyverbId,
+            familyverb: fmv.familyverb,
+            familyverbPosition: fmv.familyverbPosition,
+            familyverbTranslateRu: fmv.familyverbTranslateRu,
+            familyverbTranslateEn: fmv.familyverbTranslateEn,
+            familyverbTranslateFr: fmv.familyverbTranslateFr      
           })
+          }
+        });
               
-      }); 
+      // }); 
     }
 
     getSynonymById(synonymId,e){
       e.preventDefault();
-      fetch('http://localhost:8000/getsynonym/'+synonymId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/getsynonym/'+synonymId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+      let syns = this.state.synonyms; 
+      syns.map((syn)=>{
+        if(syn.synonymId === synonymId){ 
           this.setState({
             thisIsNewSynonym: '0',
-            synonymId: data1[0]._id,
-            synonym: data1[0].synonym,
-            synonymTranslateRu: data1[0].synonymTranslateRu,
-            synonymTranslateEn: data1[0].synonymTranslateEn,
-            synonymTranslateFr: data1[0].synonymTranslateFr
+            synonymId: syn.synonymId,
+            synonym: syn.synonym,
+            synonymTranslateRu: syn.synonymTranslateRu,
+            synonymTranslateEn: syn.synonymTranslateEn,
+            synonymTranslateFr: syn.synonymTranslateFr
           })
-              
-      }); 
+        }
+      });          
+      // }); 
     }
     getAntonymById(antonymId,e){
       e.preventDefault();
-      fetch('http://localhost:8000/getantonym/'+antonymId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/getantonym/'+antonymId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+      let ans = this.state.antonyms;
+      ans.map((an)=>{
+        if(an.antonymId === antonymId){  
           this.setState({
             thisIsNewAntonym: '0',
-            antonymId: data1[0]._id,
-            antonym: data1[0].antonym,
-            antonymTranslateRu: data1[0].antonymTranslateRu,
-            antonymTranslateEn: data1[0].antonymTranslateEn,
-            antonymTranslateFr: data1[0].antonymTranslateFr
+            antonymId: an.antonymId,
+            antonym: an.antonym,
+            antonymTranslateRu: an.antonymTranslateRu,
+            antonymTranslateEn: an.antonymTranslateEn,
+            antonymTranslateFr: an.antonymTranslateFr
           })
-              
-      }); 
+        }  
+      });        
+      // }); 
     }
     getPhraseById(phraseId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/getphrase/'+phraseId).then(response => {
-        if(response.ok){
-        return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }
-      }).then(data1 => {
-        
+      // fetch('http://localhost:8000/getphrase/'+phraseId).then(response => {
+      //   if(response.ok){
+      //   return response.json();
+      //   }else{
+      //     alert("שגיאה. תנסה שוב");
+      //   }
+      // }).then(data1 => {
+      let phrs = this.state.phrases; 
+      phrs.map((phr)=>{ 
+        if(phr.phraseId === phraseId){
           this.setState({
             thisIsNewPhrase: '0',
-            phraseId: data1[0]._id,
-            phrase: data1[0].phrase,
-            phraseTranslateRu: data1[0].phraseTranslateRu,
-            phraseTranslateEn: data1[0].phraseTranslateEn,
-            phraseTranslateFr: data1[0].phraseTranslateFr
+            phraseId: phr.phraseId,
+            phrase: phr.phrase,
+            phraseTranslateRu: phr.phraseTranslateRu,
+            phraseTranslateEn: phr.phraseTranslateEn,
+            phraseTranslateFr: phr.phraseTranslateFr
           })
-              
-      }); 
+        }  
+      });        
+      // }); 
     }
     getAllActivePassives(){
       if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
-        fetch('http://localhost:8000/getactivepassives1/'+root_id).then(response => {
+        fetch('http://localhost:8000/getactive/'+root_id).then(response => {
           return response.json();
         }).then(data9 => {
             this.setState({
-                activepassivesByNumber1:data9
+                active_id:data9[0].active_id
                 });
                 arrOfRootsId.length = 0;
         });
       }else{
-        fetch('http://localhost:8000/getactivepassives/'+root_id).then(response => {
+        fetch('http://localhost:8000/getpassive/'+root_id).then(response => {
           return response.json();
         }).then(data8 => {
             this.setState({
-                activepassivesByNumber:data8
+                passive_id:data8[0].passive_id
                 });
                 arrOfRootsId.length = 0;
         });
@@ -13164,7 +13249,8 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              translationsByNumber:data2
+              // translationsByNumber:data2
+                translations:data2[0].translations
               })
       }); 
     }
@@ -13173,7 +13259,8 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              familiesByNumber:data2
+              // familiesByNumber:data2
+              families:data2[0].families
               })
       }); 
     }
@@ -13183,7 +13270,7 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              familiesverbsByNumber:data2
+              familiesverbs:data2[0].familiesverbs
               })
       }); 
     }
@@ -13193,7 +13280,7 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              synonymsByNumber:data2
+              synonyms:data2[0].synonyms
               })
       }); 
     }
@@ -13202,7 +13289,7 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              antonymsByNumber:data2
+              antonyms:data2[0].antonyms
               })
       }); 
     }
@@ -13211,74 +13298,64 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              phrasesByNumber:data2
+              phrases:data2[0].phrases
               })
       }); 
     }
     addNewWord(){
-      var a = (Math.floor((Math.random()*10000))).toString();
-      while(arr.includes(a)===true){
-          a = (Math.floor((Math.random()*10000))).toString(); 
-      };
-      arr.push(a);
+      // var a = (Math.floor((Math.random()*10000))).toString();
+      // while(arr.includes(a)===true){
+      //     a = (Math.floor((Math.random()*10000))).toString(); 
+      // };
+      // arr.push(a);
       
-      root_id = a;
+      // var root_id = "";
       this.setState({readyToAdditionals:"1"});
       if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
        this.setState({thisIsPassive:"1"}) 
       }else{
         this.setState({thisIsPassive:"0"}) 
       }
-
-      fetch('http://localhost:8000/newroot/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
-      '/'+this.state.letter3+'/'+this.state.letter4+'/'+this.state.descript+'/'+root_id+'.wav/'+this.state.inf+'/'+this.state.infS+'/'+this.state.p1s+'/'+this.state.p1sS+
-      '/'+this.state.p2sm+'/'+this.state.p2smS+'/'+this.state.p2sw+'/'+this.state.p2swS+'/'+this.state.p3sm+
-      '/'+this.state.p3smS+'/'+this.state.p3sw+'/'+this.state.p3swS+'/'+this.state.p1m+'/'+this.state.p1mS+'/'+
-      this.state.p2mm+'/'+this.state.p2mmS+'/'+this.state.p2mw+'/'+this.state.p2mwS+'/'+this.state.p3m+'/'+this.state.p3mS+
-      '/'+this.state.nsm+'/'+this.state.nsmS+'/'+this.state.nsw+'/'+this.state.nswS+'/'+this.state.nmm+'/'+this.state.nmmS+'/'+
-      this.state.nmw+'/'+this.state.nmwS+'/'+this.state.f1s+'/'+this.state.f1sS+'/'+this.state.f2sm+'/'+this.state.f2smS+
-      '/'+this.state.f2sw+'/'+this.state.f2swS+'/'+this.state.f3sm+'/'+this.state.f3smS+'/'+this.state.f3sw+'/'+
-      this.state.f3swS+'/'+this.state.f1m+'/'+this.state.f1mS+'/'+this.state.f2mm+'/'+this.state.f2mmS+'/'+this.state.f2mw+
-      '/'+this.state.f2mwS+'/'+this.state.f3m+'/'+this.state.f3mS+'/'+this.state.ism+'/'+this.state.ismS+'/'+this.state.isw+
-      '/'+this.state.iswS+'/'+this.state.imm+'/'+this.state.immS+'/'+this.state.imw+'/'+this.state.imwS+'/'+this.state.ns+
-      '/'+this.state.nsS+'/'+this.state.nm+'/'+this.state.nmS+'/'+this.state.asm+'/'+this.state.asmS+'/'+this.state.asw+
-      '/'+this.state.aswS+'/'+this.state.amm+'/'+this.state.ammS+'/'+this.state.amw+'/'+
-      this.state.amwS,{method:'POST' }).then((response) => {
-        if(response.ok){
-         alert("נרשם שורש "+this.state.letter1+" "+this.state.letter2+" "+this.state.letter3+" "+
-         this.state.letter4+" בבניין "+this.state.benjan);
+   
+          fetch('http://localhost:8000/countroots/').then(response => {
             return response.json();
-        }else{
-          alert("שגיאה. תנסה שוב");
-        }    
-        }).then(() => {this.getRoots();this.getVerbsByLetters()})
-        
+          }).then(data => {
+            root_id  = String(data.length+1);
+            alert(root_id); 
+  
+          }).then(()=>{
+          fetch('http://localhost:8000/newroot/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
+          '/'+this.state.letter3+'/'+this.state.letter4+'/'+this.state.descript+'/'+root_id+'.wav/'+this.state.inf+'/'+this.state.infS+'/'+this.state.p1s+'/'+this.state.p1sS+
+          '/'+this.state.p2sm+'/'+this.state.p2smS+'/'+this.state.p2sw+'/'+this.state.p2swS+'/'+this.state.p3sm+
+          '/'+this.state.p3smS+'/'+this.state.p3sw+'/'+this.state.p3swS+'/'+this.state.p1m+'/'+this.state.p1mS+'/'+
+          this.state.p2mm+'/'+this.state.p2mmS+'/'+this.state.p2mw+'/'+this.state.p2mwS+'/'+this.state.p3m+'/'+this.state.p3mS+
+          '/'+this.state.nsm+'/'+this.state.nsmS+'/'+this.state.nsw+'/'+this.state.nswS+'/'+this.state.nmm+'/'+this.state.nmmS+'/'+
+          this.state.nmw+'/'+this.state.nmwS+'/'+this.state.f1s+'/'+this.state.f1sS+'/'+this.state.f2sm+'/'+this.state.f2smS+
+          '/'+this.state.f2sw+'/'+this.state.f2swS+'/'+this.state.f3sm+'/'+this.state.f3smS+'/'+this.state.f3sw+'/'+
+          this.state.f3swS+'/'+this.state.f1m+'/'+this.state.f1mS+'/'+this.state.f2mm+'/'+this.state.f2mmS+'/'+this.state.f2mw+
+          '/'+this.state.f2mwS+'/'+this.state.f3m+'/'+this.state.f3mS+'/'+this.state.ism+'/'+this.state.ismS+'/'+this.state.isw+
+          '/'+this.state.iswS+'/'+this.state.imm+'/'+this.state.immS+'/'+this.state.imw+'/'+this.state.imwS+'/'+this.state.ns+
+          '/'+this.state.nsS+'/'+this.state.nm+'/'+this.state.nmS+'/'+this.state.asm+'/'+this.state.asmS+'/'+this.state.asw+
+          '/'+this.state.aswS+'/'+this.state.amm+'/'+this.state.ammS+'/'+this.state.amw+'/'+
+          this.state.amwS,{method:'POST' }).then((response1) => {
+            if(response1.ok){
+            alert("נרשם שורש "+this.state.letter1+" "+this.state.letter2+" "+this.state.letter3+" "+
+            this.state.letter4+" בבניין "+this.state.benjan);
+                return response1.json();
+            }else{
+              alert("שגיאה. תנסה שוב");
+            }    
+            }).then(() => {this.getRoots();this.getVerbsByLetters();})})
+   
     }
-    addNewPhrase(){
-      fetch('http://localhost:8000/newphrase/'+root_id+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
-      '/'+this.state.phraseTranslateEn+'/'+this.state.phraseTranslateFr,{method:'POST' }).then((response) => {
-      if(response.ok){
-        this.setState({
-          phrase: '_',
-          phraseTranslateRu: '_',
-          phraseTranslateEn: '_',
-          phraseTranslateFr: '_'
-         });  
-           return response.json();
-      }else{
-        alert("שגיאה. תנסה שוב");
-      } 
-       }).then(()=>{
-        this.getAllPhrases()
-      });
 
-    }
-    addNewFamily(){
-      fetch('http://localhost:8000/newfamily/'+root_id+'/'+this.state.family +'/'+this.state.familyTranslateRu+
+    addNewFamily(familyNumber){
+      fetch('http://localhost:8000/newfamily/'+root_id+'/'+familyNumber+'/'+this.state.family +'/'+this.state.familyPosition +'/'+this.state.familyTranslateRu+
       '/'+this.state.familyTranslateEn+'/'+this.state.familyTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
           family: '_',
+          familyPosition: '_',
           familyTranslateRu: '_',
           familyTranslateEn: '_',
           familyTranslateFr: '_'
@@ -13292,12 +13369,13 @@ break
       });
     }
 
-    addNewFamilyverb(){
-      fetch('http://localhost:8000/newfamilyverb/'+root_id+'/'+this.state.familyverb +'/'+this.state.familyverbTranslateRu+
+    addNewFamilyverb(familyverbNumber){
+      fetch('http://localhost:8000/newfamilyverb/'+root_id+'/'+familyverbNumber+'/'+this.state.familyverb+'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
       '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
           familyverb: '_',
+          familyverbPosition: '_',
           familyverbTranslateRu: '_',
           familyverbTranslateEn: '_',
           familyverbTranslateFr: '_'
@@ -13311,8 +13389,8 @@ break
       });
     }
 
-    addNewSynonym(){
-      fetch('http://localhost:8000/newsynonym/'+root_id+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
+    addNewSynonym(synonymNumber){
+      fetch('http://localhost:8000/newsynonym/'+root_id+'/'+synonymNumber+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
       '/'+this.state.synonymTranslateEn+'/'+this.state.synonymTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
@@ -13330,8 +13408,8 @@ break
       });
 
     }
-    addNewAntonym(){
-      fetch('http://localhost:8000/newantonym/'+root_id+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
+    addNewAntonym(antonymNumber){
+      fetch('http://localhost:8000/newantonym/'+root_id+'/'+antonymNumber+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
       '/'+this.state.antonymTranslateEn+'/'+this.state.antonymTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){
         this.setState({
@@ -13349,21 +13427,52 @@ break
       });
 
     }
+    addNewPhrase(phraseNumber){
+      fetch('http://localhost:8000/newphrase/'+root_id+'/'+phraseNumber+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
+      '/'+this.state.phraseTranslateEn+'/'+this.state.phraseTranslateFr,{method:'POST' }).then((response) => {
+      if(response.ok){
+        this.setState({
+          phrase: '_',
+          phraseTranslateRu: '_',
+          phraseTranslateEn: '_',
+          phraseTranslateFr: '_'
+         });  
+           return response.json();
+      }else{
+        alert("שגיאה. תנסה שוב");
+      } 
+       }).then(()=>{
+        this.getAllPhrases()
+      });
+
+    }
+
     addNewSentence(sentenceNumber,e){
       e.preventDefault();
-      fetch('http://localhost:8000/newtranslation/'+root_id+'/'+this.state.preposition +'/'+this.state.translateRu+
-      '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence +'/'+this.state.sentenceTranslateRu+
-      '/'+this.state.sentenceTranslateEn+'/'+this.state.sentenceTranslateFr+'/'+root_id+'S_'+sentenceNumber+'.wav',{method:'POST' }).then(response => {
+      fetch('http://localhost:8000/newtranslation/'+root_id+'/'+sentenceNumber+'/'+this.state.preposition +'/'+this.state.translateRu+
+      '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence1+'/'+this.state.sentence2+'/'+this.state.sentence3
+       +'/'+this.state.sentence1TranslateRu+'/'+this.state.sentence2TranslateRu+'/'+this.state.sentence3TranslateRu+
+      '/'+this.state.sentence1TranslateEn+'/'+this.state.sentence2TranslateEn+'/'+this.state.sentence3TranslateEn+
+      '/'+this.state.sentence1TranslateFr+'/'+this.state.sentence2TranslateFr+'/'+this.state.sentence3TranslateFr+
+      '/'+root_id+'S_1_'+sentenceNumber+'.wav/'+root_id+'S_2_'+sentenceNumber+'.wav/'+root_id+'S_3_'+sentenceNumber+'.wav/',{method:'POST' }).then(response => {
         if(response.ok){
           this.setState({ 
             preposition: '_',
             translateRu: '_',
             translateEn: '_',
             translateFr: '_',        
-            sentence: '_',
-            sentenceTranslateRu: '_',
-            sentenceTranslateEn: '_',
-            sentenceTranslateFr: '_'
+            sentence1: '_',
+            sentence2: '_',
+            sentence3: '_',
+            sentence1TranslateRu: '_',
+            sentence2TranslateRu: '_',
+            sentence3TranslateRu: '_',
+            sentence1TranslateEn: '_',
+            sentence2TranslateEn: '_',
+            sentence3TranslateEn: '_',
+            sentence1TranslateFr: '_',
+            sentence2TranslateFr: '_',
+            sentence3TranslateFr: '_'
            }); 
               return response.json();
           }else{
@@ -13378,7 +13487,7 @@ break
     setActivePassive(activPassivId,e){
       e.preventDefault();
       if(this.state.benjan.indexOf("נפעל")>-1 || this.state.benjan.indexOf("נפועל")>-1 || this.state.benjan.indexOf("הופעל")>-1 ){
-        fetch('http://localhost:8000/newactivpassiv/'+activPassivId+'/'+root_id ,{method:'POST' }).then((response) => {
+        fetch('http://localhost:8000/newactive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
           if(response.ok){  
            return response.json();
           }else{
@@ -13392,7 +13501,7 @@ break
       }else if (this.state.benjan.indexOf("התפעל")>-1){
         alert("בניין התפעל");  
       }else{
-        fetch('http://localhost:8000/newactivpassiv/'+root_id+'/'+activPassivId ,{method:'POST' }).then((response) => {
+        fetch('http://localhost:8000/newpassive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
           if(response.ok){  
            return response.json();
           }else{
@@ -13406,7 +13515,7 @@ break
     }
     updateWord(){
       this.setState({readyToAdditionals:"1"});
-      this.setState({readyToAdditionals:"1"});
+      
       if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
        this.setState({thisIsPassive:"1"}) 
       }else{
@@ -13431,26 +13540,36 @@ break
       }else{
         alert("שגיאה. תנסה שוב");
       } 
-       }).then(() => {arrOfRootsId.length = 0;  this.getVerbsByLetters()})
+       }).then(() => {arrOfRootsId.length = 0; this.getVerbsByLetters()})
     }
     updateTranslation(translationId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatetranslation/'+translationId+'/'+this.state.preposition +'/'+this.state.translateRu+
-      '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence+'/'+this.state.sentenceTranslateRu+
-      '/'+this.state.sentenceTranslateEn+'/'+this.state.sentenceTranslateFr,{method:'PUT' }).then(response => {
+      fetch('http://localhost:8000/updatetranslation/'+root_id+'/'+translationId+'/'+this.state.preposition +'/'+this.state.translateRu+
+      '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence1+'/'+this.state.sentence2+'/'+this.state.sentence3
+      +'/'+this.state.sentence1TranslateRu+'/'+this.state.sentence2TranslateRu+'/'+this.state.sentence3TranslateRu+
+      '/'+this.state.sentence1TranslateEn+'/'+this.state.sentence2TranslateEn+'/'+this.state.sentence3TranslateEn+
+      '/'+this.state.sentence1TranslateFr+'/'+this.state.sentence2TranslateFr+'/'+this.state.sentence3TranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
-        
+       
         this.setState ({
           thisIsNewTranslation:"1",
           preposition: '_',
           translateRu: '_',
           translateEn: '_',
           translateFr: '_',        
-          sentence: '_',
-          sentenceTranslateRu: '_',
-          sentenceTranslateEn: '_',
-          sentenceTranslateFr: '_'
+          sentence1: '_',
+          sentence2: '_',
+          sentence3: '_',
+          sentence1TranslateRu: '_',
+          sentence2TranslateRu: '_',
+          sentence3TranslateRu: '_',
+          sentence1TranslateEn: '_',
+          sentence2TranslateEn: '_',
+          sentence3TranslateEn: '_',
+          sentence1TranslateFr: '_',
+          sentence2TranslateFr: '_',
+          sentence3TranslateFr: '_'
          });  
             return response.json();
       }else{
@@ -13463,12 +13582,14 @@ break
     updateFamily(familyId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatefamily/'+familyId+'/'+this.state.family +'/'+this.state.familyTranslateRu+
-      '/'+this.state.familyTranslateEn+'/'+this.state.familyTranslateFr,{method:'PUT' }).then(response => {
+      fetch('http://localhost:8000/updatefamily/'+root_id+'/'+familyId+'/'+this.state.family +'/'+this.state.familyPosition +'/'
+      +this.state.familyTranslateRu+'/'+this.state.familyTranslateEn+'/'+this.state.familyTranslateFr,{method:'PUT' })
+      .then(response => {
       if(response.ok){
         this.setState ({
           thisIsNewFamily:"1",
           family: '_',
+          familyPosition: '_',
           familyTranslateRu: '_',
           familyTranslateEn: '_',
           familyTranslateFr: '_'        
@@ -13484,12 +13605,13 @@ break
     updateFamilyverb(familyverbId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatefamilyverb/'+familyverbId+'/'+this.state.familyverb +'/'+this.state.familyverbTranslateRu+
+      fetch('http://localhost:8000/updatefamilyverb/'+root_id+'/'+familyverbId+'/'+this.state.familyverb +'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
       '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
           thisIsNewFamilyverb:"1",
           familyverb: '_',
+          familyverbPosition: '_',
           familyverbTranslateRu: '_',
           familyverbTranslateEn: '_',
           familyverbTranslateFr: '_'        
@@ -13505,7 +13627,7 @@ break
     updateSynonym(synonymId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatesynonym/'+synonymId+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
+      fetch('http://localhost:8000/updatesynonym/'+root_id+'/'+synonymId+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
       '/'+this.state.synonymTranslateEn+'/'+this.state.synonymTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){ 
         this.setState ({
@@ -13526,7 +13648,7 @@ break
     updateAntonym(antonymId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updateantonym/'+antonymId+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
+      fetch('http://localhost:8000/updateantonym/'+root_id+'/'+antonymId+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
       '/'+this.state.antonymTranslateEn+'/'+this.state.antonymTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
@@ -13547,7 +13669,7 @@ break
     updatePhrase(phraseId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatephrase/'+phraseId+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
+      fetch('http://localhost:8000/updatephrase/'+root_id+'/'+phraseId+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
       '/'+this.state.phraseTranslateEn+'/'+this.state.phraseTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
@@ -13577,17 +13699,25 @@ break
     deleteTranslationbById(translationId,e){
       e.preventDefault();
       this.setState({thisIsNewTranslation:"1"});
-      fetch('http://localhost:8000/deletetranslation/'+translationId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deletetranslation/'+root_id+'/'+translationId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             preposition: '_',
             translateRu: '_',
             translateEn: '_',
             translateFr: '_',        
-            sentence: '_',
-            sentenceTranslateRu: '_',
-            sentenceTranslateEn: '_',
-            sentenceTranslateFr: '_'
+            sentence1: '_',
+            sentence2: '_',
+            sentence3: '_',
+            sentence1TranslateRu: '_',
+            sentence2TranslateRu: '_',
+            sentence3TranslateRu: '_',
+            sentence1TranslateEn: '_',
+            sentence2TranslateEn: '_',
+            sentence3TranslateEn: '_',
+            sentence1TranslateFr: '_',
+            sentence2TranslateFr: '_',
+            sentence3TranslateFr: '_'
            });
             return response.json();          
         }else{
@@ -13599,10 +13729,11 @@ break
     deleteFamilyById(familyId,e){
       e.preventDefault();
       this.setState({thisIsNewFamily:"1"});
-      fetch('http://localhost:8000/deletefamily/'+familyId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deletefamily/'+root_id+'/'+familyId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             family: '_',
+            familyPosition: '_',
             familyTranslateRu: '_',
             familyTranslateEn: '_',
             familyTranslateFr: '_'        
@@ -13616,10 +13747,11 @@ break
     deleteFamilyverbById(familyverbId,e){
       e.preventDefault();
       this.setState({thisIsNewFamilyverb:"1"});
-      fetch('http://localhost:8000/deletefamilyverb/'+familyverbId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deletefamilyverb/'+root_id+'/'+familyverbId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             familyverb: '_',
+            familyverbPosition: '_',
             familyverbTranslateRu: '_',
             familyverbTranslateEn: '_',
             familyverbTranslateFr: '_'        
@@ -13633,7 +13765,7 @@ break
     deleteSynonymById(synonymId,e){
       e.preventDefault();
       this.setState({thisIsNewSynonym:"1"});
-      fetch('http://localhost:8000/deletesynonym/'+synonymId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deletesynonym/'+root_id+'/'+synonymId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             synonym: '_',
@@ -13651,7 +13783,7 @@ break
     deleteAntonymById(antonymId,e){
       e.preventDefault();
       this.setState({thisIsNewAntonym:"1"});
-      fetch('http://localhost:8000/deleteantonym/'+antonymId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deleteantonym/'+root_id+'/'+antonymId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             antonym: '_',
@@ -13669,7 +13801,7 @@ break
     deletePhraseById(phraseId,e){
       e.preventDefault();
       this.setState({thisIsNewPhrase:"1"});
-      fetch('http://localhost:8000/deletephrase/'+phraseId,{method:'DELETE'}).then((response) => {
+      fetch('http://localhost:8000/deletephrase/'+root_id+'/'+phraseId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             phrase: '_',
@@ -13683,16 +13815,26 @@ break
         }    
         }).then(() => {this.getAllPhrases()})   
     }
-    deleteActivepassiveById(activepassiveId,e){
+    deleteActivepassiveById(e){
       e.preventDefault();
       arrOfRootsId.length=0;
-      fetch('http://localhost:8000/deleteactivepassive/'+activepassiveId,{method:'DELETE'}).then((response) => {
+      if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
+      fetch('http://localhost:8000/deleteactive/'+root_id,{method:'PUT'}).then((response) => {
         if(response.ok){
             return response.json();        
         }else{
           alert("שגיאה. תנסה שוב");
         }    
         }).then(() => { this.getAllActivePassives()})
+      }else{
+        fetch('http://localhost:8000/deletepassive/'+root_id,{method:'PUT'}).then((response) => {
+          if(response.ok){
+              return response.json();        
+          }else{
+            alert("שגיאה. תנסה שוב");
+          }    
+          }).then(() => { this.getAllActivePassives()})
+      }  
     }
     renderSwitch(param) {
       switch(param) {
@@ -13727,7 +13869,8 @@ break
     }  
     renderSwitch1(param){
       switch(param){
-        case "1": 
+        case "1":
+         
         return(
           <div>
             <div className="remark">הקלט את המילה, הכנס שם לקובץ <span dir="ltr">{root_id}.wav</span></div>
@@ -13742,26 +13885,35 @@ break
                 </div>
                   <div id="translation" className="finded">
                   <p>כבר רשום במילון:</p>
-                  {
-                    this.state.translationsByNumber.map((translate, ind) =>{
-                      return(<div>
+
+                    {
+                    // this.state.translationsByNumber.map((translate, ind) =>{
+                    this.state.translations.map((translate, ind) =>{
+                      // let maxTranslationId = Math.max.apply(Math, this.state.translations.map(function(translation) { return translation.translationId; }));
+                      return(<div key={ind}>
                               <div className="topFlexContainer"> 
                                 <div className="flexItem221">                                    
                                   <div key={"Ru"+ind}>{ind+1} Ru. {translate.translateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                  <div key={"RuS"+ind}>{translate.sentenceTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"RuS1"+ind}>{translate.sentence1TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"RuS2"+ind}>{translate.sentence2TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"RuS3"+ind}>{translate.sentence3TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                                 </div>
                                 <div className="flexItem221">
                                   <div key={"En"+ind}>{ind+1} En. {translate.translateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                  <div key={"EnS"+ind}>{translate.sentenceTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"EnS1"+ind}>{translate.sentence1TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"EnS2"+ind}>{translate.sentence2TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"EnS3"+ind}>{translate.sentence3TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                                 </div>
                                 <div className="flexItem221">
                                   <div key={"Fr"+ind}>{ind+1} Fr. {translate.translateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
-                                  <div key={"FrS"+ind}>{translate.sentenceTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"FrS1"+ind}>{translate.sentence1TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"FrS2"+ind}>{translate.sentence2TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                                  <div key={"FrS3"+ind}>{translate.sentence3TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                                 </div>
                               </div>
                               <div className="topFlexContainer">
-                                <button className="rootBtn" onClick = {(e) => this.getTranslationById(translate._id,e)}>לבחור</button>
-                                <button className="rootBtn" onClick = {(e) => this.deleteTranslationbById(translate._id,e)}>למחוק</button> 
+                                <button className="rootBtn" onClick = {(e) => this.getTranslationById(translate.translationId,e)}>לבחור</button>
+                                <button className="rootBtn" onClick = {(e) => this.deleteTranslationbById(translate.translationId,e)}>למחוק</button> 
                               </div>
                             </div> );
                     })
@@ -13772,28 +13924,54 @@ break
                   <div><input type="text" name="preposition" value={this.state.preposition.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onPrepositionChange} dir="rtl"/></div>                   
                   <div> Ru תרגום:</div>
-                  <div><input type="text" name="translateRu" id="longForm" value={this.state.translateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                  <div><input type="text" name="translateRu" className = "longForm" value={this.state.translateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onTranslateRuChange} dir="ltr"/></div> 
                   <div> En תרגום:</div>
-                  <div><input type="text" name="translateEn" id="longForm" value={this.state.translateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                  <div><input type="text" name="translateEn" className = "longForm" value={this.state.translateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onTranslateEnChange} dir="ltr"/></div> 
                   <div> Fr תרגום:</div>
-                  <div><input type="text" name="translateFr" id="longForm" value={this.state.translateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                  <div><input type="text" name="translateFr" className = "longForm" value={this.state.translateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                     onChange={this.onTranslateFrChange} dir="ltr"/></div>                                                                         
-                  <div>משפט חדש:</div>
-                <div><textarea name="sentence" value={this.state.sentence.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onSentenceChange} dir="rtl"/></div> 
-                <div> Ru תרגום של משפט חדש:</div>
-                <div><textarea name="sentenceTranslateRu" value={this.state.sentenceTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onSentenceTranslateRuChange}dir="ltr"/></div>
-                <div> En תרגום של משפט חדש:</div>                  
-                <div><textarea name="sentenceTranslateEn" value={this.state.sentenceTranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onSentenceTranslateEnChange}dir="ltr"/></div>
-                <div> Fr תרגום של משפט חדש:</div>                  
-                <div><textarea name="sentenceTranslateFr" value={this.state.sentenceTranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                                  onChange={this.onSentenceTranslateFrChange}dir="ltr"/></div>                                                                    
+                  <div>1משפט חדש:</div>
+                <div><textarea name="sentence1" value={this.state.sentence1.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence1Change} dir="rtl"/></div> 
+                <div> Ru1 תרגום של משפט חדש:</div>
+                <div><textarea name="sentence1TranslateRu" value={this.state.sentence1TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence1TranslateRuChange}dir="ltr"/></div>
+                <div> En1 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence1TranslateEn" value={this.state.sentence1TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence1TranslateEnChange}dir="ltr"/></div>
+                <div> Fr1 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence1TranslateFr" value={this.state.sentence1TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence1TranslateFrChange}dir="ltr"/></div>                                                                    
+                <br />
+                <div>2משפט חדש:</div>
+                <div><textarea name="sentence2" value={this.state.sentence2.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence2Change} dir="rtl"/></div> 
+                <div> Ru2 תרגום של משפט חדש:</div>
+                <div><textarea name="sentence2TranslateRu" value={this.state.sentence2TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence2TranslateRuChange}dir="ltr"/></div>
+                <div> En2 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence2TranslateEn" value={this.state.sentence2TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence2TranslateEnChange}dir="ltr"/></div>
+                <div> Fr2 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence2TranslateFr" value={this.state.sentence2TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence2TranslateFrChange}dir="ltr"/></div>                                                                    
+                <br />
+                <div>3משפט חדש:</div>
+                <div><textarea name="sentence3" value={this.state.sentence3.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence3Change} dir="rtl"/></div> 
+                <div> Ru3 תרגום של משפט חדש:</div>
+                <div><textarea name="sentence3TranslateRu" value={this.state.sentence3TranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence3TranslateRuChange}dir="ltr"/></div>
+                <div> En3 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence3TranslateEn" value={this.state.sentence3TranslateEn.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence3TranslateEnChange}dir="ltr"/></div>
+                <div> Fr3 תרגום של משפט חדש:</div>                  
+                <div><textarea name="sentence3TranslateFr" value={this.state.sentence3TranslateFr.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onSentence3TranslateFrChange}dir="ltr"/></div>                                                                    
                 <br />                  
-                <div className="remark">הקלט משפט. הכנס שם הקובץ <span dir="ltr">{root_id}S_{this.state.translationsByNumber.length+1}.wav</span></div>                                                    
+
                 {this.renderSwitch2(this.state.thisIsNewTranslation)} 
             </div> {/* end of translations */}
 
@@ -13805,12 +13983,12 @@ break
             <div id="families" className="finded">
             <p>כבר רשום במילון:</p>
             {
-            this.state.familiesByNumber.map((family, ind) =>{
+            this.state.families.map((family, ind) =>{
               return(<div>
-              <div key={ind}>{ind+1}. {family.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+              <div key={ind}>{ind+1}. {family.familyPosition} {family.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
               <div className="topFlexContainer">
-                  <button className="rootBtn" onClick = {(e) => this.getFamilyById(family._id,e)}>לבחור</button>
-                  <button className="rootBtn" onClick = {(e) => this.deleteFamilyById(family._id,e)}>למחוק</button> 
+                  <button className="rootBtn" onClick = {(e) => this.getFamilyById(family.familyId,e)}>לבחור</button>
+                  <button className="rootBtn" onClick = {(e) => this.deleteFamilyById(family.familyId,e)}>למחוק</button> 
               </div>
               </div>
                 ); 
@@ -13819,7 +13997,10 @@ break
             </div>       
             <div>מילה חדשה ששייכת לאותה משפחה:</div>
             <div><input type="text" name="family" value={this.state.family.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
-                              onChange={this.onFamilyChange} dir="rtl"/></div> 
+                              onChange={this.onFamilyChange} dir="rtl"/></div>
+            <div>מילה חדשה ששייכת לאותה משפחה-מיספר:</div>                   
+            <div><input type="text" name="familyPosition" value={this.state.familyPosition.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                              onChange={this.onFamilyPositionChange} dir="ltr"/></div>                              
             <div> Ru תרגום של מילה חדשה ששייכת לאותה משפחה:</div>
             <div><input type="text" name="familyTranslateRu" value={this.state.familyTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                               onChange={this.onFamilyTranslateRuChange} dir="ltr"/></div>  
@@ -13840,12 +14021,12 @@ break
                 <div id="families" className="finded">
                 <p>כבר רשום במילון:</p>
                 {
-                this.state.familiesverbsByNumber.map((familyverb, ind) =>{
+                this.state.familiesverbs.map((familyverb, ind) =>{
                   return(<div>
-                  <div key={ind}>{ind+1}. {familyverb.familyverb.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
+                  <div key={ind}>{ind+1}. {familyverb.familyverbPosition} {familyverb.familyverb.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                   <div className="topFlexContainer">
-                      <button className="rootBtn" onClick = {(e) => this.getFamilyverbById(familyverb._id,e)}>לבחור</button>
-                      <button className="rootBtn" onClick = {(e) => this.deleteFamilyverbById(familyverb._id,e)}>למחוק</button> 
+                      <button className="rootBtn" onClick = {(e) => this.getFamilyverbById(familyverb.familyverbId,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deleteFamilyverbById(familyverb.familyverbId,e)}>למחוק</button> 
                   </div>
                   </div>
                     ); 
@@ -13855,6 +14036,9 @@ break
                 <div>פועל חדש ששייך לאותה משפחה:</div>
                 <div><input type="text" name="familyverb" value={this.state.familyverb.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onFamilyverbChange} dir="rtl"/></div> 
+                <div>פועל חדש ששייך לאותה משפחה - מיספר:</div>
+                <div><input type="text" name="familyverbPosition" value={this.state.familyverbPosition.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
+                                  onChange={this.onFamilyverbPositionChange} dir="ltr"/></div>                   
                 <div> Ru תרגום של פועל חדש ששייך לאותה משפחה:</div>
                 <div><input type="text" name="familyverbTranslateRu" value={this.state.familyverbTranslateRu.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}
                                   onChange={this.onFamilyverbTranslateRuChange} dir="ltr"/></div>  
@@ -13876,12 +14060,12 @@ break
                 <div id="synonyms" className="finded">
                 <p>כבר רשום במילון:</p>
                 {
-                this.state.synonymsByNumber.map((synonym, ind) =>{
+                this.state.synonyms.map((synonym, ind) =>{
                   return(<div>
                   <div key={ind}>{ind+1}. {synonym.synonym.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                   <div className="topFlexContainer">
-                      <button className="rootBtn" onClick = {(e) => this.getSynonymById(synonym._id,e)}>לבחור</button>
-                      <button className="rootBtn" onClick = {(e) => this.deleteSynonymById(synonym._id,e)}>למחוק</button> 
+                      <button className="rootBtn" onClick = {(e) => this.getSynonymById(synonym.synonymId,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deleteSynonymById(synonym.synonymId,e)}>למחוק</button> 
                   </div>                  
                    </div> ); 
                 })          
@@ -13909,12 +14093,12 @@ break
                 <div id="antonyms" className="finded">
                   <p>כבר רשום במילון:</p>
                   {
-                  this.state.antonymsByNumber.map((antonym, ind) =>{
+                  this.state.antonyms.map((antonym, ind) =>{
                     return(<div>
                     <div key={ind}>{ind+1}. {antonym.antonym.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                     <div className="topFlexContainer">
-                      <button className="rootBtn" onClick = {(e) => this.getAntonymById(antonym._id,e)}>לבחור</button>
-                      <button className="rootBtn" onClick = {(e) => this.deleteAntonymById(antonym._id,e)}>למחוק</button> 
+                      <button className="rootBtn" onClick = {(e) => this.getAntonymById(antonym.antonymId,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deleteAntonymById(antonym.antonymId,e)}>למחוק</button> 
                     </div>
                     </div> );
                   })          
@@ -13941,12 +14125,12 @@ break
                   <div id="phrases" className="finded">
                   <p>כבר רשום במילון:</p>
                   {
-                  this.state.phrasesByNumber.map((phrase, ind) =>{
+                  this.state.phrases.map((phrase, ind) =>{
                     return(<div>
                     <div key={ind}>{ind+1}. {phrase.phrase.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                     <div className="topFlexContainer">
-                      <button className="rootBtn" onClick = {(e) => this.getPhraseById(phrase._id,e)}>לבחור</button>
-                      <button className="rootBtn" onClick = {(e) => this.deletePhraseById(phrase._id,e)}>למחוק</button> 
+                      <button className="rootBtn" onClick = {(e) => this.getPhraseById(phrase.phraseId,e)}>לבחור</button>
+                      <button className="rootBtn" onClick = {(e) => this.deletePhraseById(phrase.phraseId,e)}>למחוק</button> 
                     </div>                   
                      </div> ); 
                   })
@@ -14006,14 +14190,39 @@ break
     renderSwitch2(param){
       switch(param) {
         case '1':
+          let maxTranslationId = this.state.translations.length>0 ? Math.max.apply(Math, this.state.translations.map(function(translation) { return translation.translationId; })):0;
+          
           return (
-<div><p><button onClick={(e) => this.addNewSentence(this.state.translationsByNumber.length+1,e)}>הוסף משפט חדש</button></p></div>);
+<div>
+<div className="remark">
+                  הקלט משפט. הכנס שם הקובץ 
+                  <br/>
+                  <span dir="ltr">{root_id}S_1_{maxTranslationId+1}.wav</span>
+                  <br/>
+                  <span dir="ltr">{root_id}S_2_{maxTranslationId+1}.wav</span>
+                  <br/>
+                  <span dir="ltr">{root_id}S_3_{maxTranslationId+1}.wav</span>
+</div>
+  <p>
+    <button onClick={(e) => this.addNewSentence(maxTranslationId+1,e)}>הוסף משפט חדש</button>
+    
+  </p>
+  </div>);
           
         case '0':
         
        
           return (
           <div>
+               <div className="remark">
+                  הקלט משפט. הכנס שם הקובץ 
+                  <br/>
+                  <span dir="ltr">{root_id}S_1_{this.state.translationId}.wav</span>
+                  <br/>
+                  <span dir="ltr">{root_id}S_2_{this.state.translationId}.wav</span>
+                  <br/>
+                  <span dir="ltr">{root_id}S_3_{this.state.translationId}.wav</span>
+                </div>
 
             <div className="flexItem24">                    
               <button onClick= {(e) => this.updateTranslation(this.state.translationId,e)} id="btnAddNewWord">לחדש את התרגום</button> 
@@ -14029,8 +14238,9 @@ break
     renderSwitch3(param){
       switch(param) {
         case '1':
+          let maxFamilyId = this.state.families.length>0 ? Math.max.apply(Math, this.state.families.map(function(family) { return family.familyId; })):0;
           return (
-            <div><p><button onClick={(e) => this.addNewFamily(this.state.familiesByNumber.length+1,e)}>הוסף מילה חדשה ששייכת לאותה משפחה</button></p></div>);
+            <div><p><button onClick={(e) => this.addNewFamily(maxFamilyId+1,e)}>הוסף מילה חדשה ששייכת לאותה משפחה</button></p></div>);
           
         case '0':
           return (
@@ -14048,8 +14258,9 @@ break
     renderSwitch31(param){
       switch(param) {
         case '1':
+          let maxFamilyverbId = this.state.familiesverbs.length>0 ? Math.max.apply(Math, this.state.familiesverbs.map(function(familyverb) { return familyverb.familyverbId; })):0;
           return (
-            <div><p><button onClick={(e) => this.addNewFamilyverb(this.state.familiesverbsByNumber.length+1,e)}>הוסף פועל חדש ששייך לאותה משפחה</button></p></div>);
+            <div><p><button onClick={(e) => this.addNewFamilyverb(maxFamilyverbId+1,e)}>הוסף פועל חדש ששייך לאותה משפחה</button></p></div>);
           
         case '0':
           return (
@@ -14067,8 +14278,9 @@ break
     renderSwitch4(param){
       switch(param) {
         case '1':
+          let maxSynonymId = this.state.synonyms.length>0 ? Math.max.apply(Math, this.state.synonyms.map(function(synonym) { return synonym.synonymId; })):0;
           return (
-<div><p><button onClick={(e) => this.addNewSynonym(this.state.synonymsByNumber.length+1,e)}>הוסף סינונים חדש</button></p></div>);
+<div><p><button onClick={(e) => this.addNewSynonym(maxSynonymId+1,e)}>הוסף סינונים חדש</button></p></div>);
           
         case '0':
         
@@ -14090,8 +14302,9 @@ break
     renderSwitch5(param){
       switch(param) {
         case '1':
+          let maxAntonymId = this.state.antonyms.length>0 ? Math.max.apply(Math, this.state.antonyms.map(function(antonym) { return antonym.antonymId; })):0;
           return (
-<div><p><button onClick={(e) => this.addNewAntonym(this.state.antonymsByNumber.length+1,e)}>הוסף אנטונים חדש</button></p></div>);
+<div><p><button onClick={(e) => this.addNewAntonym(maxAntonymId+1,e)}>הוסף אנטונים חדש</button></p></div>);
           
         case '0':
         
@@ -14113,8 +14326,9 @@ break
     renderSwitch6(param){
       switch(param) {
         case '1':
-          return (
-<div><p><button onClick={(e) => this.addNewPhrase(this.state.phrasesByNumber.length+1,e)}>הוסף דוגמה חדשה</button></p></div>);
+          let maxPhraseId = this.state.phrases.length>0 ? Math.max.apply(Math, this.state.phrases.map(function(phrase) { return phrase.phraseId; })) : 0;
+            return (
+<div><p><button onClick={(e) => this.addNewPhrase(maxPhraseId+1,e)}>הוסף דוגמה חדשה</button></p></div>);
           
         case '0':
           return (
@@ -14134,30 +14348,42 @@ break
     renderSwitch7(param){
       switch(param) {
         case "1":
-          return(<div>{
-                    this.state.activepassivesByNumber1.map((active, ind) =>{
-                      arrOfRootsId.push(active.active_id);
+          // return(<div>{
+          //           this.state.activepassivesByNumber1.map((active, ind) =>{
+          //             arrOfRootsId.push(active.active_id);
+          //             return(<div>
+          //                      <div key={ind}>{ind+1}. {active.active_id}</div>
+          //                      <div className="topFlexContainer">
+          //                        <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(active._id,e)}>למחוק</button> 
+          //                      </div>
+          //                    </div> );
+          //           }) 
+          //         }</div>);
                       return(<div>
-                               <div key={ind}>{ind+1}. {active.active_id}</div>
+                               <div>active_id: {this.state.active_id}</div>
                                <div className="topFlexContainer">
-                                 <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(active._id,e)}>למחוק</button> 
+                                 <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
                                </div>
                              </div> );
-                    }) 
-                  }</div>);
         case "0":
-          return(<div>{
-                    this.state.activepassivesByNumber.map((passive, ind) =>{
-                      arrOfRootsId.push(passive.passive_id);
-                      return(<div>
-                               <div key={ind}>{ind+1}. {passive.passive_id}</div>
-                               <div className="topFlexContainer">
-                                 <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(passive._id,e)}>למחוק</button> 
-                               </div>
-                             </div> );
+          // return(<div>{
+          //           this.state.activepassivesByNumber.map((passive, ind) =>{
+          //             arrOfRootsId.push(passive.passive_id);
+          //             return(<div>
+          //                      <div key={ind}>{ind+1}. {passive.passive_id}</div>
+          //                      <div className="topFlexContainer">
+          //                        <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(passive._id,e)}>למחוק</button> 
+          //                      </div>
+          //                    </div> );
                         
-                    }) 
-                  }</div>); 
+          //           }) 
+          //         }</div>);
+          return(<div>
+            <div>passive_id: {this.state.passive_id}</div>
+            <div className="topFlexContainer">
+              <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
+            </div>
+          </div> ); 
         default:
           return(<div> </div>);
       }
@@ -14250,7 +14476,7 @@ break
                               <option>התפעל_השתחרר</option>
                               <option>התפעל_הצטלם</option>
                               <option>התפעל_התארגן</option>
-                              <option>התפעל_התגונן</option>
+                              <option>התפעל_התלונן</option>
                               <option>התפעל_התבונן</option>
                               <option>התפעל_הסתובב</option>
                               <option>התפעל_התפנה</option>

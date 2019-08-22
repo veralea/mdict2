@@ -32,9 +32,7 @@ getRootsBySearch(e){
           this.setState({
               RootsBySearch: data,
               query: this.state.query
-          })
-      }).then(data1 =>{
-
+          });
       });
   }
 
@@ -52,12 +50,15 @@ getRootsBySearch(e){
      </form>
      {
       this.state.RootsBySearch.map((RootBySearch, index) => {
-        
-        // getDescriptionByRootId({root_id});
-        return ( <ResultCard rootId = {RootBySearch.root_id} inf = {RootBySearch.inf} translation = {RootBySearch.translations.translateRu} key={index} />
+        return(<div key={index}>
+          {
+          RootBySearch.translations.map((translate,ind)=>{
+                return ( <ResultCard rootId = {translate.translateRu}  key={ind} />
+                );
+          })
+          }
+        </div>  
         );
-  
-
       })
      }
     </div>

@@ -66,10 +66,6 @@ MongoClient.connect(url, function(err, db) {
     console.log("Collection synonyms created!");
     // db.close();
   });
-  dbo.createCollection("sentencies", function(err, res) {
-    if (err) throw err;
-    console.log("Collection sentensies created!");
-  });
 
   dbo.createCollection("activepassives", function(err, res) {
     if (err) throw err;
@@ -120,114 +116,44 @@ app.use("/auth", authRouter);
 //   }
 // });
 
-app.get("/gettranslation/:_id", (req, res) => {
-  const _id = req.params._id;
+app.get("/countroots/", (req, res) => {
 
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
     var ObjectID = require("mongodb").ObjectID;
     dbo
-      .collection("translations")
-      .find({ _id: ObjectID(_id) })
+      .collection("roots")
+      .find({})
       .toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
-        console.log(result);
+        console.log(result.length);
         db.close();
       });
   });
 });
-app.get("/getfamily/:_id", (req, res) => {
-  const _id = req.params._id;
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("families")
-      .find({ _id: ObjectID(_id) })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.log(result);
-        db.close();
-      });
-  });
-});
-app.get("/getfamilyverb/:_id", (req, res) => {
-  const _id = req.params._id;
+// app.get("/gettranslation/:_id", (req, res) => {
+//   const _id = req.params._id;
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("familiesverbs")
-      .find({ _id: ObjectID(_id) })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.log(result);
-        db.close();
-      });
-  });
-});
-app.get("/getsynonym/:_id", (req, res) => {
-  const _id = req.params._id;
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("mordict");
+//     var ObjectID = require("mongodb").ObjectID;
+//     dbo
+//       .collection("translations")
+//       .find({ _id: ObjectID(_id) })
+//       .toArray(function(err, result) {
+//         if (err) throw err;
+//         res.send(result);
+//         console.log(result);
+//         db.close();
+//       });
+//   });
+// });
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("synonyms")
-      .find({ _id: ObjectID(_id) })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.log(result);
-        db.close();
-      });
-  });
-});
-app.get("/getantonym/:_id", (req, res) => {
-  const _id = req.params._id;
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("antonyms")
-      .find({ _id: ObjectID(_id) })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.log(result);
-        db.close();
-      });
-  });
-});
-app.get("/getphrase/:_id", (req, res) => {
-  const _id = req.params._id;
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("phrases")
-      .find({ _id: ObjectID(_id) })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.log(result);
-        db.close();
-      });
-  });
-});
+// get one
 
 app.get("/getroot/:root_id", (req, res) => {
   const root_id = req.params.root_id;
@@ -246,80 +172,67 @@ app.get("/getroot/:root_id", (req, res) => {
   });
 });
 
+//get many
+
 app.get("/gettranslations/:root_id", (req, res) => {
   const root_id = req.params.root_id;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
     dbo
-      .collection("translations")
+      .collection("roots")
       .find({ root_id: root_id })
       .toArray(function(err, result) {
         if (err) throw err;
+        console.dir(result);
         res.send(result);
         db.close();
       });
   });
 });
 
-app.get("/getactivepassives/:active_id", (req, res) => {
-  const active_id = req.params.active_id;
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    dbo
-      .collection("activepassives")
-      .find({ active_id: active_id })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        console.dir(result);
-        res.send(result);
-        db.close();
-      });
-  });
-});
-app.get("/getactivepassives1/:passive_id", (req, res) => {
-  const passive_id = req.params.passive_id;
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    dbo
-      .collection("activepassives")
-      .find({ passive_id: passive_id })
-      .toArray(function(err, result) {
-        if (err) throw err;
-        console.dir(result);
-        res.send(result);
-        db.close();
-      });
-  });
-});
-app.get("/getphrases/:root_id", (req, res) => {
+app.get("/getpassive/:root_id", (req, res) => {
   const root_id = req.params.root_id;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
     dbo
-      .collection("phrases")
+      .collection("roots")
       .find({ root_id: root_id })
       .toArray(function(err, result) {
         if (err) throw err;
+        console.dir(result);
         res.send(result);
         db.close();
       });
   });
 });
+app.get("/getactive/:root_id", (req, res) => {
+  const root_id = req.params.root_id;
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+    dbo
+      .collection("roots")
+      .find({ root_id: root_id })
+      .toArray(function(err, result) {
+        if (err) throw err;
+        console.dir(result);
+        res.send(result);
+        db.close();
+      });
+  });
+});
+
 
 app.get("/getfamilies/:root_id", (req, res) => {
   const root_id = req.params.root_id;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
-    var mysort = { family: 1 };
     dbo
-      .collection("families")
+      .collection("roots")
       .find({ root_id: root_id })
-      .sort(mysort)
       .toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
@@ -333,11 +246,10 @@ app.get("/getfamiliesverbs/:root_id", (req, res) => {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
-    var mysort = { familyverb: 1 };
+
     dbo
-      .collection("familiesverbs")
+      .collection("roots")
       .find({ root_id: root_id })
-      .sort(mysort)
       .toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
@@ -352,7 +264,7 @@ app.get("/getsynonyms/:root_id", (req, res) => {
     if (err) throw err;
     var dbo = db.db("mordict");
     dbo
-      .collection("synonyms")
+      .collection("roots")
       .find({ root_id: root_id })
       .toArray(function(err, result) {
         if (err) throw err;
@@ -368,7 +280,7 @@ app.get("/getantonyms/:root_id", (req, res) => {
     if (err) throw err;
     var dbo = db.db("mordict");
     dbo
-      .collection("antonyms")
+      .collection("roots")
       .find({ root_id: root_id })
       .toArray(function(err, result) {
         if (err) throw err;
@@ -378,13 +290,13 @@ app.get("/getantonyms/:root_id", (req, res) => {
   });
 });
 
-app.get("/getsentencies/:root_id", (req, res) => {
+app.get("/getphrases/:root_id", (req, res) => {
   const root_id = req.params.root_id;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
     dbo
-      .collection("sentencies")
+      .collection("roots")
       .find({ root_id: root_id })
       .toArray(function(err, result) {
         if (err) throw err;
@@ -393,6 +305,7 @@ app.get("/getsentencies/:root_id", (req, res) => {
       });
   });
 });
+
 
 app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
   const benjan = req.params.benjan;
@@ -421,150 +334,898 @@ app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
       });
   });
 });
-
-app.get("/getrootsbysearch/:search", (req, res) => {
-  var rootIds = [];
-  const search = req.params.search;
-  var results = [];
+app.get("/getverbsbyletters/:root_id/:letter1/:letter2/:letter3/:letter4", (req, res) => {
+  const root_id = req.params.root_id;
+  const letter1 = req.params.letter1;
+  const letter2 = req.params.letter2;
+  const letter3 = req.params.letter3;
+  const letter4 = req.params.letter4;
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
-    var query = { p3smS: search };
+    var query = {
+      root_id: {$ne:root_id},
+      letter1: letter1,
+      letter2: letter2,
+      letter3: letter3,
+      letter4: letter4
+    };
     dbo
       .collection("roots")
       .find(query)
-      .toArray(function(err, results) {
+      .toArray(function(err, result) {
         if (err) throw err;
-        results.map(function(result) {
-          rootIds.push(result.root_id);
-          // var num = rootId.root_id;
-          // dbo.collection("translations").find({root_id: num}).toArray(function(err,result1){
-          //     if (err) throw err;
-          //     result1.map(function(translate){
-          //       rootIds.push(translate);
-
-          //     });
-          //   });
-        });
+        res.send(result);
+        console.dir(result);
         db.close();
-        console.dir(rootIds);
-        res.send(results);
       });
   });
 });
 
-app.get(
-  "/getverbsbyletters/:benjan/:root_id/:letter1/:letter2/:letter3/:letter4",
-  (req, res) => {
-    const benjan = req.params.benjan;
-    const root_id = req.params.root_id;
-    const letter1 = req.params.letter1;
-    const letter2 = req.params.letter2;
-    const letter3 = req.params.letter3;
-    const letter4 = req.params.letter4;
+////////////////////////////////////////////////////////////////////////
+// for update roots numbers
+
+app.put("/updateallrootnumbers/", (req, res)=>{
+  var rootIds = [];
+  
+   function one() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {$or:[{root_id:"770"},{root_id:"5298"}]};
+        dbo.collection("roots").find(query).toArray(function(err, results) {
+           if (err) throw err;
+           results.map((result,key)=>{
+            let n = String(key+1);
+            let s = n+".wav";
+            let tr=[];
+            result.translations.map((translation)=>{
+              let s1S = n+"S_1_"+String(translation.translationId)+".wav";
+              tr.push({
+                translationId: translation.translationId, preposition: translation.preposition, translateRu: translation.translateRu, translateEn: translation.translateEn,
+                translateFr: translation.translateFr, sentence: translation.sentence, sentence1: translation.sentence1, sentence2: translation.sentence2,
+                sentence3: translation.sentence3,
+                sentence1TranslateRu: translation.sentence1TranslateRu,
+                sentence2TranslateRu: translation.sentence2TranslateRu,
+                sentence3TranslateRu: translation.sentence3TranslateRu,
+                sentenceTranslateRu: translation.sentenceTranslateRu,
+                sentenceTranslateEn: translation.sentenceTranslateEn,
+                sentence1TranslateEn: translation.sentence1TranslateEn,
+                sentence2TranslateEn: translation.sentence2TranslateEn,
+                sentence3TranslateEn: translation.sentence3TranslateEn,
+                sentenceTranslateFr: translation.sentenceTranslateFr,
+                sentence1TranslateFr: translation.sentence1TranslateFr,
+                sentence2TranslateFr: translation.sentence2TranslateFr,
+                sentence3TranslateFr: translation.sentence3TranslateFr,
+                sentenceSound: translation.sentenceSound,
+                sentence1Sound:s1S,
+                sentence2Sound:n+"S_2_"+translation.translationId+".wav",
+                sentence3Sound:n+"S_3_"+translation.translationId+".wav"
+              });
+              resolve();
+            });
+            rootIds.push({
+              root_id:result.root_id,
+              sound: s,
+              translations:tr
+            }); 
+          });  
+            console.dir(rootIds);
+            console.log("one"); 
+           db.close();
+                 
+        }); 
+      })  
+    });
+  }
+  
+  function two() {
+    
+    return new Promise(resolve => {
+
+      rootIds.map((rootId,key)=>{
+        let num = String(key+1);
+        // let num = "770";
+        let root_id_old = rootId.root_id;
+        let sound = rootId.sound;
+        let translations = rootId.translations;
+        console.log(num);
+        console.log(root_id_old);
+        console.log(sound);
+
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id:root_id_old};
+        var newvalues ={
+          $set:{
+            root_id:num, 
+            sound:sound,
+            translations: translations
+          }};
+        var newactive ={$set:{active_id:num}};
+        var newpassive = {$set:{passive_id:num}};
+        dbo.collection("roots").updateMany(query,newvalues,function(err, results) {
+          if (err) throw err;
+           console.log("eight");   
+       });
+      //   dbo.collection("translations").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("two");      
+      //  });
+      //   dbo.collection("synonyms").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("three");      
+      //  });
+      //   dbo.collection("antonyms").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("four");      
+      //  });
+      //   dbo.collection("families").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("five");      
+      //  });
+      //   dbo.collection("familiesverbs").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("six");    
+      //  });
+      //   dbo.collection("phrases").updateMany(query,newvalues,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("seven");    
+      //  });
+      //   dbo.collection("activepassives").updateMany(query,newactive,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("nine");     
+      //  });
+      //   dbo.collection("activepassives").updateMany(query,newpassive,function(err, results) {
+      //     if (err) throw err;
+      //      console.log("ten");
+      //  }); 
+       db.close();
+       resolve();
+      })
+
+    });
+
+    });
+  }
+
+  //  function three() {
+    
+  //   return new Promise(resolve => {
+
+  //     rootIds.map((rootId,key)=>{
+  //       let num = String(key+1);
+  //       let sound = "";
+  //      MongoClient.connect(url, function(err, db) {
+  //        if (err) throw err;
+  //        var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={
+  //         $set:{
+  //           sound: sound
+  //         }
+  //       };
+  //        dbo.collection("roots").updateOne(query,newvalues,function(err, result) {
+  //          if (err) throw err;
+  //           sound =  "1";
+  //          console.log("three");
+  //         db.close();
+  //         resolve();      
+  //       }); 
+  //      })
+
+  //    });
+
+  //   });
+  //  }
+  // function four() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = String(key+1);
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={
+  //         $set:{
+  //           root_id:num
+  //         }
+  //       };
+ 
+  //     })
+  //   });
+  //   });
+  // }
+  // function five() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={
+  //         $set:{
+  //           root_id:toString(num)
+  //         }
+  //       };
+  //       dbo.collection("families").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("five");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+  
+  // function six() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={$set:{root_id:toString(num)}};
+  //       dbo.collection("familiesverbs").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("six");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+  // function seven() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={$set:{root_id:toString(num)}};
+  //       dbo.collection("phrases").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("seven");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+  // function eight() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {root_id:rootId};
+  //       var newvalues ={$set:{root_id:toString(num)}};
+  //       dbo.collection("roots").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("eight");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+  // function nine() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {active_id:rootId};
+  //       var newvalues ={$set:{active_id:toString(num)}};
+  //       dbo.collection("activepassives").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("nine");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+  // function ten() {
+  //   return new Promise(resolve => {
+  //     rootIds.map((rootId,key)=>{
+  //       let num = key+1;
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       var dbo = db.db("mordict");
+  //       var query = {passive_id:rootId};
+  //       var newvalues ={$set:{passive_id:toString(num)}};
+  //       dbo.collection("activepassives").updateMany(query,newvalues,function(err, results) {
+  //         if (err) throw err;
+  //          console.log("ten");
+  //         db.close();
+  //         resolve();      
+  //      }); 
+  //     })
+  //   });
+  //   });
+  // }
+
+  
+  one().then(() => two())
+  // .then(() => three())
+  // .then(() => four())
+  // .then(() => five()).then(() => six()).then(() => seven()).then(() => eight())
+  // .then(() => nine()).then(() => ten())
+  ;
+   
+});
+
+app.get("/getrootsbysearch/:search", (req, res)=>{
+  const search = req.params.search;
+  var rootId = "";
+  var translations = [];
+  var synonyms = [];
+  var antonyms = []; 
+  var phrases = [];
+  var families = [];
+  var familiesverbs = [];
+  var active_id = "_";
+  var passive_id = "_"
+   function one() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id:"4842"};//дописать множественный запрос "или" на все поля из "roots"
+        dbo.collection("roots").findOne(query, function(err, results) {
+           if (err) throw err;
+           
+            rootId = results.root_id;
+            console.log(rootId);
+            console.log("one"); 
+           db.close();
+           resolve();      
+        }); 
+ 
+      })  
+    });
+  }
+  
+  function two() {
+    
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id: rootId};
+        dbo.collection("translations").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result,key)=>{
+            let num = key+1;
+            translations.push({
+              translationId: num,
+              preposition: result.preposition,
+              translateRu: result.translateRu,
+              translateEn: result.translateEn,
+              translateFr: result.translateFr,
+              sentence: result.sentence,
+              sentence1: result.sentence1,
+              sentence2: result.sentence2,
+              sentence3: result.sentence3,
+              sentence1TranslateRu: result.sentence1TranslateRu,
+              sentence2TranslateRu: result.sentence2TranslateRu,
+              sentence3TranslateRu: result.sentence3TranslateRu,
+              sentenceTranslateRu: result.sentenceTranslateRu,
+              sentenceTranslateEn: result.sentenceTranslateEn,
+              sentence1TranslateEn: result.sentence1TranslateEn,
+              sentence2TranslateEn: result.sentence2TranslateEn,
+              sentence3TranslateEn: result.sentence3TranslateEn,
+              sentenceTranslateFr: result.sentenceTranslateFr,
+              sentence1TranslateFr: result.sentence1TranslateFr,
+              sentence2TranslateFr: result.sentence2TranslateFr,
+              sentence3TranslateFr: result.sentence3TranslateFr,
+              sentenceSound: result.sentenceSound,
+              sentence1Sound: result.sentence1Sound,
+              sentence2Sound: rootId+"S_2_"+ num + ".wav",
+              sentence3Sound: rootId+"S_2_"+ num + ".wav"
+            });
+           });
+
+           console.log("two");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+
+  function twoOne() {
+    
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id: rootId};
+        dbo.collection("synonyms").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result,key)=>{
+            synonyms.push({
+              synonymId: key+1,
+              synonym: result.synonym,
+              synonymTranslateRu: result.synonymTranslateRu,
+              synonymTranslateEn: result.synonymTranslateEn,
+              synonymTranslateFr: result.synonymTranslateFr
+            });
+           });
+
+           console.log("twoOne");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+
+  function twoTwo() {
+    
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id: rootId};
+        dbo.collection("antonyms").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result,key)=>{
+            antonyms.push({
+              antonymId: key+1,
+              antonym: result.antonym,
+              antonymTranslateRu: result.antonymTranslateRu,
+              antonymTranslateEn: result.antonymTranslateEn,
+              antonymTranslateFr: result.antonymTranslateFr
+            });
+           });
+
+           console.log("twoTwo");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+
+  function twoThree() {
+    
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id: rootId};
+        dbo.collection("phrases").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result,key)=>{
+            phrases.push({
+              phraseId: key+1,
+              phrase: result.phrase,
+              phraseTranslateRu: result.phraseTranslateRu,
+              phraseTranslateEn: result.phraseTranslateEn,
+              phraseTranslateFr: result.phraseTranslateFr
+            });
+           });
+
+           console.log("twoThree");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+
+  function twoFour() {
+      return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {active_id: rootId};
+        dbo.collection("activepassives").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result)=>{
+            passive_id = result.passive_id;
+           });
+
+           console.log("twoFour");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+
+  function twoFive() {
+    return new Promise(resolve => {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var query = {
-        letter1: letter1,
-        letter2: letter2,
-        letter3: letter3,
-        letter4: letter4,
-        root_id: { $not: { $eq: root_id } },
-        benjan: { $not: { $eq: benjan } }
-      };
-      dbo
-        .collection("roots")
-        .find(query)
-        .toArray(function(err, result) {
-          if (err) throw err;
-          res.send(result);
-          console.dir(result);
-          db.close();
-        });
-    });
+      var query = {passive_id: rootId};
+      dbo.collection("activepassives").find(query).toArray(function(err, results) {
+        if (err) throw err;
+        results.map((result)=>{
+          active_id = result.active_id;
+         });
+
+         console.log("twoFive");
+        db.close();
+        resolve();      
+     }); 
+    })
+  });
+}
+
+function twoSix() {
+    
+  return new Promise(resolve => {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      var query = {root_id: rootId};
+      dbo.collection("families").find(query).toArray(function(err, results) {
+        if (err) throw err;
+        results.map((result,key)=>{
+          families.push({
+            familyId: key+1,
+            family: result.family,
+            familyPosition: result.familyPosition,
+            familyTranslateRu: result.familyTranslateRu,
+            familyTranslateEn: result.familyTranslateEn,
+            familyTranslateFr: result.familyTranslateFr
+          });
+         });
+
+         console.log("twoSix");
+        db.close();
+        resolve();      
+     }); 
+    })
+  });
+}
+
+function twoSeven() {
+    
+  return new Promise(resolve => {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      var query = {root_id: rootId};
+      dbo.collection("familiesverbs").find(query).toArray(function(err, results) {
+        if (err) throw err;
+        results.map((result,key)=>{
+          familiesverbs.push({
+            familyverbId: key+1,
+            familyverb: result.familyverb,
+            familyverbPosition: result.familyverbPosition,
+            familyverbTranslateRu: result.familyverbTranslateRu,
+            familyverbTranslateEn: result.familyverbTranslateEn,
+            familyverbTranslateFr: result.familyverbTranslateFr
+          });
+         });
+
+         console.log("twoSeven");
+        db.close();
+        resolve();      
+     }); 
+    })
+  });
+}
+
+
+  function three() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("mordict");
+          var query = {root_id: rootId};
+                let insertValue = {
+                  $set:{
+                    translations: translations,
+                    synonyms: synonyms,
+                    antonyms: antonyms,
+                    phrases: phrases,
+                    passive_id: passive_id,
+                    active_id: active_id,
+                    families: families,
+                    familiesverbs: familiesverbs
+
+                  }
+                };
+                dbo
+                .collection("roots")
+                .updateOne(query, insertValue, function(err, result) {
+                  if (err) throw err;
+
+                  console.log("three");
+                  db.close();
+                  resolve();
+                });
+        
+       });
+    
+      });
+  
   }
-);
-app.put(
-  "/updatetranslation/:_id/:preposition/:translateRu/:translateEn/:translateFr/:sentence" +
-    "/:sentenceTranslateRu/:sentenceTranslateEn/:sentenceTranslateFr",
-  (req, res) => {
-    const _id = req.params._id;
-    const preposition = req.params.preposition;
-    const translateRu = req.params.translateRu;
-    const translateEn = req.params.translateEn;
-    const translateFr = req.params.translateFr;
-    const sentence = req.params.sentence;
-    const sentenceTranslateRu = req.params.sentenceTranslateRu;
-    const sentenceTranslateEn = req.params.sentenceTranslateEn;
-    const sentenceTranslateFr = req.params.sentenceTranslateFr;
+  
+  function four(){
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      var query = {root_id: rootId};
+      dbo.collection("roots").find(query).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+        console.dir(result);
+        db.close();
+      });  
+    });
+    //  
+  }
+  
+  one().then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFive()).then(() => twoSix()).then(() => twoSeven()).then(() => three())
+  .then(() => four());
+  
+       
+});
+
+app.get(
+  "/getallsameroots/",
+  (req,res) => {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
       var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
-      var newvalues = {
-        $set: {
-          preposition: preposition,
-          translateRu: translateRu,
-          translateEn: translateEn,
-          translateFr: translateFr,
-          sentence: sentence,
-          sentenceTranslateRu: sentenceTranslateRu,
-          sentenceTranslateEn: sentenceTranslateEn,
-          sentenceTranslateFr: sentenceTranslateFr
-        }
-      };
-      dbo
-        .collection("translations")
-        .updateOne(myquery, newvalues, function(err, result) {
-          if (err) throw err;
-          console.log("1 translation updated");
-          res.send(result);
-          db.close();
+      dbo.collection("roots")
+      .aggregate([{$group : {_id : "$root_id", same_root_id : {$sum : 1}}}])
+      .toArray(function(err, results1) {
+        if (err) throw err;
+        res.send(results1);
+        var fs = require('fs');
+        var filename = 'output.txt';
+        var str = JSON.stringify(results1, null, 4);
+        
+        fs.writeFile(filename, str, function(err){
+            if(err) {
+                console.log(err)
+            } else {
+                console.log('File written!');
+                
+            }
         });
+
+       });
+    });
+  }  
+);
+app.put("/updatealltranslations/",(req, res) => {
+  var sentence1 = "";
+  var sentence1TranslateRu = "";
+  var sentence1TranslateEn = "";
+  var sentence1TranslateFr = "";
+  var sentence1Sound = "";
+  var translateEn = "";
+  var rootId = "";
+   function one() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {$or:[{sentence1:"_"},{ 'sentence1' : { '$exists' : false}}]};
+        dbo.collection("translations").findOne(query,function(err, results) {
+           if (err) throw err;
+
+            sentence1 = results.sentence;
+            sentence1TranslateRu = results.sentenceTranslateRu;
+            sentence1TranslateEn = results.sentenceTranslateEn;
+            sentence1TranslateFr = results.sentenceTranslateFr;
+            sentence1Sound = results.sentenceSound;
+            translateEn = results.translateEn;
+            rootId = results.root_id;
+            console.log(results.sentence);
+            console.log(results.translateEn);
+            console.log("one"); 
+           db.close();
+           resolve();      
+        }); 
+      })  
+    });
+  }
+
+  function two() {
+    return new Promise(resolve => {
+
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("mordict");
+          var query = {translateEn: translateEn, root_id: rootId};
+                let insertValue = {
+                  $set:{
+                    sentence1: sentence1,
+                    sentence1TranslateRu: sentence1TranslateRu,
+                    sentence1TranslateEn: sentence1TranslateEn,
+                    sentence1TranslateFr: sentence1TranslateFr,
+                    sentence1Sound: sentence1Sound
+                  }
+                };
+                dbo.collection("translations").updateOne(query, insertValue, function(err, result) {
+                  if (err) throw err;
+                  console.log("two");
+                  db.close();
+                  res.send(result);
+                });
+       });
+
+
+
+      });
+  }
+  one().then(() => two());
+  // setInterval(one().then(() => two()), 20000);   
+});
+
+//update
+
+app.put('/updatetranslation/:root_id/:translationId/:preposition/:translateRu/:translateEn/:translateFr/:sentence1/:sentence2/:sentence3'+
+'/:sentence1TranslateRu/:sentence2TranslateRu/:sentence3TranslateRu'+
+'/:sentence1TranslateEn/:sentence2TranslateEn/:sentence3TranslateEn'+
+'/:sentence1TranslateFr/:sentence2TranslateFr/:sentence3TranslateFr',(req, res) =>{
+   const root_id = req.params.root_id;
+   const translationId = Number(req.params.translationId);
+   const preposition = req.params.preposition;
+   const translateRu = req.params.translateRu;
+   const translateEn = req.params.translateEn;
+   const translateFr = req.params.translateFr;
+   const sentence1 = req.params.sentence1;
+   const sentence2 = req.params.sentence2;
+   const sentence3 = req.params.sentence3;
+   const sentence1TranslateRu = req.params.sentence1TranslateRu; 
+   const sentence2TranslateRu = req.params.sentence2TranslateRu;
+   const sentence3TranslateRu = req.params.sentence3TranslateRu;
+   const sentence1TranslateEn = req.params.sentence1TranslateEn; 
+   const sentence2TranslateEn = req.params.sentence2TranslateEn;
+   const sentence3TranslateEn = req.params.sentence3TranslateEn;  
+   const sentence1TranslateFr = req.params.sentence1TranslateFr; 
+   const sentence2TranslateFr = req.params.sentence2TranslateFr; 
+   const sentence3TranslateFr = req.params.sentence3TranslateFr; 
+   MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      var ObjectID = require('mongodb').ObjectID;
+      var newvalues = {
+        translationId: translationId,
+         preposition: preposition,
+         translateRu: translateRu,
+         translateEn: translateEn,
+         translateFr: translateFr,
+         sentence: sentence1,
+         sentence1: sentence1,
+         sentence2: sentence2,
+         sentence3: sentence3,
+         sentenceTranslateRu: sentence1TranslateRu,
+         sentence1TranslateRu: sentence1TranslateRu,
+         sentence2TranslateRu: sentence2TranslateRu,
+         sentence3TranslateRu: sentence3TranslateRu,
+         sentenceTranslateEn: sentence1TranslateEn,
+         sentence1TranslateEn: sentence1TranslateEn,
+         sentence2TranslateEn: sentence2TranslateEn,
+         sentence3TranslateEn: sentence3TranslateEn,
+         sentenceTranslateFr: sentence1TranslateFr,
+         sentence1TranslateFr: sentence1TranslateFr,  
+         sentence2TranslateFr: sentence2TranslateFr, 
+         sentence3TranslateFr: sentence3TranslateFr,
+         sentenceSound: root_id+"S_"+translationId  
+     };
+
+      dbo.collection("roots")
+      .updateOne({root_id:root_id, "translations.translationId":translationId}, {$set:{"translations.$":newvalues}}, function(err, result) {
+        if (err) throw err;
+        console.dir(result);
+        res.send(result);
+        db.close();
+      });
+    });
+})
+
+app.put("/updateallfamilies/",(req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+    var ObjectID = require("mongodb").ObjectID;
+    var myquery = {familyPosition:{$exists: false}};
+    var newvalues = {
+      $set: {
+
+        familyPosition: "_"
+      }
+    };
+    dbo
+      .collection("families")
+      .updateMany(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        console.log("1 family updated");
+        res.send(result);
+        db.close();
+      });
     });
   }
 );
+app.put("/updateallfamiliesverb/",(req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+    var ObjectID = require("mongodb").ObjectID;
+    var myquery = {familyverbPosition:{$exists:false}};
+    var newvalues = {
+      $set: {
+
+        familyverbPosition: "_"
+      }
+    };
+    dbo
+      .collection("familiesverbs")
+      .updateMany(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        console.log("1 familyverb updated");
+        res.send(result);
+        db.close();
+      });
+    });
+  }
+);
+
 app.put(
-  "/updatefamily/:_id/:family/:familyTranslateRu/:familyTranslateEn/:familyTranslateFr",
+  "/updatefamily/:root_id/:familyId/:family/:familyPosition/:familyTranslateRu/:familyTranslateEn/:familyTranslateFr",
   (req, res) => {
-    const _id = req.params._id;
+    const root_id = req.params.root_id;
+    const familyId = Number(req.params.familyId);
     const family = req.params.family;
+    const familyPosition = req.params.familyPosition;
     const familyTranslateRu = req.params.familyTranslateRu;
     const familyTranslateEn = req.params.familyTranslateEn;
-    const familyTranslateFr = req.params.familyTranslateFr;
-
+    const familyTranslateFr = req.params.familyTranslateFr;    
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
       var newvalues = {
-        $set: {
+          familyId: familyId,
           family: family,
+          familyPosition: familyPosition,
           familyTranslateRu: familyTranslateRu,
           familyTranslateEn: familyTranslateEn,
-          familyTranslateFr: familyTranslateFr
-        }
+          familyTranslateFr: familyTranslateFr        
       };
-      dbo
-        .collection("families")
-        .updateOne(myquery, newvalues, function(err, result) {
+       dbo.collection("roots")
+       .updateOne({root_id:root_id, "families.familyId":familyId}, {$set:{"families.$":newvalues}}, function(err, result) {
           if (err) throw err;
           console.log("1 family updated");
           res.send(result);
           db.close();
         });
-    });
-  }
-);
+      });
+    }
+  );
 
 app.put(
-  "/updatefamilyverb/:_id/:familyverb/:familyverbTranslateRu/:familyverbTranslateEn/:familyverbTranslateFr",
+  "/updatefamilyverb/:root_id/:familyverbId/:familyverb/:familyverbPosition/:familyverbTranslateRu/:familyverbTranslateEn/:familyverbTranslateFr",
   (req, res) => {
-    const _id = req.params._id;
+    const root_id = req.params.root_id;
+    const familyverbId = Number(req.params.familyverbId);
     const familyverb = req.params.familyverb;
+    const familyverbPosition = req.params.familyverbPosition;
     const familyverbTranslateRu = req.params.familyverbTranslateRu;
     const familyverbTranslateEn = req.params.familyverbTranslateEn;
     const familyverbTranslateFr = req.params.familyverbTranslateFr;
@@ -572,19 +1233,16 @@ app.put(
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
       var newvalues = {
-        $set: {
+          familyverbId: familyverbId,
           familyverb: familyverb,
+          familyverbPosition: familyverbPosition,
           familyverbTranslateRu: familyverbTranslateRu,
           familyverbTranslateEn: familyverbTranslateEn,
           familyverbTranslateFr: familyverbTranslateFr
-        }
       };
-      dbo
-        .collection("familiesverbs")
-        .updateOne(myquery, newvalues, function(err, result) {
+      dbo.collection("roots")
+      .updateOne({root_id:root_id, "familiesverbs.familyverbId":familyverbId}, {$set:{"familiesverbs.$":newvalues}}, function(err, result) {
           if (err) throw err;
           console.log("1 familyverb updated");
           res.send(result);
@@ -595,9 +1253,10 @@ app.put(
 );
 
 app.put(
-  "/updatesynonym/:_id/:synonym/:synonymTranslateRu/:synonymTranslateEn/:synonymTranslateFr",
+  "/updatesynonym/:root_id/:synonymId/:synonym/:synonymTranslateRu/:synonymTranslateEn/:synonymTranslateFr",
   (req, res) => {
-    const _id = req.params._id;
+    const root_id = req.params.root_id;
+    const synonymId = Number(req.params.synonymId);
     const synonym = req.params.synonym;
     const synonymTranslateRu = req.params.synonymTranslateRu;
     const synonymTranslateEn = req.params.synonymTranslateEn;
@@ -606,19 +1265,15 @@ app.put(
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
       var newvalues = {
-        $set: {
+          synonymId: synonymId,
           synonym: synonym,
           synonymTranslateRu: synonymTranslateRu,
           synonymTranslateEn: synonymTranslateEn,
           synonymTranslateFr: synonymTranslateFr
-        }
       };
-      dbo
-        .collection("synonyms")
-        .updateOne(myquery, newvalues, function(err, result) {
+      dbo.collection("roots")
+      .updateOne({root_id:root_id, "synonyms.synonymId":synonymId}, {$set:{"synonyms.$":newvalues}}, function(err, result) {
           if (err) throw err;
           console.log("1 synonym updated");
           res.send(result);
@@ -628,9 +1283,10 @@ app.put(
   }
 );
 app.put(
-  "/updateantonym/:_id/:antonym/:antonymTranslateRu/:antonymTranslateEn/:antonymTranslateFr",
+  "/updateantonym/:root_id/:antonymId/:antonym/:antonymTranslateRu/:antonymTranslateEn/:antonymTranslateFr",
   (req, res) => {
-    const _id = req.params._id;
+    const root_id = req.params.root_id;
+    const antonymId = Number(req.params.antonymId);
     const antonym = req.params.antonym;
     const antonymTranslateRu = req.params.antonymTranslateRu;
     const antonymTranslateEn = req.params.antonymTranslateEn;
@@ -639,19 +1295,15 @@ app.put(
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
       var newvalues = {
-        $set: {
+          antonymId: antonymId,
           antonym: antonym,
           antonymTranslateRu: antonymTranslateRu,
           antonymTranslateEn: antonymTranslateEn,
           antonymTranslateFr: antonymTranslateFr
-        }
       };
-      dbo
-        .collection("antonyms")
-        .updateOne(myquery, newvalues, function(err, result) {
+      dbo.collection("roots")
+      .updateOne({root_id:root_id, "antonyms.antonymId":antonymId}, {$set:{"antonyms.$":newvalues}}, function(err, result) {
           if (err) throw err;
           console.log("1 antonym updated");
           res.send(result);
@@ -661,9 +1313,10 @@ app.put(
   }
 );
 app.put(
-  "/updatephrase/:_id/:phrase/:phraseTranslateRu/:phraseTranslateEn/:phraseTranslateFr",
+  "/updatephrase/:root_id/:phraseId/:phrase/:phraseTranslateRu/:phraseTranslateEn/:phraseTranslateFr",
   (req, res) => {
-    const _id = req.params._id;
+    const root_id = req.params.root_id;
+    const phraseId = Number(req.params.phraseId);
     const phrase = req.params.phrase;
     const phraseTranslateRu = req.params.phraseTranslateRu;
     const phraseTranslateEn = req.params.phraseTranslateEn;
@@ -672,19 +1325,15 @@ app.put(
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-      var myquery = { _id: ObjectID(_id) };
       var newvalues = {
-        $set: {
+          phraseId: phraseId,
           phrase: phrase,
           phraseTranslateRu: phraseTranslateRu,
           phraseTranslateEn: phraseTranslateEn,
           phraseTranslateFr: phraseTranslateFr
-        }
       };
-      dbo
-        .collection("phrases")
-        .updateOne(myquery, newvalues, function(err, result) {
+      dbo.collection("roots")
+      .updateOne({root_id:root_id, "phrases.phraseId":phraseId}, {$set:{"phrases.$":newvalues}}, function(err, result) {
           if (err) throw err;
           console.log("1 phrase updated");
           res.send(result);
@@ -867,6 +1516,8 @@ app.put(
   }
 );
 
+//insert new
+
 app.post(
   "/newroot/:root_id/:benjan/:letter1/:letter2/:letter3/:letter4/:descript/:sound/:inf/:infS/:p1s/:p1sS/:p2sm/:p2smS/:p2sw/:p2swS/:p3sm/:p3smS/" +
     ":p3sw/:p3swS/:p1m/:p1mS/:p2mm/:p2mmS/:p2mw/:p2mwS/:p3m/:p3mS/:nsm/:nsmS/:nsw/:nswS/:nmm/:nmmS/:nmw/:nmwS/:f1s" +
@@ -1038,38 +1689,61 @@ app.post(
 );
 
 app.post(
-  "/newtranslation/:root_id/:preposition/:translateRu/:translateEn/:translateFr/:sentence/:sentenceTranslateRu" +
-    "/:sentenceTranslateEn/:sentenceTranslateFr/:sentenceSound",
+  "/newtranslation/:root_id/:translationId/:preposition/:translateRu/:translateEn/:translateFr"+
+  "/:sentence1/:sentence2/:sentence3/:sentence1TranslateRu/:sentence2TranslateRu/:sentence3TranslateRu" +
+    "/:sentence1TranslateEn/:sentence2TranslateEn/:sentence3TranslateEn/:sentence1TranslateFr/:sentence2TranslateFr"
+    +"/:sentence3TranslateFr/:sentence1Sound/:sentence2Sound/:sentence3Sound",
   (req, res) => {
     const root_id = req.params.root_id;
+    const translationId = Number(req.params.translationId);
     const preposition = req.params.preposition;
     const translateRu = req.params.translateRu;
     const translateEn = req.params.translateEn;
     const translateFr = req.params.translateFr;
-    const sentence = req.params.sentence;
-    const sentenceTranslateRu = req.params.sentenceTranslateRu;
-    const sentenceTranslateEn = req.params.sentenceTranslateEn;
-    const sentenceTranslateFr = req.params.sentenceTranslateFr;
-    const sentenceSound = req.params.sentenceSound;
+    const sentence1 = req.params.sentence1;
+    const sentence2 = req.params.sentence2;
+    const sentence3 = req.params.sentence3;
+    const sentence1TranslateRu = req.params.sentence1TranslateRu;
+    const sentence2TranslateRu = req.params.sentence2TranslateRu;
+    const sentence3TranslateRu = req.params.sentence3TranslateRu;
+    const sentence1TranslateEn = req.params.sentence1TranslateEn;
+    const sentence2TranslateEn = req.params.sentence2TranslateEn;
+    const sentence3TranslateEn = req.params.sentence3TranslateEn;
+    const sentence1TranslateFr = req.params.sentence1TranslateFr;
+    const sentence2TranslateFr = req.params.sentence2TranslateFr;
+    const sentence3TranslateFr = req.params.sentence3TranslateFr;
+    const sentence1Sound = req.params.sentence1Sound;
+    const sentence2Sound = req.params.sentence2Sound;
+    const sentence3Sound = req.params.sentence3Sound;
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
       var newtranslation = {
-        root_id: root_id,
+        translationId: translationId,
         preposition: preposition,
         translateRu: translateRu,
         translateEn: translateEn,
         translateFr: translateFr,
-        sentence: sentence,
-        sentenceTranslateRu: sentenceTranslateRu,
-        sentenceTranslateEn: sentenceTranslateEn,
-        sentenceTranslateFr: sentenceTranslateFr,
-        sentenceSound: sentenceSound
+        sentence1: sentence1,
+        sentence2: sentence2,
+        sentence3: sentence3,
+        sentence1TranslateRu: sentence1TranslateRu,
+        sentence2TranslateRu: sentence2TranslateRu,
+        sentence3TranslateRu: sentence3TranslateRu,
+        sentence1TranslateEn: sentence1TranslateEn,
+        sentence2TranslateEn: sentence2TranslateEn,
+        sentence3TranslateEn: sentence3TranslateEn,
+        sentence1TranslateFr: sentence1TranslateFr,
+        sentence2TranslateFr: sentence2TranslateFr,
+        sentence3TranslateFr: sentence3TranslateFr,
+        sentence1Sound: sentence1Sound,
+        sentence2Sound: sentence2Sound,
+        sentence3Sound: sentence3Sound
       };
       dbo
-        .collection("translations")
-        .insertOne(newtranslation, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id:root_id},{ $addToSet: { translations:  newtranslation } }, function(err, result) {
           if (err) throw err;
           console.log("1 translation insered");
           res.send(result);
@@ -1078,54 +1752,30 @@ app.post(
     });
   }
 );
-app.post(
-  "/newphrase/:root_id/:phrase/:phraseTranslateRu/:phraseTranslateEn/:phraseTranslateFr",
-  (req, res) => {
-    const root_id = req.params.root_id;
-    const phrase = req.params.phrase;
-    const phraseTranslateRu = req.params.phraseTranslateRu;
-    const phraseTranslateEn = req.params.phraseTranslateEn;
-    const phraseTranslateFr = req.params.phraseTranslateFr;
 
-    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("mordict");
-      var newphrase = {
-        root_id: root_id,
-        phrase: phrase,
-        phraseTranslateRu: phraseTranslateRu,
-        phraseTranslateEn: phraseTranslateEn,
-        phraseTranslateFr: phraseTranslateFr
-      };
-      dbo.collection("phrases").insertOne(newphrase, function(err, result) {
-        if (err) throw err;
-        console.log("1 phrase insered");
-        res.send(result);
-        db.close();
-      });
-    });
-  }
-);
-app.post(
-  "/newfamily/:root_id/:family/:familyTranslateRu/:familyTranslateEn/:familyTranslateFr",
+app.post("/newfamily/:root_id/:familyId/:family/:familyPosition/:familyTranslateRu/:familyTranslateEn/:familyTranslateFr",
   (req, res) => {
     const root_id = req.params.root_id;
+    const familyId = Number(req.params.familyId);
     const family = req.params.family;
+    const familyPosition = req.params.familyPosition;
     const familyTranslateRu = req.params.familyTranslateRu;
     const familyTranslateEn = req.params.familyTranslateEn;
     const familyTranslateFr = req.params.familyTranslateFr;
-
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
       var newfamily = {
-        root_id: root_id,
+        familyId: familyId,
         family: family,
+        familyPosition: familyPosition,
         familyTranslateRu: familyTranslateRu,
         familyTranslateEn: familyTranslateEn,
         familyTranslateFr: familyTranslateFr
       };
-      dbo.collection("families").insertOne(newfamily, function(err, result) {
+      dbo
+        .collection("roots")
+        .updateOne({root_id:root_id},{ $addToSet: { families:  newfamily } }, function(err, result) {
         if (err) throw err;
         console.log("1 family insered");
         res.send(result);
@@ -1136,10 +1786,12 @@ app.post(
 );
 
 app.post(
-  "/newfamilyverb/:root_id/:familyverb/:familyverbTranslateRu/:familyverbTranslateEn/:familyverbTranslateFr",
+  "/newfamilyverb/:root_id/:familyverbId/:familyverb/:familyverbPosition/:familyverbTranslateRu/:familyverbTranslateEn/:familyverbTranslateFr",
   (req, res) => {
     const root_id = req.params.root_id;
+    const familyverbId = Number(req.params.familyverbId);
     const familyverb = req.params.familyverb;
+    const familyverbPosition = req.params.familyverbPosition;
     const familyverbTranslateRu = req.params.familyverbTranslateRu;
     const familyverbTranslateEn = req.params.familyverbTranslateEn;
     const familyverbTranslateFr = req.params.familyverbTranslateFr;
@@ -1148,15 +1800,16 @@ app.post(
       if (err) throw err;
       var dbo = db.db("mordict");
       var newfamilyverb = {
-        root_id: root_id,
+        familyverbId: familyverbId,
         familyverb: familyverb,
+        familyverbPosition: familyverbPosition,
         familyverbTranslateRu: familyverbTranslateRu,
         familyverbTranslateEn: familyverbTranslateEn,
         familyverbTranslateFr: familyverbTranslateFr
       };
       dbo
-        .collection("familiesverbs")
-        .insertOne(newfamilyverb, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id:root_id},{ $addToSet: { familiesverbs:  newfamilyverb } }, function(err, result) {
           if (err) throw err;
           console.log("1 familyverb insered");
           res.send(result);
@@ -1167,9 +1820,10 @@ app.post(
 );
 
 app.post(
-  "/newsynonym/:root_id/:synonym/:synonymTranslateRu/:synonymTranslateEn/:synonymTranslateFr",
+  "/newsynonym/:root_id/:synonymId/:synonym/:synonymTranslateRu/:synonymTranslateEn/:synonymTranslateFr",
   (req, res) => {
     const root_id = req.params.root_id;
+    const synonymId = Number(req.params.synonymId);
     const synonym = req.params.synonym;
     const synonymTranslateRu = req.params.synonymTranslateRu;
     const synonymTranslateEn = req.params.synonymTranslateEn;
@@ -1179,13 +1833,15 @@ app.post(
       if (err) throw err;
       var dbo = db.db("mordict");
       var newsynonym = {
-        root_id: root_id,
+        synonymId: synonymId,
         synonym: synonym,
         synonymTranslateRu: synonymTranslateRu,
         synonymTranslateEn: synonymTranslateEn,
         synonymTranslateFr: synonymTranslateFr
       };
-      dbo.collection("synonyms").insertOne(newsynonym, function(err, result) {
+      dbo
+      .collection("roots")
+      .updateOne({root_id:root_id},{ $addToSet: { synonyms:  newsynonym } }, function(err, result) {
         if (err) throw err;
         console.log("1 synonym insered");
         res.send(result);
@@ -1195,9 +1851,10 @@ app.post(
   }
 );
 app.post(
-  "/newantonym/:root_id/:antonym/:antonymTranslateRu/:antonymTranslateEn/:antonymTranslateFr",
+  "/newantonym/:root_id/:antonymId/:antonym/:antonymTranslateRu/:antonymTranslateEn/:antonymTranslateFr",
   (req, res) => {
     const root_id = req.params.root_id;
+    const antonymId = Number(req.params.antonymId);
     const antonym = req.params.antonym;
     const antonymTranslateRu = req.params.antonymTranslateRu;
     const antonymTranslateEn = req.params.antonymTranslateEn;
@@ -1207,13 +1864,15 @@ app.post(
       if (err) throw err;
       var dbo = db.db("mordict");
       var newantonym = {
-        root_id: root_id,
+        antonymId: antonymId,
         antonym: antonym,
         antonymTranslateRu: antonymTranslateRu,
         antonymTranslateEn: antonymTranslateEn,
         antonymTranslateFr: antonymTranslateFr
       };
-      dbo.collection("antonyms").insertOne(newantonym, function(err, result) {
+      dbo
+      .collection("roots")
+      .updateOne({root_id:root_id},{ $addToSet: { antonyms:  newantonym } }, function(err, result) {
         if (err) throw err;
         console.log("1 antonym insered");
         res.send(result);
@@ -1222,49 +1881,104 @@ app.post(
     });
   }
 );
+
 app.post(
-  "/newsentence/:root_id/:sentence/:sentenceTranslate/:sentenceSound",
+  "/newphrase/:root_id/:phraseId/:phrase/:phraseTranslateRu/:phraseTranslateEn/:phraseTranslateFr",
   (req, res) => {
     const root_id = req.params.root_id;
-    const sentence = req.params.sentence;
-    const sentenceTranslate = req.params.sentenceTranslate;
-    const sentenceSound = req.params.sentenceSound;
+    const phraseId = Number(req.params.phraseId);
+    const phrase = req.params.phrase;
+    const phraseTranslateRu = req.params.phraseTranslateRu;
+    const phraseTranslateEn = req.params.phraseTranslateEn;
+    const phraseTranslateFr = req.params.phraseTranslateFr;
+
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var newsentence = {
-        root_id: root_id,
-        sentence: sentence,
-        sentenceTranslate: sentenceTranslate,
-        sentenceSound: sentenceSound
+      var newphrase = {
+        phraseId: phraseId,
+        phrase: phrase,
+        phraseTranslateRu: phraseTranslateRu,
+        phraseTranslateEn: phraseTranslateEn,
+        phraseTranslateFr: phraseTranslateFr
       };
       dbo
-        .collection("sentencies")
-        .insertOne(newsentence, function(err, result) {
-          if (err) throw err;
-          console.log("1 sentence insered");
-          res.send(result);
-          db.close();
-        });
+      .collection("roots")
+      .updateOne({root_id:root_id},{ $addToSet: { phrases:  newphrase } }, function(err, result) {
+        if (err) throw err;
+        console.log("1 phrase insered");
+        res.send(result);
+        db.close();
+      });
     });
   }
 );
+// app.post(
+//   "/newsentence/:root_id/:sentence/:sentenceTranslate/:sentenceSound",
+//   (req, res) => {
+//     const root_id = req.params.root_id;
+//     const sentence = req.params.sentence;
+//     const sentenceTranslate = req.params.sentenceTranslate;
+//     const sentenceSound = req.params.sentenceSound;
+//     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+//       if (err) throw err;
+//       var dbo = db.db("mordict");
+//       var newsentence = {
+//         root_id: root_id,
+//         sentence: sentence,
+//         sentenceTranslate: sentenceTranslate,
+//         sentenceSound: sentenceSound
+//       };
+//       dbo
+//         .collection("sentencies")
+//         .insertOne(newsentence, function(err, result) {
+//           if (err) throw err;
+//           console.log("1 sentence insered");
+//           res.send(result);
+//           db.close();
+//         });
+//     });
+//   }
+// );
 
-app.post("/newactivpassiv/:active_id/:passive_id", (req, res) => {
+app.put("/newactive/:root_id/:active_id", (req, res) => {
+  const root_id = req.params.root_id;
   const active_id = req.params.active_id;
+  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+    var newactive = {
+      $set:{
+      active_id:active_id
+      }
+    };
+    dbo
+      .collection("roots")
+      .updateOne({root_id:root_id},newactive, function(err, result) {
+        if (err) throw err;
+        console.log("1 active insered");
+        res.send(result);
+        db.close();
+      });
+  });
+});
+
+app.put("/newpassive/:root_id/:passive_id", (req, res) => {
+  const root_id = req.params.root_id;
   const passive_id = req.params.passive_id;
   MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
-    var newactivepassive = {
-      active_id: active_id,
-      passive_id: passive_id
+    var newpassive = {
+      $set:{
+      passive_id:passive_id
+      }
     };
     dbo
-      .collection("activepassives")
-      .insertOne(newactivepassive, function(err, result) {
+      .collection("roots")
+      .updateOne({root_id:root_id},newpassive, function(err, result) {
         if (err) throw err;
-        console.log("1 activepassive insered");
+        console.log("1 passive insered");
         res.send(result);
         db.close();
       });
@@ -1294,8 +2008,11 @@ app.delete("/deleteroot/:root_id", (req, res) => {
   );
 });
 
-app.delete("/deletetranslation/:_id", (req, res) => {
-  const _id = req.params._id;
+app.put("/deletetranslation/:root_id/:translationId", (req, res) => {
+  const translationId = Number(req.params.translationId);
+  const root_id = req.params.root_id;
+  console.log(root_id);
+  console.log(translationId);
   MongoClient.connect(
     url,
     {
@@ -1307,18 +2024,18 @@ app.delete("/deletetranslation/:_id", (req, res) => {
       var ObjectID = require("mongodb").ObjectID;
 
       dbo
-        .collection("translations")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
-          if (err) throw err;
-          console.log(result);
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{translations:{translationId:translationId}}}, function(err, result) { 
+        if (err) throw err;
           res.send(result);
           db.close();
         });
     }
   );
 });
-app.delete("/deletefamily/:_id", (req, res) => {
-  const _id = req.params._id;
+app.put("/deletefamily/:root_id/:familyId", (req, res) => {
+  const root_id = req.params.root_id;
+  const familyId = Number(req.params.familyId);
   MongoClient.connect(
     url,
     {
@@ -1327,35 +2044,9 @@ app.delete("/deletefamily/:_id", (req, res) => {
     function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
       dbo
-        .collection("families")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
-          if (err) throw err;
-          console.log(result);
-          res.send(result);
-          db.close();
-        });
-    }
-  );
-});
-
-app.delete("/deletefamilyverb/:_id", (req, res) => {
-  const _id = req.params._id;
-  MongoClient.connect(
-    url,
-    {
-      useNewUrlParser: true
-    },
-    function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
-      dbo
-        .collection("familiesverbs")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{families:{familyId:familyId}}}, function(err, result) { 
           if (err) throw err;
           console.log(result);
           res.send(result);
@@ -1365,8 +2056,9 @@ app.delete("/deletefamilyverb/:_id", (req, res) => {
   );
 });
 
-app.delete("/deletesynonym/:_id", (req, res) => {
-  const _id = req.params._id;
+app.put("/deletefamilyverb/:root_id/:familyverbId", (req, res) => {
+  const root_id = req.params.root_id;
+  const familyverbId = Number(req.params.familyverbId);
   MongoClient.connect(
     url,
     {
@@ -1375,11 +2067,9 @@ app.delete("/deletesynonym/:_id", (req, res) => {
     function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
       dbo
-        .collection("synonyms")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{familiesverbs:{familyverbId:familyverbId}}}, function(err, result) { 
           if (err) throw err;
           console.log(result);
           res.send(result);
@@ -1388,8 +2078,10 @@ app.delete("/deletesynonym/:_id", (req, res) => {
     }
   );
 });
-app.delete("/deleteantonym/:_id", (req, res) => {
-  const _id = req.params._id;
+
+app.put("/deletesynonym/:root_id/:synonymId", (req, res) => {
+  const root_id = req.params.root_id;
+  const synonymId = Number(req.params.synonymId);
   MongoClient.connect(
     url,
     {
@@ -1398,11 +2090,9 @@ app.delete("/deleteantonym/:_id", (req, res) => {
     function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
       dbo
-        .collection("antonyms")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{synonyms:{synonymId:synonymId}}}, function(err, result) { 
           if (err) throw err;
           console.log(result);
           res.send(result);
@@ -1411,8 +2101,9 @@ app.delete("/deleteantonym/:_id", (req, res) => {
     }
   );
 });
-app.delete("/deletephrase/:_id", (req, res) => {
-  const _id = req.params._id;
+app.put("/deleteantonym/:root_id/:antonymId", (req, res) => {
+  const root_id = req.params.root_id;
+  const antonymId = Number(req.params.antonymId);
   MongoClient.connect(
     url,
     {
@@ -1421,11 +2112,9 @@ app.delete("/deletephrase/:_id", (req, res) => {
     function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
       dbo
-        .collection("phrases")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{antonyms:{antonymId:antonymId}}}, function(err, result) { 
           if (err) throw err;
           console.log(result);
           res.send(result);
@@ -1434,8 +2123,9 @@ app.delete("/deletephrase/:_id", (req, res) => {
     }
   );
 });
-app.delete("/deleteactivepassive/:_id", (req, res) => {
-  const _id = req.params._id;
+app.put("/deletephrase/:root_id/:phraseId", (req, res) => {
+  const root_id = req.params.root_id;
+  const phraseId = Number(req.params.phraseId);
   MongoClient.connect(
     url,
     {
@@ -1444,13 +2134,66 @@ app.delete("/deleteactivepassive/:_id", (req, res) => {
     function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var ObjectID = require("mongodb").ObjectID;
-
       dbo
-        .collection("activepassives")
-        .deleteOne({ _id: ObjectID(_id) }, function(err, result) {
+        .collection("roots")
+        .updateOne({root_id: root_id},{$pull:{phrases:{phraseId:phraseId}}}, function(err, result) { 
           if (err) throw err;
           console.log(result);
+          res.send(result);
+          db.close();
+        });
+    }
+  );
+});
+app.put("/deleteactive/:root_id", (req, res) => {
+  const root_id = req.params.root_id;
+  MongoClient.connect(
+    url,
+    {
+      useNewUrlParser: true
+    },
+    function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      
+      var newactive = {
+        $set:{
+        active_id:"_"
+        }
+      };
+      dbo
+        .collection("roots")
+        .updateOne({root_id:root_id},newactive, function(err, result) {
+          if (err) throw err;
+          console.log("1 active deleted");
+          res.send(result);
+          db.close();
+        });
+    }
+  );
+});
+
+app.put("/deletepassive/:root_id", (req, res) => {
+  const root_id = req.params.root_id;
+  MongoClient.connect(
+    url,
+    {
+      useNewUrlParser: true
+    },
+    function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      
+      var newpassive = {
+        $set:{
+        passive_id:"_"
+        }
+      };
+      dbo
+        .collection("roots")
+        .updateOne({root_id:root_id},newpassive, function(err, result) {
+          if (err) throw err;
+          console.log("1 passive deleted");
           res.send(result);
           db.close();
         });
