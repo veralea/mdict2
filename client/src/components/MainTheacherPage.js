@@ -12946,7 +12946,8 @@ break
       this.setState({sentence3TranslateFr: event.target.value.replace("?","@@").replace("\\","&&").replace("/","№№")});
     }
     getRoots(){
-      fetch('http://localhost:8000/getroots/'+this.state.benjan+"/"+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
+      fetch('/getroots/'+this.state.benjan+"/"+this.state.letter1+'/'+this.state.letter2+
+      '/'+this.state.letter3+'/'+this.state.letter4).then(response => {
               return response.json();
         }).then(data => {
             this.setState({
@@ -12955,7 +12956,7 @@ break
         });
     }
     getVerbsByLetters(){
-      fetch('http://localhost:8000/getverbsbyletters/'+root_id+'/'+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
+      fetch('/getverbsbyletters/'+root_id+'/'+this.state.letter1+'/'+this.state.letter2+'/'+this.state.letter3+'/'+this.state.letter4).then(response => {
               return response.json();
         }).then(data => {
             this.setState({
@@ -12965,7 +12966,7 @@ break
     }
 
     createDump(){
-      fetch('http://localhost:8000/createdump/').then(response=>{
+      fetch('/createdump/').then(response=>{
       if(response) { 
         alert("נתונים הועתקו");
       }else{
@@ -12976,7 +12977,7 @@ break
     getVerbByRootId (rootNumber,e) {
       e.preventDefault();
       root_id = rootNumber;
-      fetch('http://localhost:8000/getroot/'+rootNumber).then(response => {
+      fetch('/getroot/'+rootNumber).then(response => {
         return response.json();
       }).then(data1 => {
           this.setState({
@@ -13001,56 +13002,56 @@ break
               active_id: data1[0].active_id, passive_id: data1[0].passive_id      
               })  
       });
-      // fetch('http://localhost:8000/gettranslations/'+rootNumber).then(response => {
+      // fetch('/gettranslations/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data2 => {
       //     this.setState({
       //         translationsByNumber:data2
       //         })
       // });
-      // fetch('http://localhost:8000/getphrases/'+rootNumber).then(response => {
+      // fetch('/getphrases/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data3 => {
       //     this.setState({
       //         phrasesByNumber:data3
       //         })
       // });      
-      // fetch('http://localhost:8000/getfamilies/'+rootNumber).then(response => {
+      // fetch('/getfamilies/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data4 => {
       //     this.setState({
       //         familiesByNumber:data4
       //         })
       // });
-      // fetch('http://localhost:8000/getfamiliesverbs/'+rootNumber).then(response => {
+      // fetch('/getfamiliesverbs/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data10 => {
       //     this.setState({
       //         familiesverbsByNumber:data10
       //         })
       // });
-      // fetch('http://localhost:8000/getsynonyms/'+rootNumber).then(response => {
+      // fetch('/getsynonyms/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data5 => {
       //     this.setState({
       //         synonymsByNumber:data5
       //         })
       // });
-      // fetch('http://localhost:8000/getantonyms/'+rootNumber).then(response => {
+      // fetch('/getantonyms/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data6 => {
       //     this.setState({
       //         antonymsByNumber:data6
       //         })
       // }); 
-      // fetch('http://localhost:8000/getactivepassives/'+rootNumber).then(response => {
+      // fetch('/getactivepassives/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data8 => {
       //     this.setState({
       //       activepassivesByNumber:data8
       //         })
       // });
-      // fetch('http://localhost:8000/getactivepassives1/'+rootNumber).then(response => {
+      // fetch('/getactivepassives1/'+rootNumber).then(response => {
       //   return response.json();
       // }).then(data9 => {
       //     this.setState({
@@ -13060,7 +13061,7 @@ break
     }
     getTranslationById(translationId,e){
       e.preventDefault();
-      // fetch('http://localhost:8000/gettranslation/'+this.state.rootId).then(response => {
+      // fetch('/gettranslation/'+this.state.rootId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13092,12 +13093,13 @@ break
             sentence3TranslateFr: tr.sentence3TranslateFr          
           })
           }
+          return(true);
         });      
       // }); 
     }
     getFamilyById(familyId,e){
       e.preventDefault();
-      // fetch('http://localhost:8000/getfamily/'+familyId).then(response => {
+      // fetch('/getfamily/'+familyId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13117,13 +13119,14 @@ break
             familyTranslateFr: fm.familyTranslateFr      
           })
           }
+          return(true);
         });          
       // }); 
     }
 
     getFamilyverbById(familyverbId,e){
       e.preventDefault();
-      // fetch('http://localhost:8000/getfamilyverb/'+familyverbId).then(response => {
+      // fetch('/getfamilyverb/'+familyverbId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13144,6 +13147,7 @@ break
             familyverbTranslateFr: fmv.familyverbTranslateFr      
           })
           }
+          return(true);
         });
               
       // }); 
@@ -13151,7 +13155,7 @@ break
 
     getSynonymById(synonymId,e){
       e.preventDefault();
-      // fetch('http://localhost:8000/getsynonym/'+synonymId).then(response => {
+      // fetch('/getsynonym/'+synonymId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13170,12 +13174,13 @@ break
             synonymTranslateFr: syn.synonymTranslateFr
           })
         }
+        return(true);
       });          
       // }); 
     }
     getAntonymById(antonymId,e){
       e.preventDefault();
-      // fetch('http://localhost:8000/getantonym/'+antonymId).then(response => {
+      // fetch('/getantonym/'+antonymId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13194,13 +13199,14 @@ break
             antonymTranslateFr: an.antonymTranslateFr
           })
         }  
+        return(true);
       });        
       // }); 
     }
     getPhraseById(phraseId,e){
       e.preventDefault();
       
-      // fetch('http://localhost:8000/getphrase/'+phraseId).then(response => {
+      // fetch('/getphrase/'+phraseId).then(response => {
       //   if(response.ok){
       //   return response.json();
       //   }else{
@@ -13219,12 +13225,13 @@ break
             phraseTranslateFr: phr.phraseTranslateFr
           })
         }  
+        return(true);
       });        
       // }); 
     }
     getAllActivePassives(){
       if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
-        fetch('http://localhost:8000/getactive/'+root_id).then(response => {
+        fetch('/getactive/'+root_id).then(response => {
           return response.json();
         }).then(data9 => {
             this.setState({
@@ -13233,7 +13240,7 @@ break
                 arrOfRootsId.length = 0;
         });
       }else{
-        fetch('http://localhost:8000/getpassive/'+root_id).then(response => {
+        fetch('/getpassive/'+root_id).then(response => {
           return response.json();
         }).then(data8 => {
             this.setState({
@@ -13245,7 +13252,7 @@ break
 
     }
     getAllTranslations(){
-      fetch('http://localhost:8000/gettranslations/'+root_id).then(response => {
+      fetch('/gettranslations/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13255,7 +13262,7 @@ break
       }); 
     }
     getAllFamilies(){
-      fetch('http://localhost:8000/getfamilies/'+root_id).then(response => {
+      fetch('/getfamilies/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13266,7 +13273,7 @@ break
     }
 
     getAllFamiliesverbs(){
-      fetch('http://localhost:8000/getfamiliesverbs/'+root_id).then(response => {
+      fetch('/getfamiliesverbs/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13276,7 +13283,7 @@ break
     }
 
     getAllSynonyms(){
-      fetch('http://localhost:8000/getsynonyms/'+root_id).then(response => {
+      fetch('/getsynonyms/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13285,7 +13292,7 @@ break
       }); 
     }
     getAllAntonyms(){
-      fetch('http://localhost:8000/getantonyms/'+root_id).then(response => {
+      fetch('/getantonyms/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13294,7 +13301,7 @@ break
       }); 
     }
     getAllPhrases(){
-      fetch('http://localhost:8000/getphrases/'+root_id).then(response => {
+      fetch('/getphrases/'+root_id).then(response => {
         return response.json();
       }).then(data2 => {
           this.setState({
@@ -13317,14 +13324,14 @@ break
         this.setState({thisIsPassive:"0"}) 
       }
    
-          fetch('http://localhost:8000/countroots/').then(response => {
+          fetch('/countroots/').then(response => {
             return response.json();
           }).then(data => {
             root_id  = String(data.length+1);
             alert(root_id); 
   
           }).then(()=>{
-          fetch('http://localhost:8000/newroot/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
+          fetch('/newroot/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
           '/'+this.state.letter3+'/'+this.state.letter4+'/'+this.state.descript+'/'+root_id+'.wav/'+this.state.inf+'/'+this.state.infS+'/'+this.state.p1s+'/'+this.state.p1sS+
           '/'+this.state.p2sm+'/'+this.state.p2smS+'/'+this.state.p2sw+'/'+this.state.p2swS+'/'+this.state.p3sm+
           '/'+this.state.p3smS+'/'+this.state.p3sw+'/'+this.state.p3swS+'/'+this.state.p1m+'/'+this.state.p1mS+'/'+
@@ -13350,7 +13357,7 @@ break
     }
 
     addNewFamily(familyNumber){
-      fetch('http://localhost:8000/newfamily/'+root_id+'/'+familyNumber+'/'+this.state.family +'/'+this.state.familyPosition +'/'+this.state.familyTranslateRu+
+      fetch('/newfamily/'+root_id+'/'+familyNumber+'/'+this.state.family +'/'+this.state.familyPosition +'/'+this.state.familyTranslateRu+
       '/'+this.state.familyTranslateEn+'/'+this.state.familyTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
@@ -13370,7 +13377,7 @@ break
     }
 
     addNewFamilyverb(familyverbNumber){
-      fetch('http://localhost:8000/newfamilyverb/'+root_id+'/'+familyverbNumber+'/'+this.state.familyverb+'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
+      fetch('/newfamilyverb/'+root_id+'/'+familyverbNumber+'/'+this.state.familyverb+'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
       '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
@@ -13390,7 +13397,7 @@ break
     }
 
     addNewSynonym(synonymNumber){
-      fetch('http://localhost:8000/newsynonym/'+root_id+'/'+synonymNumber+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
+      fetch('/newsynonym/'+root_id+'/'+synonymNumber+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
       '/'+this.state.synonymTranslateEn+'/'+this.state.synonymTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){ 
         this.setState({
@@ -13409,7 +13416,7 @@ break
 
     }
     addNewAntonym(antonymNumber){
-      fetch('http://localhost:8000/newantonym/'+root_id+'/'+antonymNumber+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
+      fetch('/newantonym/'+root_id+'/'+antonymNumber+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
       '/'+this.state.antonymTranslateEn+'/'+this.state.antonymTranslateFr,{method:'POST' }).then(response => {
       if(response.ok){
         this.setState({
@@ -13428,7 +13435,7 @@ break
 
     }
     addNewPhrase(phraseNumber){
-      fetch('http://localhost:8000/newphrase/'+root_id+'/'+phraseNumber+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
+      fetch('/newphrase/'+root_id+'/'+phraseNumber+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
       '/'+this.state.phraseTranslateEn+'/'+this.state.phraseTranslateFr,{method:'POST' }).then((response) => {
       if(response.ok){
         this.setState({
@@ -13449,7 +13456,7 @@ break
 
     addNewSentence(sentenceNumber,e){
       e.preventDefault();
-      fetch('http://localhost:8000/newtranslation/'+root_id+'/'+sentenceNumber+'/'+this.state.preposition +'/'+this.state.translateRu+
+      fetch('/newtranslation/'+root_id+'/'+sentenceNumber+'/'+this.state.preposition +'/'+this.state.translateRu+
       '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence1+'/'+this.state.sentence2+'/'+this.state.sentence3
        +'/'+this.state.sentence1TranslateRu+'/'+this.state.sentence2TranslateRu+'/'+this.state.sentence3TranslateRu+
       '/'+this.state.sentence1TranslateEn+'/'+this.state.sentence2TranslateEn+'/'+this.state.sentence3TranslateEn+
@@ -13487,7 +13494,7 @@ break
     setActivePassive(activPassivId,e){
       e.preventDefault();
       if(this.state.benjan.indexOf("נפעל")>-1 || this.state.benjan.indexOf("נפועל")>-1 || this.state.benjan.indexOf("הופעל")>-1 ){
-        fetch('http://localhost:8000/newactive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
+        fetch('/newactive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
           if(response.ok){  
            return response.json();
           }else{
@@ -13501,7 +13508,7 @@ break
       }else if (this.state.benjan.indexOf("התפעל")>-1){
         alert("בניין התפעל");  
       }else{
-        fetch('http://localhost:8000/newpassive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
+        fetch('/newpassive/'+root_id+'/'+activPassivId ,{method:'PUT' }).then((response) => {
           if(response.ok){  
            return response.json();
           }else{
@@ -13521,7 +13528,7 @@ break
       }else{
         this.setState({thisIsPassive:"0"}) 
       }
-      fetch('http://localhost:8000/updateforms/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
+      fetch('/updateforms/'+root_id+'/'+this.state.benjan +'/'+this.state.letter1+'/'+this.state.letter2+
       '/'+this.state.letter3+'/'+this.state.letter4+'/'+this.state.descript+'/'+root_id+'.wav/'+this.state.inf+'/'+this.state.infS+'/'+this.state.p1s+'/'+this.state.p1sS+
       '/'+this.state.p2sm+'/'+this.state.p2smS+'/'+this.state.p2sw+'/'+this.state.p2swS+'/'+this.state.p3sm+
       '/'+this.state.p3smS+'/'+this.state.p3sw+'/'+this.state.p3swS+'/'+this.state.p1m+'/'+this.state.p1mS+'/'+
@@ -13545,7 +13552,7 @@ break
     updateTranslation(translationId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatetranslation/'+root_id+'/'+translationId+'/'+this.state.preposition +'/'+this.state.translateRu+
+      fetch('/updatetranslation/'+root_id+'/'+translationId+'/'+this.state.preposition +'/'+this.state.translateRu+
       '/'+this.state.translateEn+'/'+this.state.translateFr+'/'+this.state.sentence1+'/'+this.state.sentence2+'/'+this.state.sentence3
       +'/'+this.state.sentence1TranslateRu+'/'+this.state.sentence2TranslateRu+'/'+this.state.sentence3TranslateRu+
       '/'+this.state.sentence1TranslateEn+'/'+this.state.sentence2TranslateEn+'/'+this.state.sentence3TranslateEn+
@@ -13582,7 +13589,7 @@ break
     updateFamily(familyId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatefamily/'+root_id+'/'+familyId+'/'+this.state.family +'/'+this.state.familyPosition +'/'
+      fetch('/updatefamily/'+root_id+'/'+familyId+'/'+this.state.family +'/'+this.state.familyPosition +'/'
       +this.state.familyTranslateRu+'/'+this.state.familyTranslateEn+'/'+this.state.familyTranslateFr,{method:'PUT' })
       .then(response => {
       if(response.ok){
@@ -13605,7 +13612,7 @@ break
     updateFamilyverb(familyverbId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatefamilyverb/'+root_id+'/'+familyverbId+'/'+this.state.familyverb +'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
+      fetch('/updatefamilyverb/'+root_id+'/'+familyverbId+'/'+this.state.familyverb +'/'+this.state.familyverbPosition +'/'+this.state.familyverbTranslateRu+
       '/'+this.state.familyverbTranslateEn+'/'+this.state.familyverbTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
@@ -13627,7 +13634,7 @@ break
     updateSynonym(synonymId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatesynonym/'+root_id+'/'+synonymId+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
+      fetch('/updatesynonym/'+root_id+'/'+synonymId+'/'+this.state.synonym +'/'+this.state.synonymTranslateRu+
       '/'+this.state.synonymTranslateEn+'/'+this.state.synonymTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){ 
         this.setState ({
@@ -13648,7 +13655,7 @@ break
     updateAntonym(antonymId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updateantonym/'+root_id+'/'+antonymId+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
+      fetch('/updateantonym/'+root_id+'/'+antonymId+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
       '/'+this.state.antonymTranslateEn+'/'+this.state.antonymTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
@@ -13669,7 +13676,7 @@ break
     updatePhrase(phraseId,e){
       e.preventDefault();
       
-      fetch('http://localhost:8000/updatephrase/'+root_id+'/'+phraseId+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
+      fetch('/updatephrase/'+root_id+'/'+phraseId+'/'+this.state.phrase +'/'+this.state.phraseTranslateRu+
       '/'+this.state.phraseTranslateEn+'/'+this.state.phraseTranslateFr,{method:'PUT' }).then(response => {
       if(response.ok){
         this.setState ({
@@ -13688,7 +13695,7 @@ break
     }
     deleteVerbByRootId (rootNumber,e) {
       e.preventDefault();
-      fetch('http://localhost:8000/deleteroot/'+rootNumber,{method:'DELETE'}).then((response) => {
+      fetch('/deleteroot/'+rootNumber,{method:'DELETE'}).then((response) => {
         if(response.ok){
             return response.json();          
         }else{
@@ -13699,7 +13706,7 @@ break
     deleteTranslationbById(translationId,e){
       e.preventDefault();
       this.setState({thisIsNewTranslation:"1"});
-      fetch('http://localhost:8000/deletetranslation/'+root_id+'/'+translationId,{method:'PUT'}).then((response) => {
+      fetch('/deletetranslation/'+root_id+'/'+translationId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             preposition: '_',
@@ -13729,7 +13736,7 @@ break
     deleteFamilyById(familyId,e){
       e.preventDefault();
       this.setState({thisIsNewFamily:"1"});
-      fetch('http://localhost:8000/deletefamily/'+root_id+'/'+familyId,{method:'PUT'}).then((response) => {
+      fetch('/deletefamily/'+root_id+'/'+familyId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             family: '_',
@@ -13747,7 +13754,7 @@ break
     deleteFamilyverbById(familyverbId,e){
       e.preventDefault();
       this.setState({thisIsNewFamilyverb:"1"});
-      fetch('http://localhost:8000/deletefamilyverb/'+root_id+'/'+familyverbId,{method:'PUT'}).then((response) => {
+      fetch('/deletefamilyverb/'+root_id+'/'+familyverbId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             familyverb: '_',
@@ -13765,7 +13772,7 @@ break
     deleteSynonymById(synonymId,e){
       e.preventDefault();
       this.setState({thisIsNewSynonym:"1"});
-      fetch('http://localhost:8000/deletesynonym/'+root_id+'/'+synonymId,{method:'PUT'}).then((response) => {
+      fetch('/deletesynonym/'+root_id+'/'+synonymId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             synonym: '_',
@@ -13783,7 +13790,7 @@ break
     deleteAntonymById(antonymId,e){
       e.preventDefault();
       this.setState({thisIsNewAntonym:"1"});
-      fetch('http://localhost:8000/deleteantonym/'+root_id+'/'+antonymId,{method:'PUT'}).then((response) => {
+      fetch('/deleteantonym/'+root_id+'/'+antonymId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             antonym: '_',
@@ -13801,7 +13808,7 @@ break
     deletePhraseById(phraseId,e){
       e.preventDefault();
       this.setState({thisIsNewPhrase:"1"});
-      fetch('http://localhost:8000/deletephrase/'+root_id+'/'+phraseId,{method:'PUT'}).then((response) => {
+      fetch('/deletephrase/'+root_id+'/'+phraseId,{method:'PUT'}).then((response) => {
         if(response.ok){
           this.setState ({
             phrase: '_',
@@ -13819,7 +13826,7 @@ break
       e.preventDefault();
       arrOfRootsId.length=0;
       if(this.state.benjan.indexOf("נפעל")>-1||this.state.benjan.indexOf("פועל")>-1||this.state.benjan.indexOf("הופעל")>-1){
-      fetch('http://localhost:8000/deleteactive/'+root_id,{method:'PUT'}).then((response) => {
+      fetch('/deleteactive/'+root_id,{method:'PUT'}).then((response) => {
         if(response.ok){
             return response.json();        
         }else{
@@ -13827,7 +13834,7 @@ break
         }    
         }).then(() => { this.getAllActivePassives()})
       }else{
-        fetch('http://localhost:8000/deletepassive/'+root_id,{method:'PUT'}).then((response) => {
+        fetch('/deletepassive/'+root_id,{method:'PUT'}).then((response) => {
           if(response.ok){
               return response.json();        
           }else{

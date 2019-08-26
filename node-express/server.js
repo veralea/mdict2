@@ -115,43 +115,136 @@ app.use("/auth", authRouter);
 //     res.send({ error: "not a valid rgistration object" });
 //   }
 // });
-
 app.get("/countroots/", (req, res) => {
-
-  MongoClient.connect(url, function(err, db) {
+   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
-    var ObjectID = require("mongodb").ObjectID;
-    dbo
-      .collection("roots")
-      .find({})
-      .toArray(function(err, result) {
+
+    dbo.collection("roots").find({}).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
         console.log(result.length);
-        db.close();
-      });
-  });
+        db.close()
+    }); 
+    
+  })
+})
+app.get("/checkandrenamesoundfile/",(req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+
+    dbo.collection("roots").find({}).toArray(function(err, results) {
+      if (err) throw err;
+      results.map((result)=>{
+        var fs = require('fs');
+        var filename = "C:\\milon\\"+result.root_id_old+".wav";
+        var newfaliname = "C:\\milon\\"+result.sound;
+        fs.exists(filename,function(exists){
+          if(exists){
+            fs.renameSync(filename, newfaliname)
+          }
+        });  
+      });  
+        res.send(results);
+        db.close()
+    }); 
+    
+  })  
+})
+
+app.get("/countroots1/", (req, res) => {
+
+  // MongoClient.connect(url, function(err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("mordict");
+
+  //   dbo
+  //     .collection("roots")
+  //     .find({})
+  //     .toArray(function(err, result) {
+  //       if (err) throw err;
+  //       res.send(result);
+  //       console.log(result.length);
+    //     result.map((resul,key)=>{
+    //     arr.push(resul.root_id_old);
+    //     let num = key+1;
+    //     let r = resul.root_id_old;
+    //     arr1.push({num, r});
+    //     });
+    //     var fs = require('fs');
+    //     var filename1 = 'rootsOldarray.txt';
+    //     var filename = "roots.txt"
+    //     var str1 = JSON.stringify(arr1, null, 4);
+    //     var str = JSON.stringify(arr, null, 4);
+    //     fs.writeFile(filename1, str1, function(err){
+    //       if(err) {
+    //           console.log(err)
+    //       } else {
+    //           console.log('File rootsOldarray written!');
+              
+    //       }
+    //   });
+    //   fs.writeFile(filename, str, function(err){
+    //     if(err) {
+    //         console.log(err)
+    //     } else {
+    //         console.log('File roots written!');
+            
+    //     }
+    // });
+    // console.log(arr.length);
+  //   var root = "";
+  //   var root1 = "";
+  //   arr.map((ar,ind)=>{
+  //     // dbo.collection("roots").updateOne({root_id:ar}, { $set : { root_id_old : ar }},function(err, result1) {
+  //     // if (err) throw err;
+  //     //       console.log(ind);
+  //     // });
+  //     // let n = String(ind+1);
+  //     // dbo.collection("roots").updateOne({root_id_old:ar}, { $set : { root_id : n }},function(err, result1) {
+  //     //   if (err) throw err;
+  //     //         console.log(ind);
+  //     // });
+  //     dbo.collection("activepassives").findOne({active_id:ar},function(err,result){
+  //       if (err) throw err;
+  //       root = result.passive_id;
+  //       console.log(ind+"one");
+  //     });
+  //     dbo.collection("roots").findOne({roots_id_old:root},function(err,result){
+  //       if (err) throw err;
+  //       root1 = result.root_id;
+  //       console.log(ind+"two");
+  //     });
+  //     dbo.collection("roots").updateOne({root_id_old:ar},{$set:{passive_id:root1}},function(err,result1){
+  //       if (err) throw err;
+  //       console.log(ind+"three");
+  //     });
+
+
+  //   });
+  //       db.close();
+  //     });
+  // });
 });
 
-// app.get("/gettranslation/:_id", (req, res) => {
-//   const _id = req.params._id;
+app.put("/oldroots/", (req, res) => {
 
-//   MongoClient.connect(url, function(err, db) {
-//     if (err) throw err;
-//     var dbo = db.db("mordict");
-//     var ObjectID = require("mongodb").ObjectID;
-//     dbo
-//       .collection("translations")
-//       .find({ _id: ObjectID(_id) })
-//       .toArray(function(err, result) {
-//         if (err) throw err;
-//         res.send(result);
-//         console.log(result);
-//         db.close();
-//       });
-//   });
-// });
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    console.log(arr.length);
+    arr.map((ar,key)=>{
+      console.log("yes");
+      console.log(key);
+      // var dbo = db.db("mordict");
+      // dbo.collection("roots").updateOne({root_id:ar}, { $set : { root_id_old : ar }},function(err, result) {
+      //     if (err) throw err;
+      //     res.send(result);
+      //   });
+    });
+    db.close();
+  });
+});
 
 // get one
 
@@ -667,10 +760,274 @@ app.put("/updateallrootnumbers/", (req, res)=>{
   ;
    
 });
-
-app.get("/getrootsbysearch/:search", (req, res)=>{
+var arr = [
+  "770",
+  "5298",
+  "8055",
+  "927",
+  "5178",
+  "9160",
+  "5463",
+  "9758",
+  "4842",
+  "8353",
+  "7840",
+  "1502",
+  "7224",
+  "8013",
+  "7339",
+  "5650",
+  "5218",
+  "7657",
+  "8226",
+  "7155",
+  "1952",
+  "7741",
+  "4046",
+  "3626",
+  "1392",
+  "4844",
+  "7850",
+  "5869",
+  "9918",
+  "8133",
+  "7655",
+  "4613",
+  "8098",
+  "4949",
+  "4706",
+  "15",
+  "5095",
+  "3941",
+  "8462",
+  "2110",
+  "7235",
+  "4510",
+  "5115",
+  "7520",
+  "1026",
+  "233",
+  "4506",
+  "7859",
+  "1987",
+  "4309",
+  "2824",
+  "9755",
+  "1193",
+  "8540",
+  "9247",
+  "1118",
+  "5947",
+  "749",
+  "3208",
+  "7312",
+  "9256",
+  "3950",
+  "1853",
+  "8511",
+  "2160",
+  "7119",
+  "9445",
+  "1144",
+  "9490",
+  "420",
+  "7673",
+  "4970",
+  "6023",
+  "4880",
+  "4946",
+  "8979",
+  "6051",
+  "814",
+  "2037",
+  "1011",
+  "7738",
+  "9775",
+  "6496",
+  "1885",
+  "9343",
+  "7969",
+  "8225",
+  "7258",
+  "183",
+  "6993",
+  "3791",
+  "6906",
+  "9389",
+  "578",
+  "8666",
+  "7799",
+  "6638",
+  "1917",
+  "6117",
+  "6371",
+  "4620",
+  "8170",
+  "5071",
+  "5617",
+  "5401",
+  "9702",
+  "9234",
+  "186",
+  "3148",
+  "3098",
+  "4393",
+  "2328",
+  "7838",
+  "6052",
+  "6882",
+  "5718",
+  "1781",
+  "2735",
+  "2327",
+  "5438",
+  "6537",
+  "6435",
+  "8576",
+  "1330",
+  "3822",
+  "877",
+  "5975",
+  "4081",
+  "5693",
+  "8609",
+  "8141",
+  "7530",
+  "1431",
+  "694",
+  "7896",
+  "8991",
+  "8393",
+  "9202",
+  "5065",
+  "3611",
+  "1410",
+  "4646",
+  "1884",
+  "2134",
+  "8616",
+  "2173",
+  "967",
+  "8120",
+  "4945",
+  "8711",
+  "6445",
+  "5266",
+  "9046",
+  "9508",
+  "4259",
+  "9442",
+  "3238",
+  "8031",
+  "5392",
+  "3819",
+  "7755",
+  "3597",
+  "5813",
+  "509",
+  "7435",
+  "3899",
+  "2956",
+  "4991",
+  "8502",
+  "4668",
+  "6310",
+  "6620",
+  "9089",
+  "9243",
+  "8632",
+  "6383",
+  "1956",
+  "3017",
+  "1462",
+  "9534",
+  "9091",
+  "9900",
+  "9579",
+  "340",
+  "1806",
+  "2275",
+  "4911",
+  "4755",
+  "8161",
+  "1959",
+  "8048",
+  "5669",
+  "5645",
+  "6301",
+  "7720",
+  "9131",
+  "1128",
+  "1507",
+  "8487",
+  "9271",
+  "2752",
+  "2322",
+  "717",
+  "2497",
+  "521",
+  "3211",
+  "6676",
+  "113",
+  "4843",
+  "2712",
+  "8790",
+  "6648",
+  "5127",
+  "1171",
+  "6812",
+  "6433",
+  "2369",
+  "8545",
+  "6056",
+  "3593",
+  "9880",
+  "3943",
+  "3114",
+  "7584",
+  "9805",
+  "7012",
+  "4838",
+  "3016",
+  "8752",
+  "7411",
+  "4814",
+  "1784",
+  "617",
+  "4514",
+  "5348",
+  "4839",
+  "4227",
+  "2604",
+  "6012",
+  "9190",
+  "7648",
+  "1065",
+  "4163",
+  "5303",
+  "9053",
+  "9499",
+  "5388",
+  "7469",
+  "7062",
+  "1001",
+  "9796",
+  "7541",
+  "1584",
+  "4809",
+  "9122",
+  "4135",
+  "7933",
+  "5079",
+  "6698",
+  "9179"
+];
+app.get("/getrootsbysearch1/:search", (req, res)=>{
   const search = req.params.search;
-  var rootId = "";
+  // arr.map((ar)=>{
+  // for (var k = 0; k < 260; k++) {
+  var rootIdOld = "";
+  var rootIdNew = "";
   var translations = [];
   var synonyms = [];
   var antonyms = []; 
@@ -678,24 +1035,29 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
   var families = [];
   var familiesverbs = [];
   var active_id = "_";
-  var passive_id = "_"
-   function one() {
+  var active_id_old = "";
+  var passive_id = "_";
+  var passive_id_old = "";
+  function one() {
     return new Promise(resolve => {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {root_id:"4842"};//дописать множественный запрос "или" на все поля из "roots"
-        dbo.collection("roots").findOne(query, function(err, results) {
+        var query = {root_id_old: arr[0]};//дописать множественный запрос "или" на все поля из "roots"
+        dbo.collection("roots").findOne(query, function(err, result) {
            if (err) throw err;
            
-            rootId = results.root_id;
-            console.log(rootId);
-            console.log("one"); 
+            rootIdOld = result.root_id_old;
+            rootIdNew = result.root_id;
+            console.log(rootIdOld,rootIdNew);
+            console.log("one");
+            arr.splice(0,1);
            db.close();
            resolve();      
         }); 
  
-      })  
+      })
+
     });
   }
   
@@ -705,7 +1067,7 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {root_id: rootId};
+        var query = {root_id: rootIdOld};
         dbo.collection("translations").find(query).toArray(function(err, results) {
           if (err) throw err;
           results.map((result,key)=>{
@@ -734,8 +1096,8 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
               sentence3TranslateFr: result.sentence3TranslateFr,
               sentenceSound: result.sentenceSound,
               sentence1Sound: result.sentence1Sound,
-              sentence2Sound: rootId+"S_2_"+ num + ".wav",
-              sentence3Sound: rootId+"S_2_"+ num + ".wav"
+              sentence2Sound: rootIdNew+"S_2_"+ num + ".wav",
+              sentence3Sound: rootIdNew+"S_2_"+ num + ".wav"
             });
            });
 
@@ -753,7 +1115,7 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {root_id: rootId};
+        var query = {root_id: rootIdOld};
         dbo.collection("synonyms").find(query).toArray(function(err, results) {
           if (err) throw err;
           results.map((result,key)=>{
@@ -780,7 +1142,7 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {root_id: rootId};
+        var query = {root_id: rootIdOld};
         dbo.collection("antonyms").find(query).toArray(function(err, results) {
           if (err) throw err;
           results.map((result,key)=>{
@@ -807,7 +1169,7 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {root_id: rootId};
+        var query = {root_id: rootIdOld};
         dbo.collection("phrases").find(query).toArray(function(err, results) {
           if (err) throw err;
           results.map((result,key)=>{
@@ -833,11 +1195,11 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mordict");
-        var query = {active_id: rootId};
+        var query = {active_id: rootIdOld};
         dbo.collection("activepassives").find(query).toArray(function(err, results) {
           if (err) throw err;
           results.map((result)=>{
-            passive_id = result.passive_id;
+            passive_id_old = result.passive_id;
            });
 
            console.log("twoFour");
@@ -847,17 +1209,36 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
       })
     });
   }
+  function twoFourOne() {
+    return new Promise(resolve => {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mordict");
+      var query = {root_id_old: passive_id_old};
+      dbo.collection("roots").find(query).toArray(function(err, results) {
+        if (err) throw err;
+        results.map((result)=>{
+          passive_id = result.root_id;
+         });
+  
+         console.log("twoFourOne");
+        db.close();
+        resolve();      
+     });  
+    })
+  });
+}
 
   function twoFive() {
     return new Promise(resolve => {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var query = {passive_id: rootId};
+      var query = {passive_id: rootIdOld};
       dbo.collection("activepassives").find(query).toArray(function(err, results) {
         if (err) throw err;
         results.map((result)=>{
-          active_id = result.active_id;
+          active_id_old = result.active_id;
          });
 
          console.log("twoFive");
@@ -867,14 +1248,32 @@ app.get("/getrootsbysearch/:search", (req, res)=>{
     })
   });
 }
+function twoFiveOne() {
+  return new Promise(resolve => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mordict");
+    var query = {root_id_old: active_id_old};
+    dbo.collection("roots").find(query).toArray(function(err, results) {
+      if (err) throw err;
+      results.map((result)=>{
+        active_id = result.root_id;
+       });
 
+       console.log("twoFiveOne");
+      db.close();
+      resolve();      
+   }); 
+  })
+});
+}
 function twoSix() {
     
   return new Promise(resolve => {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var query = {root_id: rootId};
+      var query = {root_id: rootIdOld};
       dbo.collection("families").find(query).toArray(function(err, results) {
         if (err) throw err;
         results.map((result,key)=>{
@@ -902,7 +1301,7 @@ function twoSeven() {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbo = db.db("mordict");
-      var query = {root_id: rootId};
+      var query = {roots_id_old: rootIdOld};
       dbo.collection("familiesverbs").find(query).toArray(function(err, results) {
         if (err) throw err;
         results.map((result,key)=>{
@@ -930,7 +1329,7 @@ function twoSeven() {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
           var dbo = db.db("mordict");
-          var query = {root_id: rootId};
+          var query = {root_id_old: rootIdOld};
                 let insertValue = {
                   $set:{
                     translations: translations,
@@ -940,8 +1339,8 @@ function twoSeven() {
                     passive_id: passive_id,
                     active_id: active_id,
                     families: families,
-                    familiesverbs: familiesverbs
-
+                    familiesverbs: familiesverbs,
+                    sound: rootIdNew+".wav"
                   }
                 };
                 dbo
@@ -951,6 +1350,18 @@ function twoSeven() {
 
                   console.log("three");
                   db.close();
+                  var rootIdOld = "";
+  rootIdNew = "";
+  translations = [];
+  synonyms = [];
+  antonyms = []; 
+  phrases = [];
+  families = [];
+  familiesverbs = [];
+  active_id = "_";
+  active_id_old = "";
+  passive_id = "_";
+  passive_id_old = "";
                   resolve();
                 });
         
@@ -960,26 +1371,85 @@ function twoSeven() {
   
   }
   
-  function four(){
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("mordict");
-      var query = {root_id: rootId};
-      dbo.collection("roots").find(query).toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.dir(result);
-        db.close();
-      });  
-    });
+  // function four(){
+  //   MongoClient.connect(url, function(err, db) {
+  //     if (err) throw err;
+  //     var dbo = db.db("mordict");
+  //     var query = {root_id: rootId};
+  //     dbo.collection("roots").find(query).toArray(function(err, result) {
+  //       if (err) throw err;
+  //       res.send(result);
+  //       console.dir(result);
+  //       db.close();
+  //     });  
+  //   });
     //  
-  }
+  // }
   
   one().then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
-  .then(() => twoFour()).then(() => twoFive()).then(() => twoSix()).then(() => twoSeven()).then(() => three())
-  .then(() => four());
-  
-       
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three()).then(() => one()).then(() => two()).then(() => twoOne()).then(() => twoTwo()).then(() => twoThree())
+  .then(() => twoFour()).then(() => twoFourOne()).then(() => twoFive()).then(() => twoFiveOne())
+  .then(() => twoSix()).then(() => twoSeven()).then(() => three());
+     
 });
 
 app.get(

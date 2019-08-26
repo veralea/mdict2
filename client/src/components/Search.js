@@ -22,7 +22,8 @@ handleInputChange(event){
 
 getRootsBySearch(e){
     e.preventDefault();
-    fetch('http://localhost:8000/getrootsbysearch/'+this.state.query).then(response => {
+    
+    fetch('/getrootsbysearch/'+this.state.query).then(response => {
         if(response.ok){
               return response.json();
             }else{

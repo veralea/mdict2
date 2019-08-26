@@ -11,10 +11,29 @@ class MainStudentRuPage extends Component {
         this.getAllSameRoots = this.getAllSameRoots.bind(this);
         
     }
+    countRootsWriteArray(e){
+      e.preventDefault();
+      fetch('/countroots/').then(response => {
+        if(response.ok){
+              return response.json();
+            }else{
+              alert("error");
+            }
+      });
+    }
+    putOldRootOnNewField(e){
+      fetch('/oldroots/',{method:'PUT' }).then(response => {
+        if(response.ok){
+              return response.json();
+            }else{
+              alert("error");
+            }
+      });    
+    }
 
     getAllSameRoots(e){
         e.preventDefault();
-        fetch('http://localhost:8000/getallsameroots/').then(response => {
+        fetch('/getallsameroots/').then(response => {
             if(response.ok){
                   return response.json();
                 }else{
@@ -30,7 +49,7 @@ class MainStudentRuPage extends Component {
 
       updateAllrootNumbers (e){
         e.preventDefault();
-        fetch('http://localhost:8000/updateallrootnumbers/',{method:'PUT' }).then(response => {
+        fetch('/updateallrootnumbers/',{method:'PUT' }).then(response => {
             if(response.ok){
                   return response.json();
                 }else{
@@ -41,7 +60,7 @@ class MainStudentRuPage extends Component {
 
     updateAllfamilies (e){
         e.preventDefault();
-        fetch('http://localhost:8000/updateallfamilies/',{method:'PUT' }).then(response => {
+        fetch('/updateallfamilies/',{method:'PUT' }).then(response => {
             if(response.ok){
                   return response.json();
                 }else{
@@ -52,7 +71,7 @@ class MainStudentRuPage extends Component {
     
     updateAllfamiliesVerb (e){
         e.preventDefault();
-        fetch('http://localhost:8000/updateallfamiliesverb/',{method:'PUT' }).then(response => {
+        fetch('/updateallfamiliesverb/',{method:'PUT' }).then(response => {
             if(response.ok){
                   return response.json();
                 }else{
@@ -62,13 +81,24 @@ class MainStudentRuPage extends Component {
     }
     updateAlltranslations (e){
         e.preventDefault();
-        fetch('http://localhost:8000/updatealltranslations/',{method:'PUT' }).then(response => {
+        fetch('/updatealltranslations/',{method:'PUT' }).then(response => {
             if(response.ok){
                   return response.json();
                 }else{
                   alert("error");
                 }
           });    
+    }
+    checkAndRenameSoundFile(e){
+      e.preventDefault();
+      fetch('/checkandrenamesoundfile/',{method:'GET' }).then(response => {
+        if(response.ok){
+              return response.json();
+            }else{
+              alert("error");
+            }
+            return(true);
+      });   
     }
 
     render(){
@@ -87,9 +117,13 @@ class MainStudentRuPage extends Component {
                           );
                           }
                                    
-              
+                          return(true);
                     })
                 }
+                <br/>
+                {/* <button onClick={this.countRootsWriteArray}>Count roots and whrite to array</button>
+                <br/>
+                <button onClick={this.putOldRootOnNewField}>Put old root on new field</button>
                 <br/>
                 <button onClick={this.updateAllfamilies}>updateAllfamilies</button>  
                 <br/>
@@ -97,7 +131,9 @@ class MainStudentRuPage extends Component {
                 <br/>
                 <button onClick={this.updateAlltranslations}>updateAlltranslations</button>  
                 <br/>
-                <button onClick={this.updateAllrootNumbers}>updateAllrootNumbers</button>            
+                <button onClick={this.updateAllrootNumbers}>updateAllrootNumbers</button> 
+                <br/> */}
+                <button onClick={this.checkAndRenameSoundFile}>Check and rename  sound file</button>            
             </div>
         )
     }
