@@ -1,6 +1,5 @@
 h1{
-  color: blue;
-
+  color:blue;
   text-align: center;
 }
 span{
@@ -80,7 +79,7 @@ span{
   display: flex;
   flex-direction: column;
 }
-#forms{
+.forms{
   width: 100px;
   font-size: 20px;
 }
@@ -124,7 +123,7 @@ span{
 #inputLetter{
   padding:20px;
 }
-#longForm{
+.longForm{
   width: inherit;
   height: inherit;
   }
