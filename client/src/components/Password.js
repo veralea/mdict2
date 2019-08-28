@@ -28,38 +28,38 @@ class Password extends Component {
     this.setState({ language: event.target.value });
   }
 
+  // checkPassword() {
+  //   let passwordObj = this.state;
+  //   passwordObj.email = this.state.username;
+
+  //   fetch("/auth/login", {
+  //     method: "POST",
+  //     body: JSON.stringify(passwordObj),
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(response => console.dir(response))
+  //     .catch(error => console.error("Error:", error));
+  // }
   checkPassword() {
-    let passwordObj = this.state;
-    passwordObj.email = this.state.username;
-
-    fetch("/auth/login", {
-      method: "POST",
-      body: JSON.stringify(passwordObj),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(response => console.dir(response))
-      .catch(error => console.error("Error:", error));
+  if(this.state.username === "theacher" && this.state.password === "11111"){
+      this.setState({link: '/MainTheacherPage'})
   }
-
-  // if(this.state.username === "theacher" && this.state.password === "11111"){
-  //     this.setState({link: '/MainTheacherPage'})
-  // }
-  // else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "RU"){
-  //     this.setState({link: '/MainStudentRuPage'})
-  // }
-  // else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "EN"){
-  //     this.setState({link: '/MainStudentEnPage'})
-  // }
-  // else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "FR"){
-  //     this.setState({link: '/MainStudentFrPage'})
-  // }
-  // else{
-  //     alert ("username: "+this.state.username+"\npassword: "+this.state.password+"\nlanguage:  "+this.state.language+"\nentrance isn't allow");
-  // }
-
+  else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "RU"){
+      this.setState({link: '/MainStudentRuPage'})
+  }
+  else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "EN"){
+      this.setState({link: '/MainStudentEnPage'})
+  }
+  else if(this.state.username === "student" && this.state.password === "11111" && this.state.language === "FR"){
+      this.setState({link: '/MainStudentFrPage'})
+  }
+  else{
+      alert ("username: "+this.state.username+"\npassword: "+this.state.password+"\nlanguage:  "+this.state.language+"\nentrance isn't allow");
+  }
+  }
   render() {
     return (
       <div className="flexContainer">
@@ -99,9 +99,11 @@ class Password extends Component {
               </select>
             </div>
 
-            <div className="button" onClick={this.checkPassword}>ENTRANCE</div>
+            {/* <div className="button" onClick={this.checkPassword}>ENTRANCE</div> */}
+            <div className="button"><a href={this.state.link} onClick={this.checkPassword}>ENTRANCE</a></div>
           </div>
         </form>
+
       </div>
     );
   }

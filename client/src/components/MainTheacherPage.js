@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './MainTheacherPage.css';
 
 var arrOfRootsId = [];
-var root_id = "№№";
+var root_id = "№№"; 
 
 
 class MainTheacherPage extends Component {
@@ -12998,7 +12998,9 @@ break
               immS: data1[0].immS,imw: data1[0].imw,imwS: data1[0].imwS,ns: data1[0].ns,nsS: data1[0].nsS,
               nm: data1[0].nm,nmS: data1[0].nmS,asm: data1[0].asm,asmS: data1[0].asmS,asw: data1[0].asw,
               aswS: data1[0].aswS,amm: data1[0].amm,ammS: data1[0].ammS,amw: data1[0].amw,amwS: data1[0].amwS, translations: data1[0].translations,
-              families: data1[0].families, familiesverbs: data1[0].familiesverbs, synonyms: data1[0].synonyms, antonyms: data1[0].antonyms, phrases: data1[0].phrases,
+              families: data1[0].families.sort((a,b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0)), 
+              familiesverbs: data1[0].familiesverbs.sort((a,b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0)),
+              synonyms: data1[0].synonyms, antonyms: data1[0].antonyms, phrases: data1[0].phrases,
               active_id: data1[0].active_id, passive_id: data1[0].passive_id      
               })  
       });
@@ -13267,7 +13269,7 @@ break
       }).then(data2 => {
           this.setState({
               // familiesByNumber:data2
-              families:data2[0].families
+              families:data2[0].families.sort((a,b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0))
               })
       }); 
     }
@@ -13277,7 +13279,7 @@ break
         return response.json();
       }).then(data2 => {
           this.setState({
-              familiesverbs:data2[0].familiesverbs
+              familiesverbs:data2[0].familiesverbs.sort((a,b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0))
               })
       }); 
     }
@@ -13415,6 +13417,16 @@ break
       });
 
     }
+putFamiliesverbs(e){
+  e.preventDefault();
+    fetch('http://localhost:8000/putfamiliesverbs/').then(response => {
+      if(response.ok){
+            return response.json();
+          }else{
+            alert("error");
+          }
+    });    
+}
     addNewAntonym(antonymNumber){
       fetch('http://localhost:8000/newantonym/'+root_id+'/'+antonymNumber+'/'+this.state.antonym +'/'+this.state.antonymTranslateRu+
       '/'+this.state.antonymTranslateEn+'/'+this.state.antonymTranslateFr,{method:'POST' }).then(response => {
@@ -14355,42 +14367,27 @@ break
     renderSwitch7(param){
       switch(param) {
         case "1":
-          // return(<div>{
-          //           this.state.activepassivesByNumber1.map((active, ind) =>{
-          //             arrOfRootsId.push(active.active_id);
-          //             return(<div>
-          //                      <div key={ind}>{ind+1}. {active.active_id}</div>
-          //                      <div className="topFlexContainer">
-          //                        <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(active._id,e)}>למחוק</button> 
-          //                      </div>
-          //                    </div> );
-          //           }) 
-          //         }</div>);
-                      return(<div>
-                               <div>active_id: {this.state.active_id}</div>
-                               <div className="topFlexContainer">
-                                 <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
-                               </div>
-                             </div> );
-        case "0":
-          // return(<div>{
-          //           this.state.activepassivesByNumber.map((passive, ind) =>{
-          //             arrOfRootsId.push(passive.passive_id);
-          //             return(<div>
-          //                      <div key={ind}>{ind+1}. {passive.passive_id}</div>
-          //                      <div className="topFlexContainer">
-          //                        <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(passive._id,e)}>למחוק</button> 
-          //                      </div>
-          //                    </div> );
-                        
-          //           }) 
-          //         }</div>);
           return(<div>
-            <div>passive_id: {this.state.passive_id}</div>
-            <div className="topFlexContainer">
-              <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
-            </div>
-          </div> ); 
+                    <div>active_id: {this.state.active_id}</div>
+                    <div className="topFlexContainer">
+                      <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
+                    </div>
+                  </div> );
+        case "0":
+          return(<div>
+                    <div>passive_id: {this.state.passive_id}</div>
+                    <div className="topFlexContainer">
+                      <button className="rootBtn" onClick = {(e) => this.deleteActivepassiveById(e)}>למחוק</button> 
+                    </div>
+                  </div> ); 
+        default:
+          return(<div> </div>);
+      }
+    }
+    renderSwitch8(param,param1){
+      switch(param) {
+        case "1":
+          return(<div>{param1}</div> );
         default:
           return(<div> </div>);
       }
@@ -14398,7 +14395,8 @@ break
     render() {
       return (
       <div dir="rtl">  
-  
+                  {/* <br/>
+                <button onClick={this.putFamiliesverbs}>Put familiesverbs</button> */}
       <form onSubmit={this.onSubmit} >
       <h1>אנחנו ממלאים את המילון מורשה</h1>
       <div dir="ltr" className="password">
@@ -14534,6 +14532,7 @@ break
                             <div id="rootDescript">{root.descript.replace(/@@/g, "?").replace(/&&/g,"\\").replace(/№№/g,"/")}</div>
                             <button className="rootBtn" onClick = {(e) => this.getVerbByRootId(root.root_id,e)}>לבחור</button>
                             <button className="rootBtn" onClick = {(e) => this.deleteVerbByRootId(root.root_id,e)}>למחוק</button>
+                            {this.renderSwitch8(root.soundFileExist,root.sound)}
                           </div>
                     );
 

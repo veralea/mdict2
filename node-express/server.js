@@ -33,45 +33,45 @@ MongoClient.connect(url, function(err, db) {
   dbo.createCollection("roots", function(err, res) {
     if (err) throw err;
     console.log("Collection roots created!");
-    //   db.close();
+      db.close();
   });
 
-  dbo.createCollection("translations", function(err, res) {
-    if (err) throw err;
-    console.log("Collection translations created!");
-    // db.close();
-  });
-  dbo.createCollection("phrases", function(err, res) {
-    if (err) throw err;
-    console.log("Collection phrases created!");
-    // db.close();
-  });
-  dbo.createCollection("families", function(err, res) {
-    if (err) throw err;
-    console.log("Collection families created!");
-    // db.close();
-  });
-  dbo.createCollection("familiesverbs", function(err, res) {
-    if (err) throw err;
-    console.log("Collection familiesverbs created!");
-    // db.close();
-  });
-  dbo.createCollection("antonyms", function(err, res) {
-    if (err) throw err;
-    console.log("Collection antonyms created!");
-    // db.close();
-  });
-  dbo.createCollection("synonyms", function(err, res) {
-    if (err) throw err;
-    console.log("Collection synonyms created!");
-    // db.close();
-  });
+  // dbo.createCollection("translations", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection translations created!");
+  //   // db.close();
+  // });
+  // dbo.createCollection("phrases", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection phrases created!");
+  //   // db.close();
+  // });
+  // dbo.createCollection("families", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection families created!");
+  //   // db.close();
+  // });
+  // dbo.createCollection("familiesverbs", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection familiesverbs created!");
+  //   // db.close();
+  // });
+  // dbo.createCollection("antonyms", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection antonyms created!");
+  //   // db.close();
+  // });
+  // dbo.createCollection("synonyms", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection synonyms created!");
+  //   // db.close();
+  // });
 
-  dbo.createCollection("activepassives", function(err, res) {
-    if (err) throw err;
-    console.log("Collection activepassives created!");
-    db.close();
-  });
+  // dbo.createCollection("activepassives", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Collection activepassives created!");
+  //   db.close();
+  // });
 });
 
 app.use("/auth", authRouter);
@@ -399,103 +399,13 @@ app.get("/getphrases/:root_id", (req, res) => {
   });
 });
 //getroots с проверкой на существование звуковых файлов
-// app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
-//   const benjan = req.params.benjan;
-//   const letter1 = req.params.letter1;
-//   const letter2 = req.params.letter2;
-//   const letter3 = req.params.letter3;
-//   const letter4 = req.params.letter4;
-//   var arrRoots = [];
-//   MongoClient.connect(url, function(err, db) {
-//     if (err) throw err;
-//     var dbo = db.db("mordict");
-//     var query = {
-//       benjan: benjan,
-//       letter1: letter1,
-//       letter2: letter2,
-//       letter3: letter3,
-//       letter4: letter4,
-//       soundFileExist:"0"
-//     };
-//     var query1 = { root_id: { $in: arrRoots } };
-//     //one
-//     function one() {
-//       return new Promise(resolve => {
-//         dbo.collection("roots").find(query).toArray(function(err, results) {
-//           if (err) throw err;
-
-//           results.map((result,key)=>{
-//             var fs = require('fs');
-//              var filename;
-//             // var filename = "C:\\milon\\"+result.root_id_old+".wav";
-//             // var filename1 = "C:\\milon\\"+result.root_id+".wav";
-//             var newfaliname = "C:\\milon\\"+result.sound;
-//             switch (filename) {
-//               case "C:\\milon\\"+result.root_id_old+".wav":
-//                   console.log("old one");
-//                   resolve();
-//                 break;
-//               case "C:\\milon\\"+result.root_id+".wav":
-//                   console.log("new one");
-//                   resolve();
-//                 break;
-//               default:
-//                 console.log("no one");
-//                 resolve();
-//                 break;
-//             }
-//             // fs.exists(filename,function(exists){
-//             //   if(exists){
-//             //     fs.renameSync(filename, newfaliname);
-//             //     arrRoots.push(result.root_id);              
-//             //   }
-//             // });             
-//             // fs.exists(filename1,function(exists1){
-//             //   if(exists1){
-//             //     arrRoots.push(result.root_id);
-//             //   }
-//             // });
-//             //   console.log("one");
-//             //   resolve();
-//           });
-//         });        
-//       });
-//     }        
-//     //end one
-//     //two
-//     function two() {
-//       console.dir(arrRoots);
-//       return new Promise(resolve => {
-//         dbo.collection("roots").updateMany(query1,{$set:{soundFileExist:"1"}},function(err, results) {
-//           if (err) throw err;
-//            console.log("two"); 
-//            resolve();     
-//        });        
-        
-//       });
-//     }
-//     //end two
-//     //three
-//     function three() {
-//       return new Promise(resolve => {
-//         console.log("three");
-//         db.close();
-//         resolve();            
-//       });
-//     }
-//     //end three
-
-//     one().then(() => two()).then(() => three());
-//   });
-// });  
-//конец getroots с проверкой на существование звуковых файлов
-
 app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
   const benjan = req.params.benjan;
   const letter1 = req.params.letter1;
   const letter2 = req.params.letter2;
   const letter3 = req.params.letter3;
   const letter4 = req.params.letter4;
+  var arrRoots = [];
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mordict");
@@ -504,46 +414,135 @@ app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
       letter1: letter1,
       letter2: letter2,
       letter3: letter3,
-      letter4: letter4
+      letter4: letter4,
+      soundFileExist:"0"
     };
-    dbo
-      .collection("roots")
-      .find(query)
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.dir(result);
-        db.close();
-      });
-  });
-});
-app.get("/getverbsbyletters/:root_id/:letter1/:letter2/:letter3/:letter4", (req, res) => {
-  const root_id = req.params.root_id;
-  const letter1 = req.params.letter1;
-  const letter2 = req.params.letter2;
-  const letter3 = req.params.letter3;
-  const letter4 = req.params.letter4;
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mordict");
-    var query = {
-      root_id: {$ne:root_id},
+    var query1 = { root_id_old: { $in: arrRoots } };
+    var query2 = {
+      benjan: benjan,
       letter1: letter1,
       letter2: letter2,
       letter3: letter3,
       letter4: letter4
     };
-    dbo
-      .collection("roots")
-      .find(query)
-      .toArray(function(err, result) {
-        if (err) throw err;
-        res.send(result);
-        console.dir(result);
-        db.close();
+    //one
+    function one() {
+      return new Promise(resolve => {
+        dbo.collection("roots").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          if(results.length == 0){
+            resolve();
+          }
+            results.map((result,key)=>{
+              var fs = require('fs');
+              var filename = "C:\\milon\\"+result.root_id_old+".wav";
+              var newfaliname = "C:\\milon\\"+result.sound;
+              fs.exists(filename,function(exists){
+                if(exists){
+                  fs.renameSync(filename, newfaliname);
+                  arrRoots.push(result.root_id_old);
+                  console.log(key+1,results.length)
+                  if(key == 0){
+                    resolve();
+                  }
+                }else{
+                  resolve();
+                }
+              })
+
+            });
+        });      
       });
+    }        
+    //end one
+
+    //two
+    function two() {
+      console.dir(arrRoots);
+      return new Promise(resolve => {
+        dbo.collection("roots").updateMany(query1,{$set:{soundFileExist:"1"}},function(err, results) {
+          if (err) throw err;
+           console.log("two"); 
+           resolve();     
+       });        
+        
+      });
+    }
+    //end two
+    //three
+    function three() {
+      return new Promise(resolve => {
+      dbo.collection("roots").find(query2).toArray(function(err, result) {
+          if (err) throw err;
+          res.send(result);
+          console.dir(result);
+          db.close();
+          console.log("three");
+          resolve();
+        });           
+      });
+    }
+    //end three
+
+    one().then(() => two()).then(() => three());
   });
-});
+});  
+//конец getroots с проверкой на существование звуковых файлов
+
+// app.get("/getroots/:benjan/:letter1/:letter2/:letter3/:letter4", (req, res) => {
+//   const benjan = req.params.benjan;
+//   const letter1 = req.params.letter1;
+//   const letter2 = req.params.letter2;
+//   const letter3 = req.params.letter3;
+//   const letter4 = req.params.letter4;
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("mordict");
+//     var query = {
+//       benjan: benjan,
+//       letter1: letter1,
+//       letter2: letter2,
+//       letter3: letter3,
+//       letter4: letter4
+//     };
+//     dbo
+//       .collection("roots")
+//       .find(query)
+//       .toArray(function(err, result) {
+//         if (err) throw err;
+//         res.send(result);
+//         console.dir(result);
+//         db.close();
+//       });
+//   });
+// });
+// app.get("/getverbsbyletters/:root_id/:letter1/:letter2/:letter3/:letter4", (req, res) => {
+//   const root_id = req.params.root_id;
+//   const letter1 = req.params.letter1;
+//   const letter2 = req.params.letter2;
+//   const letter3 = req.params.letter3;
+//   const letter4 = req.params.letter4;
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("mordict");
+//     var query = {
+//       root_id: {$ne:root_id},
+//       letter1: letter1,
+//       letter2: letter2,
+//       letter3: letter3,
+//       letter4: letter4
+//     };
+//     dbo
+//       .collection("roots")
+//       .find(query)
+//       .toArray(function(err, result) {
+//         if (err) throw err;
+//         res.send(result);
+//         console.dir(result);
+//         db.close();
+//       });
+//   });
+// });
 
 ////////////////////////////////////////////////////////////////////////
 // for update roots numbers
@@ -1112,6 +1111,99 @@ var arr = [
   "6698",
   "9179"
 ];
+app.get("/putfamiliesverbs/", (req, res)=>{
+  var rootIdOld = "";
+  var rootIdNew = "";
+  var familiesverbs = [];
+  function one() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id_old: arr[0]};//дописать множественный запрос "или" на все поля из "roots"
+        dbo.collection("roots").findOne(query, function(err, result) {
+           if (err) throw err;
+           
+            rootIdOld = result.root_id_old;
+            rootIdNew = result.root_id;
+            console.log(rootIdOld,rootIdNew);
+            console.log("one");
+            arr.splice(0,1);
+           db.close();
+           resolve();      
+        }); 
+ 
+      })
+
+    });
+  }
+  function two() {
+    
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mordict");
+        var query = {root_id_old: rootIdOld};
+        dbo.collection("familiesverbs").find(query).toArray(function(err, results) {
+          if (err) throw err;
+          results.map((result,key)=>{
+            familiesverbs.push({
+              familyverbId: key+1,
+              familyverb: result.familyverb,
+              familyverbPosition: result.familyverbPosition,
+              familyverbTranslateRu: result.familyverbTranslateRu,
+              familyverbTranslateEn: result.familyverbTranslateEn,
+              familyverbTranslateFr: result.familyverbTranslateFr
+            });
+           });
+  
+           console.log("two");
+          db.close();
+          resolve();      
+       }); 
+      })
+    });
+  }
+  function three() {
+    return new Promise(resolve => {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("mordict");
+          var query = {root_id_old: rootIdOld};
+                let insertValue = {
+                  $set:{
+                    familiesverbs: familiesverbs
+                  }
+                };
+                dbo
+                .collection("roots")
+                .updateOne(query, insertValue, function(err, result) {
+                  if (err) throw err;
+
+                  console.log("three");
+                  db.close();
+                  rootIdOld = "";
+                  rootIdNew = "";
+                  familiesverbs = [];
+                  resolve();
+                });
+        
+       });
+    
+      });
+  
+  }
+  one().then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three())
+  .then(() => one()).then(() => two()).then(() => three()).then(() => one()).then(() => two()).then(() => three());  
+});
 app.get("/getrootsbysearch/:search", (req, res)=>{
   const search = req.params.search;
   var rootIdOld = "";
@@ -2261,6 +2353,7 @@ app.post(
         ammS: ammS,
         amw: amw,
         amwS: amwS,
+        root_id_old:root_id,
         soundFileExist:"0"
       };
       dbo.collection("roots").insertOne(newroot, function(err, result) {
@@ -2790,10 +2883,17 @@ app.get("/createdump", (req, res) => {
   var backup = require("mongodb-backup");
   backup({
     uri: url, // mongodb://<dbuser>:<dbpassword>@<dbdomain>.mongolab.com:<dbport>/<dbdatabase>
-    root: "D:/copyDataBase"
+    root: "/copyDataBase",
+    callback: function (err) {
+      if (err) {
+          console.error(err);
+      } else {
+        console.log("dump created");
+        res.send(true);
+      }
+    },
   });
-  console.log("dump created");
-  res.send(true);
+
 });
 let port = process.env.PORT || 8000;
 app.listen(port, function() {

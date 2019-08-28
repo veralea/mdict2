@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MainStudentPage.css';
-import Search from './Search';
+import Search from './Search'; 
 
 class MainStudentRuPage extends Component {
     constructor(props) {

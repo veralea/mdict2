@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import ResultCard from './ResultCard'
 
 class Search extends Component {
-state = {
-    query: ''
-};
+// state = {
+//     query: ''
+// };
 constructor(props) {
     super(props);
     this.state = {
-        
+      query: '',
         RootsBySearch:[]
     };
     this.getRootsBySearch = this.getRootsBySearch.bind(this);
