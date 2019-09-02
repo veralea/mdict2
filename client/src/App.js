@@ -14,8 +14,8 @@ function App() {
   
       <Router>
        <div>
-        {/* <Route exact={true} path='/' component={Password} /> */}
-        <Route exact={true} path='/' component={MainTheacherPage} />
+        <Route exact={true} path='/' component={Password} />
+        {/*<Route exact={true} path='/' component={MainTheacherPage} />*/}
         <Route path='/MainTheacherPage' component={MainTheacherPage}/>
         <Route path='/MainStudentRuPage' component={MainStudentRuPage}/>
         <Route path='/MainStudentEnPage' component={MainStudentEnPage}/>
