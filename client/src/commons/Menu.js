@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Menu.css'
 
 
@@ -11,9 +11,10 @@ function Menu(props) {
         <div className='menu'>
             <div className='logout menu_button'>Logout</div>
             <div className='menu_buttons'>
-                <div className='menu_button'>Logout</div>
-                <div className='menu_button'>Logout</div>
-                <div className='menu_button'>Logout</div>
+                {props.pages.map((page, index) => {
+                    return <div className='menu_button' key={index}><Link to={page.link}>{page.name}</Link></div>
+                })}                
+                
                
             </div>
 

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from '../node_modules/react-router-dom
 //components
 import Menu from './commons/Menu';
 import MainTheacherPage from './components/MainTheacherPage';
+import MainStudentPage from './components/MainStudentEnPage'
 import MainStudentRuPage from './components/MainStudentRuPage';
 import MainStudentEnPage from './components/MainStudentEnPage';
 import MainStudentFrPage from './components/MainStudentFrPage';
@@ -15,7 +16,8 @@ import Password from './components/Password';
 function App() {
 
   const [appState, setAppState] = useState({
-    redirect:false
+    redirect: false,
+    pages:[]
   });
   useEffect(() => {
     console.log('fetch')
@@ -30,16 +32,21 @@ function App() {
       .then(response => response.json())
       .then(res => {
         console.dir(res);       
-        setAppState({ ...appState, redirect:res.access.redirect.link })
+        setAppState({
+          ...appState,
+          redirect: res.access.redirect.link,
+          pages:res.access.pages
+        })
       }).catch(err => console.error(err))
   }, [])
   return (
   
       <Router>
       <div>
-        <Menu redirect={appState.redirect} />
+        <Menu redirect={appState.redirect} pages={appState.pages}/>
         <Route exact={true} path='/' component={Password} />       
-        <Route path='/MainTheacherPage' component={MainTheacherPage}/>
+        <Route path='/teachersRoom' component={MainTheacherPage} />
+        <Route path='/dictionery' component={MainStudentPage} />
         <Route path='/MainStudentRuPage' component={MainStudentRuPage}/>
         <Route path='/MainStudentEnPage' component={MainStudentEnPage}/>
         <Route path='/MainStudentFrPage' component={MainStudentFrPage}/>
