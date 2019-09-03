@@ -37,6 +37,7 @@ router.post("/register", (req, res) => {
             const hashPassword = jwt.encode(userObj.password, secret);
             userObj.password = hashPassword;
             delete userObj.password2;
+            userObj.role = 'public'
 
             dbo.collection("users").insertOne(userObj, (err, result) => {
               if (err) throw err;
@@ -121,8 +122,12 @@ router.post("/isLogged", (req, res) => {
   try {
     if (req.cookies.mdict) {
       let cookie = jwt.decode(req.cookies.mdict, secret);
+      console.log(cookie)
       if (typeof cookie === 'object') {
-        res.send({ success: 'you are logged in' })
+        res.send({
+          success: 'you are logged in',
+          redirectTo: redirectTo(cookie.role)
+        })
       } else {
         res.send({ error: 'invalid cookie' })
       }
@@ -136,7 +141,24 @@ router.post("/isLogged", (req, res) => {
   }
 })
 
-function routeTo(){
-
+function redirectTo(role) {
+  
+  try{
+    switch (role) {
+      case 'student':
+        return '/MainStudentEnPage';
+      case 'teacher':
+        return '/MainTheacherPage';
+      case 'admin':
+        return '/adminPanel';
+      case 'public':
+        return '/register';
+      default:
+        return '/register';
+    }
+  } catch (err) {
+    console.log(err);
+    return '/register';
+  }
 }
 module.exports = router;

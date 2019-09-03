@@ -20,7 +20,7 @@ function App() {
         <Route path='/MainStudentRuPage' component={MainStudentRuPage}/>
         <Route path='/MainStudentEnPage' component={MainStudentEnPage}/>
         <Route path='/MainStudentFrPage' component={MainStudentFrPage}/>
-        <Route path='/register' component={RegisterPage}/>
+        <Route path='/register' component={Password}/>
        </div> 
       </Router>
   );

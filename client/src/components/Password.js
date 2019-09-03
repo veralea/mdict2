@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+
 import "./Password.css";
 
 class Password extends Component {
@@ -10,7 +12,8 @@ class Password extends Component {
       language: "RU",
       link: "/",
       isRegisterd: false,
-      error: ''
+      error: '',
+      toRedirect: false
     };
     this.onUsernameChange = this.onUsernameChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -22,7 +25,7 @@ class Password extends Component {
   }
 
   componentDidMount() {
-    console.log('isLoged')
+    // check if loged, and if soo, go to the default 
     fetch('http://localhost:8000/auth/isLogged', {
       method: 'POST',
       headers: {
@@ -34,7 +37,8 @@ class Password extends Component {
       .then(response => response.json())
       .then(res => {
         console.dir(res)
-        this.showErrorMsg(res.error)
+        this.showErrorMsg(res.error);
+        this.setState({ toRedirect: res.redirectTo})
       }).catch(err => console.error(err))
   }
   onUsernameChange(event) {
@@ -106,12 +110,12 @@ class Password extends Component {
   }
 
   login(e) {
-    
+
     e.preventDefault()
 
     let loginObj = {
       email: e.currentTarget.elements.email.value,
-      password: e.currentTarget.elements.password.value     
+      password: e.currentTarget.elements.password.value
     }
 
     fetch('http://localhost:8000/auth/login', {
@@ -135,71 +139,81 @@ class Password extends Component {
 
   render() {
     return (
-      <div className="flexContainer">
-        <h1>Welcome to Mdict</h1>
-        {!this.state.isRegisterd ?
-          <form onSubmit={this.register}>
+      <div>
+        {
+          this.state.toRedirect ?
+            <Redirect to={{
+              pathname: this.state.toRedirect,
+              state: { from: this.props.location }
+            }} />
+            :
+            <div className="flexContainer">
+              <h1>Welcome to Mdict</h1>
+              {!this.state.isRegisterd ?
+                <form onSubmit={this.register}>
 
-            <h2>Register</h2>
-            <input
-              name="email"
-              type="text"
-              placeholder='email'
+                  <h2>Register</h2>
+                  <input
+                    name="email"
+                    type="text"
+                    placeholder='email'
 
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder='password'
-            />
-            <input
-              name="password2"
-              type="password"
-              placeholder='retype password'
-            />
-            {this.state.error ?
-              <div className='errorMsg'>{this.state.error}</div>
-              :
-              <div />
-            }
-            <div>
-              <button type='submit' className='button'>Register</button>
-              <button className='button secondButton' onClick={() => { this.setState({ isRegisterd: true})}}>Login</button>
+                  />
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder='password'
+                  />
+                  <input
+                    name="password2"
+                    type="password"
+                    placeholder='retype password'
+                  />
+                  {this.state.error ?
+                    <div className='errorMsg'>{this.state.error}</div>
+                    :
+                    <div />
+                  }
+                  <div>
+                    <button type='submit' className='button'>Register</button>
+                    <button className='button secondButton' onClick={() => { this.setState({ isRegisterd: true }) }}>Login</button>
+                  </div>
+                </form>
+                :
+                <form onSubmit={this.login}>
+
+                  <h2>Login</h2>
+                  <input
+                    name="email"
+                    type="text"
+                    placeholder='email'
+
+                  />
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder='password'
+
+                  />
+                  LANGUAGE:{" "}
+                  <select
+                    name="language"
+                  >
+                    <option>RU</option>
+                    <option>EN</option>
+                    <option>FR</option>
+                  </select>
+                  {this.state.error ?
+                    <div className='errorMsg'>{this.state.error}</div>
+                    :
+                    <div />
+                  }
+                  <button type='submit' className='button'>Login</button>
+                </form>
+              }
+
             </div>
-          </form>
-          :
-          <form onSubmit={this.login}>
-
-            <h2>Login</h2>
-            <input
-              name="email"
-              type="text"
-              placeholder='email'
-
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder='password'
-
-            />
-            LANGUAGE:{" "}
-            <select
-              name="language"
-            >
-              <option>RU</option>
-              <option>EN</option>
-              <option>FR</option>
-            </select>
-            {this.state.error ?
-              <div className='errorMsg'>{this.state.error}</div>
-              :
-              <div />
-            }
-            <button type='submit' className='button'>Login</button>
-          </form>
         }
-
       </div>
     );
   }
