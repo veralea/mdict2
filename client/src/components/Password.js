@@ -26,20 +26,7 @@ class Password extends Component {
 
   componentDidMount() {
     // check if loged, and if soo, go to the default 
-    fetch('http://localhost:8000/auth/isLogged', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({ test: 'test' }), // body data type must match "Content-Type" header
-    })
-      .then(response => response.json())
-      .then(res => {
-        console.dir(res)
-        this.showErrorMsg(res.error);
-        this.setState({ toRedirect: res.redirectTo})
-      }).catch(err => console.error(err))
+    
   }
   onUsernameChange(event) {
     this.setState({ username: event.target.value });

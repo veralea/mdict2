@@ -7,6 +7,7 @@ const MongoClient = require("mongodb").MongoClient;
 const url =
   "mongodb://mordict-6518:V5p6ZxwtJnGrKVSPCcogji6nURiR0a@db-mordict-6518.nodechef.com:5421/mordict";
 
+const roles = require('./roles')
 
 
 
@@ -29,7 +30,7 @@ router.post("/register", (req, res) => {
           console.log(result)
           if (result !== null) {
             res.send({ error: "email is allready registerd" });
-           
+
           } else {
             //create new user
             let userObj = req.body;
@@ -44,7 +45,7 @@ router.post("/register", (req, res) => {
               console.log("user registerd");
               res.send({
                 success: 'user registerd',
-                isRegisterd:true
+                isRegisterd: true
               })
             })
           }
@@ -53,14 +54,14 @@ router.post("/register", (req, res) => {
           db.close();
         });
     } else {
-      res.send({error:'no email was given'})
+      res.send({ error: 'no email was given' })
     }
   });
 
 
 });
 
-router.post("/login",  (req, res) => {
+router.post("/login", (req, res) => {
   // console.log(req.cookies.mdict)
   try {
     if (Object.prototype.toString.call(req.body) !== "[object Object]")
@@ -84,23 +85,26 @@ router.post("/login",  (req, res) => {
                 //create hashed cookie with users permissions
                 let userObj = {
                   id: result._id,
-                  role:result.role || 'public'
+                  role: result.role || 'public'
                 }
-               
-                let expires = 1000 * 60 * 60*24*3;
-               
+
+                let expires = 1000 * 60 * 60 * 24 * 3;
+
                 res.cookie('mdict', jwt.encode(userObj, secret), { httpOnly: true, maxAge: expires });
-                res.send({ success: "user match password" })
+                res.send({
+                  success: "user match password",
+                  access: redirectTo(result.role)
+                })
               } else {
                 res.send({ error: "user do not match password" })
               }
 
             } catch (err) {
               console.log(err)
-              res.send({error: 'password is inncorrect'})
+              res.send({ error: 'password is inncorrect' })
             }
 
-           
+
           } else {
             console.log("user is not in DataBase");
             res.send({ error: "User is not registerd" });
@@ -117,7 +121,7 @@ router.post("/login",  (req, res) => {
   }
 });
 
-router.post("/isLogged", (req, res) => { 
+router.post("/isLogged", (req, res) => {
   console.log(req.cookies.mdict)
   try {
     if (req.cookies.mdict) {
@@ -126,14 +130,14 @@ router.post("/isLogged", (req, res) => {
       if (typeof cookie === 'object') {
         res.send({
           success: 'you are logged in',
-          redirectTo: redirectTo(cookie.role)
+          access: redirectTo(cookie.role)
         })
       } else {
         res.send({ error: 'invalid cookie' })
       }
-     
+
     } else {
-      res.send({error:'no cookie suplied'})
+      res.send({ error: 'no cookie suplied' })
     }
 
   } catch (err) {
@@ -142,23 +146,43 @@ router.post("/isLogged", (req, res) => {
 })
 
 function redirectTo(role) {
-  
-  try{
+
+  try {
     switch (role) {
       case 'student':
-        return '/MainStudentEnPage';
+        return {
+          redirect: roles.student[0],
+          pages: roles.student
+        };
       case 'teacher':
-        return '/MainTheacherPage';
+        return {
+          redirect: roles.teacher[0],
+          pages: roles.teacher
+        };        
       case 'admin':
-        return '/adminPanel';
+        return {
+          redirect: roles.admin[0],
+          pages: roles.admin
+        };   
+        
       case 'public':
-        return '/register';
+        return {
+          redirect: roles.public[0],
+          pages: roles.public
+        };   
+       
       default:
-        return '/register';
+        return {
+          redirect: roles.public[0],
+          pages: roles.public
+        };   
     }
   } catch (err) {
     console.log(err);
-    return '/register';
+    return {
+      redirect: roles.public[0],
+      pages: roles.public
+    };   
   }
 }
 module.exports = router;
