@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bodyParser = require("body-parser");
 const jwt = require('jwt-simple');
 const secret = require('../utils/config').myprivatekey;
 const MongoClient = require("mongodb").MongoClient;
@@ -60,8 +59,8 @@ router.post("/register", (req, res) => {
 
 });
 
-router.post("/login", async (req, res) => {
-
+router.post("/login",  (req, res) => {
+  // console.log(req.cookies.mdict)
   try {
     if (Object.prototype.toString.call(req.body) !== "[object Object]")
       throw "request body is not an object";
@@ -75,15 +74,32 @@ router.post("/login", async (req, res) => {
           if (err) throw err;
 
           if (result !== null) {
+            console.log(result._id)
+            try {
+              //may brake if password is not encrypted
+              let passwordFromDB = jwt.decode(result.password, secret);
+              console.log(passwordFromDB)
+              if (req.body.password === passwordFromDB) {
+                //create hashed cookie with users permissions
+                let userObj = {
+                  id: result._id,
+                  role:result.role || 'public'
+                }
+               
+                let expires = 1000 * 60 * 60*24*3;
+               
+                res.cookie('mdict', jwt.encode(userObj, secret), { httpOnly: true, maxAge: expires });
+                res.send({ success: "user match password" })
+              } else {
+                res.send({ error: "user do not match password" })
+              }
 
-            let passwordFromDB = jwt.decode(result.password, secret)
-
-            if (req.body.password === passwordFromDB) {
-              res.send({ sucess: "user match password" })
-            } else {
-              res.send({ error: "user do not match password" })
+            } catch (err) {
+              console.log(err)
+              res.send({error: 'password is inncorrect'})
             }
 
+           
           } else {
             console.log("user is not in DataBase");
             res.send({ error: "User is not registerd" });
@@ -99,4 +115,28 @@ router.post("/login", async (req, res) => {
     console.dir(req.body);
   }
 });
+
+router.post("/isLogged", (req, res) => { 
+  console.log(req.cookies.mdict)
+  try {
+    if (req.cookies.mdict) {
+      let cookie = jwt.decode(req.cookies.mdict, secret);
+      if (typeof cookie === 'object') {
+        res.send({ success: 'you are logged in' })
+      } else {
+        res.send({ error: 'invalid cookie' })
+      }
+     
+    } else {
+      res.send({error:'no cookie suplied'})
+    }
+
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+function routeTo(){
+
+}
 module.exports = router;

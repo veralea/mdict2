@@ -10,18 +10,20 @@ class Password extends Component {
       language: "RU",
       link: "/",
       isRegisterd: false,
-      error:''
+      error: ''
     };
     this.onUsernameChange = this.onUsernameChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     // this.onLanguageChange = this.onLanguageChange.bind(this);
     this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
     this.showErrorMsg = this.showErrorMsg.bind(this);
-   
+
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/auth/register', {
+    console.log('isLoged')
+    fetch('http://localhost:8000/auth/isLogged', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,6 +33,7 @@ class Password extends Component {
     })
       .then(response => response.json())
       .then(res => {
+        console.dir(res)
         this.showErrorMsg(res.error)
       }).catch(err => console.error(err))
   }
@@ -61,7 +64,7 @@ class Password extends Component {
   //     .then(response => console.dir(response))
   //     .catch(error => console.error("Error:", error));
   // }
-  
+
 
   showErrorMsg(error) {
     this.setState({ error: error })
@@ -84,7 +87,7 @@ class Password extends Component {
         fetch('http://localhost:8000/auth/register', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',            
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(loginObj), // body data type must match "Content-Type" header
         })
@@ -95,11 +98,39 @@ class Password extends Component {
               this.showErrorMsg(res.error)
             }
             if (res.isRegisterd) {
-              this.setState({isRegisterd:true})
+              this.setState({ isRegisterd: true })
             }
           }).catch(err => console.error(err))
       }
     }
+  }
+
+  login(e) {
+    
+    e.preventDefault()
+
+    let loginObj = {
+      email: e.currentTarget.elements.email.value,
+      password: e.currentTarget.elements.password.value     
+    }
+
+    fetch('http://localhost:8000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginObj), // body data type must match "Content-Type" header
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res)
+        if (res.error) {
+          this.showErrorMsg(res.error)
+        }
+        if (res.isRegisterd) {
+          this.setState({ isRegisterd: true })
+        }
+      }).catch(err => console.error(err))
   }
 
   render() {
@@ -114,24 +145,27 @@ class Password extends Component {
               name="email"
               type="text"
               placeholder='email'
-           
+
             />
             <input
               name="password"
               type="password"
-              placeholder='password'           
+              placeholder='password'
             />
             <input
               name="password2"
               type="password"
               placeholder='retype password'
-            />     
-            {this.state.error?
+            />
+            {this.state.error ?
               <div className='errorMsg'>{this.state.error}</div>
               :
               <div />
             }
-            <button type='submit' className='button'>Register</button>
+            <div>
+              <button type='submit' className='button'>Register</button>
+              <button className='button secondButton' onClick={() => { this.setState({ isRegisterd: true})}}>Login</button>
+            </div>
           </form>
           :
           <form onSubmit={this.login}>
@@ -157,7 +191,11 @@ class Password extends Component {
               <option>EN</option>
               <option>FR</option>
             </select>
-           
+            {this.state.error ?
+              <div className='errorMsg'>{this.state.error}</div>
+              :
+              <div />
+            }
             <button type='submit' className='button'>Login</button>
           </form>
         }

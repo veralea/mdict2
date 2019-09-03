@@ -2,6 +2,7 @@ const express = require("express");
 const path = require('path');
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const MongoClient = require("mongodb").MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url =
@@ -15,6 +16,8 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 app.use(cors());
 
 app.get('/*', (req, res) => {
