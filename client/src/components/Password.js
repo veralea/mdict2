@@ -24,10 +24,6 @@ class Password extends Component {
 
   }
 
-  componentDidMount() {
-    // check if registerd
-    
-  }
   onUsernameChange(event) {
     this.setState({ username: event.target.value });
   }
@@ -127,7 +123,7 @@ class Password extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
         {
@@ -198,7 +194,10 @@ class Password extends Component {
                     :
                     <div />
                   }
-                  <button type='submit' className='button'>Login</button>
+                  <div>
+                    <button type='submit' className='button'>Login</button>
+                    <button className='button secondButton' onClick={() => { this.setState({ isRegisterd: false }) }}>Register</button>
+                  </div>
                 </form>
               }
 
