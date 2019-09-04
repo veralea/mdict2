@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { BrowserRouter as Router, Route } from '../node_modules/react-router-dom';
@@ -17,7 +17,7 @@ function App() {
 
   const [appState, setAppState] = useState({
     redirect: false,
-    pages:[]
+    pages: []
   });
   useEffect(() => {
     console.log('fetch')
@@ -27,32 +27,32 @@ function App() {
         'Content-Type': 'application/json',
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ test: 'test' }), 
+      body: JSON.stringify({ test: 'test' }),
     })
       .then(response => response.json())
       .then(res => {
-        console.dir(res);       
+        console.dir(res);
         setAppState({
           ...appState,
           redirect: res.access.redirect.link,
-          pages:res.access.pages
+          pages: res.access.pages
         })
       }).catch(err => console.error(err))
   }, [])
   return (
-  
-      <Router>
+
+    <Router>
       <div>
-        <Menu redirect={appState.redirect} pages={appState.pages}/>
-        <Route exact={true} path='/' component={Password} />       
+        <Menu pages={appState.pages} />
+        <Route exact={true} path='/' component={Password} />
         <Route path='/teachersRoom' component={MainTheacherPage} />
         <Route path='/dictionery' component={MainStudentPage} />
-        <Route path='/MainStudentRuPage' component={MainStudentRuPage}/>
-        <Route path='/MainStudentEnPage' component={MainStudentEnPage}/>
-        <Route path='/MainStudentFrPage' component={MainStudentFrPage}/>
-        <Route path='/register' component={Password}/>
-       </div> 
-      </Router>
+        <Route path='/MainStudentRuPage' component={MainStudentRuPage} />
+        <Route path='/MainStudentEnPage' component={MainStudentEnPage} />
+        <Route path='/MainStudentFrPage' component={MainStudentFrPage} />
+        <Route path='/register' component={Password} />
+      </div>
+    </Router>
   );
 }
 
