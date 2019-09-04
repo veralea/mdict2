@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import { BrowserRouter as Router, Route } from '../node_modules/react-router-dom';
+import { Router, Route } from '../node_modules/react-router-dom';
+import history from './functions/history';
 
 //components
 import Menu from './commons/Menu';
@@ -20,7 +21,8 @@ function App() {
     pages: []
   });
   useEffect(() => {
-    console.log('fetch')
+    //check if user is logged in
+    
     fetch('http://localhost:8000/auth/isLogged', {
       method: 'POST',
       headers: {
@@ -31,26 +33,42 @@ function App() {
     })
       .then(response => response.json())
       .then(res => {
-        console.dir(res);
-        setAppState({
-          ...appState,
-          redirect: res.access.redirect.link,
-          pages: res.access.pages
-        })
+        //get access pages and redirect to main page according to user role
+        afterLoginSettings(res);
       }).catch(err => console.error(err))
-  }, [])
+  }, []);
+
+  function afterLoginSettings(loginObj) {
+    
+    //set pages, redirect to main page of user accordint to the role
+    if (loginObj.access) {
+      setAppState({
+        ...appState,
+        redirect: loginObj.access.redirect.link || false,
+        pages: loginObj.access.pages || []
+      })
+      if (loginObj.access.redirect) {
+        //redirect
+        history.push(loginObj.access.redirect.link);
+      }
+    } else {
+      console.assert(loginObj.access, 'no access wass sent to appStater', loginObj);
+    }
+  }
+
+
   return (
 
-    <Router>
+    <Router history={history}>
       <div>
         <Menu pages={appState.pages} />
-        <Route exact={true} path='/' component={Password} />
+        <Route exact={true} path='/' render={(props) =>  <Password {...props} afterLoginSettings={afterLoginSettings} /> } /> 
         <Route path='/teachersRoom' component={MainTheacherPage} />
         <Route path='/dictionery' component={MainStudentPage} />
         <Route path='/MainStudentRuPage' component={MainStudentRuPage} />
         <Route path='/MainStudentEnPage' component={MainStudentEnPage} />
         <Route path='/MainStudentFrPage' component={MainStudentFrPage} />
-        <Route path='/register' component={Password} />
+        <Route path='/start' render={(props) => <Password {...props} afterLoginSettings={afterLoginSettings} />} />
       </div>
     </Router>
   );

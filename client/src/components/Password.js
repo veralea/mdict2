@@ -11,7 +11,7 @@ class Password extends Component {
       password: "",
       language: "RU",
       link: "/",
-      isRegisterd: false,
+      isRegisterd: localStorage.getItem('isRegisterdToMdict') || false,
       error: '',
       toRedirect: false
     };
@@ -25,7 +25,7 @@ class Password extends Component {
   }
 
   componentDidMount() {
-    // check if loged, and if soo, go to the default 
+    // check if registerd
     
   }
   onUsernameChange(event) {
@@ -114,17 +114,20 @@ class Password extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log(res)
+        console.dir(res)
         if (res.error) {
           this.showErrorMsg(res.error)
         }
         if (res.isRegisterd) {
           this.setState({ isRegisterd: true })
         }
+        this.props.afterLoginSettings(res);
+        localStorage.setItem('isRegisterdToMdict', true)
       }).catch(err => console.error(err))
   }
 
   render() {
+    
     return (
       <div>
         {

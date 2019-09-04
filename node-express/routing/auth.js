@@ -9,6 +9,8 @@ const url =
 
 const roles = require('./roles')
 
+const COOKIE_NAME = 'mdict';
+
 
 
 router.post("/register", (req, res) => {
@@ -90,7 +92,7 @@ router.post("/login", (req, res) => {
 
                 let expires = 1000 * 60 * 60 * 24 * 3;
 
-                res.cookie('mdict', jwt.encode(userObj, secret), { httpOnly: true, maxAge: expires });
+                res.cookie(COOKIE_NAME, jwt.encode(userObj, secret), { httpOnly: true, maxAge: expires });
                 res.send({
                   success: "user match password",
                   access: redirectTo(result.role)
@@ -145,44 +147,57 @@ router.post("/isLogged", (req, res) => {
   }
 })
 
-function redirectTo(role) {
+router.post("/logout", (req, res) => {
+  
+  //clean cookie  
+  res.cookie(COOKIE_NAME, 'stam', { maxAge: 0 });
 
-  try {
-    switch (role) {
-      case 'student':
-        return {
-          redirect: roles.student[0],
-          pages: roles.student
-        };
-      case 'teacher':
-        return {
-          redirect: roles.teacher[0],
-          pages: roles.teacher
-        };        
-      case 'admin':
-        return {
-          redirect: roles.admin[0],
-          pages: roles.admin
-        };   
-        
-      case 'public':
-        return {
-          redirect: roles.public[0],
-          pages: roles.public
-        };   
-       
-      default:
-        return {
-          redirect: roles.public[0],
-          pages: roles.public
-        };   
+  //redirect to login
+  res.send({
+    access: redirectTo('public')
+  })
+})
+
+  function redirectTo(role) {
+
+    try {
+      switch (role) {
+        case 'student':
+          return {
+            redirect: roles.student[0],
+            pages: roles.student
+          };
+        case 'teacher':
+          return {
+            redirect: roles.teacher[0],
+            pages: roles.teacher
+          };
+        case 'admin':
+          return {
+            redirect: roles.admin[0],
+            pages: roles.admin
+          };
+
+        case 'public':
+          return {
+            redirect: roles.public[0],
+            pages: roles.public
+          };
+
+        default:
+          return {
+            redirect: roles.public[0],
+            pages: roles.public
+          };
+      }
+    } catch (err) {
+      console.log(err);
+      return {
+        redirect: roles.public[0],
+        pages: roles.public
+      };
     }
-  } catch (err) {
-    console.log(err);
-    return {
-      redirect: roles.public[0],
-      pages: roles.public
-    };   
   }
-}
-module.exports = router;
+
+
+  module.exports = router;
