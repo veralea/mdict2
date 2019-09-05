@@ -9,15 +9,19 @@ const url = DB_URL;
 const validateRequest = require('./validateRequest');
 
 router.post('/emailOrName', validateRequest, (req, res) => {
+    console.log(res.permision)
     try {
         if (res.permision == true) {
-            const searchTerm = req.body.searchTerm;
+            let searchTerm = req.body.searchTerm;          
+            
+
+            const regexp = new RegExp(searchTerm,'g');
 
             MongoClient.connect(url, function (err, db) {
                 if (err) throw err;
                 var dbo = db.db("mordict");
-
-                dbo.collection("users").find({}).toArray(function (err, result) {
+                
+                dbo.collection("users").find({ email: regexp}).toArray(function (err, result) {
                     if (err) throw err;
                     res.send(result);
                     console.log(result.length);
@@ -31,6 +35,7 @@ router.post('/emailOrName', validateRequest, (req, res) => {
         }
     } catch (err) {
         console.log(err)
+        res.send({error:err})
     }
 })
 

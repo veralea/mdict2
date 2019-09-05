@@ -39,22 +39,29 @@ class Admin extends Component {
         this.state = {
             results: [{ email: 'jdfhdskjdhfskjdhfksd@fff.net', role: 'teacher', expDate:'13/8/2020'}]
         }
+        this.search = this.search.bind(this)
     }
 
     search(e) {
         e.preventDefault();
-        let searchTerm = e.target[0].value;
-        console.dir(searchTerm)
+        let searchTerm = e.target[0].value.toString();
+        searchTerm.replace('\+', '\\+')
+        console.log(searchTerm)
+        
         fetch('http://localhost:8000/search/emailOrName', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({ search: searchTerm }),
+            body: JSON.stringify({
+                searchTerm: searchTerm,
+                requestedPage: '/admin'
+            }),
         })
             .then(response => response.json())
             .then(res => {
+                this.setState({results:res})
                console.dir(res)
             }).catch(err => console.error(err))
         // })
