@@ -11,6 +11,8 @@ import MainStudentPage from './components/MainStudentEnPage'
 import MainStudentRuPage from './components/MainStudentRuPage';
 import MainStudentEnPage from './components/MainStudentEnPage';
 import MainStudentFrPage from './components/MainStudentFrPage';
+import Admin from './components/Admin';
+
 import RegisterPage from './components/RegisterPage';
 import Password from './components/Password';
 
@@ -34,11 +36,11 @@ function App() {
       .then(response => response.json())
       .then(res => {
         //get access pages and redirect to main page according to user role
-        afterLoginSettings(res);
+        redirectAfterFetch(res);
       }).catch(err => console.error(err))
   }, []);
 
-  function afterLoginSettings(loginObj) {
+  function redirectAfterFetch(loginObj) {
     
     //set pages, redirect to main page of user accordint to the role
     if (loginObj.access) {
@@ -52,7 +54,7 @@ function App() {
         history.push(loginObj.access.redirect.link);
       }
     } else {
-      console.assert(loginObj.access, 'no access wass sent to appStater', loginObj);
+      console.assert(loginObj.access, 'no access was sent to appState', loginObj);
     }
   }
 
@@ -62,13 +64,14 @@ function App() {
     <Router history={history}>
       <div>
         <Menu pages={appState.pages} />
-        <Route exact={true} path='/' render={(props) =>  <Password {...props} afterLoginSettings={afterLoginSettings} /> } /> 
-        <Route path='/teachersRoom' component={MainTheacherPage} />
-        <Route path='/dictionery' component={MainStudentPage} />
+        <Route exact={true} path='/' render={(props) =>  <Password {...props} redirectAfterFetch={redirectAfterFetch} /> } /> 
+        <Route path='/teachersRoom' render={(props) => <MainTheacherPage {...props} redirectAfterFetch={redirectAfterFetch} /> } /> 
+        <Route path='/dictionery' render={(props) => <MainStudentPage {...props} redirectAfterFetch={redirectAfterFetch} /> } />         
+        <Route path='/admin' render={(props) => <Admin {...props} redirectAfterFetch={redirectAfterFetch} /> } />         
         <Route path='/MainStudentRuPage' component={MainStudentRuPage} />
         <Route path='/MainStudentEnPage' component={MainStudentEnPage} />
         <Route path='/MainStudentFrPage' component={MainStudentFrPage} />
-        <Route path='/start' render={(props) => <Password {...props} afterLoginSettings={afterLoginSettings} />} />
+        <Route path='/start' render={(props) => <Password {...props} redirectAfterFetch={redirectAfterFetch} />} />
       </div>
     </Router>
   );

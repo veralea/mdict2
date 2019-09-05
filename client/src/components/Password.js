@@ -117,7 +117,7 @@ class Password extends Component {
         if (res.isRegisterd) {
           this.setState({ isRegisterd: true })
         }
-        this.props.afterLoginSettings(res);
+        this.props.redirectAfterFetch(res);
         localStorage.setItem('isRegisterdToMdict', true)
       }).catch(err => console.error(err))
   }

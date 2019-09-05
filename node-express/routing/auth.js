@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require('jwt-simple');
-const secret = require('../utils/config').myprivatekey;
+// const secret = require('../utils/config').myprivatekey;
+const { COOKIE_NAME, secret } = require('../utils/config');
+const validateRequest = require('./validateRequest');
 const MongoClient = require("mongodb").MongoClient;
 // const url = "mongodb://localhost:27017/";
 const url =
@@ -9,15 +11,14 @@ const url =
 
 const roles = require('./roles')
 
-const COOKIE_NAME = 'mdict';
+
 
 
 
 router.post("/register", (req, res) => {
 
   // validate the request body first
-  console.log('login')
-  console.log(req.body);
+
 
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
@@ -29,7 +30,7 @@ router.post("/register", (req, res) => {
         .collection("users")
         .findOne({ email: req.body.email }, function (err, result) {
           if (err) throw err;
-          console.log(result)
+
           if (result !== null) {
             res.send({ error: "email is allready registerd" });
 
@@ -78,11 +79,11 @@ router.post("/login", (req, res) => {
           if (err) throw err;
 
           if (result !== null) {
-            console.log(result._id)
+           
             try {
               //may brake if password is not encrypted
               let passwordFromDB = jwt.decode(result.password, secret);
-              console.log(passwordFromDB)
+              
               if (req.body.password === passwordFromDB) {
                 //create hashed cookie with users permissions
                 let userObj = {
@@ -119,16 +120,16 @@ router.post("/login", (req, res) => {
 
   } catch (err) {
     console.log(err);
-    console.dir(req.body);
+
   }
 });
 
 router.post("/isLogged", (req, res) => {
-  console.log(req.cookies.mdict)
+
   try {
-    if (req.cookies.mdict) {
+    if (req.cookies[COOKIE_NAME]) {
       let cookie = jwt.decode(req.cookies.mdict, secret);
-      console.log(cookie)
+
       if (typeof cookie === 'object') {
         res.send({
           success: 'you are logged in',
@@ -148,9 +149,9 @@ router.post("/isLogged", (req, res) => {
 })
 
 router.post("/logout", (req, res) => {
-  
+
   //clean cookie  
-  res.cookie(COOKIE_NAME, 'stam', { maxAge: 0 });
+  res.cookie(COOKIE_NAME, 'end', { maxAge: 0 });
 
   //redirect to login
   res.send({
@@ -158,46 +159,68 @@ router.post("/logout", (req, res) => {
   })
 })
 
-  function redirectTo(role) {
-
-    try {
-      switch (role) {
-        case 'student':
-          return {
-            redirect: roles.student[0],
-            pages: roles.student
-          };
-        case 'teacher':
-          return {
-            redirect: roles.teacher[0],
-            pages: roles.teacher
-          };
-        case 'admin':
-          return {
-            redirect: roles.admin[0],
-            pages: roles.admin
-          };
-
-        case 'public':
-          return {
-            redirect: roles.public[0],
-            pages: roles.public
-          };
-
-        default:
-          return {
-            redirect: roles.public[0],
-            pages: roles.public
-          };
-      }
-    } catch (err) {
-      console.log(err);
-      return {
-        redirect: roles.public[0],
-        pages: roles.public
-      };
+router.post("/isAuthorized", validateRequest, (req, res) => {
+  try {
+    
+    if (res.permision) {
+      res.send({ success: 'has Permision' })
+    } else {
+      res.send({
+        access: {
+          permision: false,
+          redirect: {
+            link: '/start'
+          },
+          pages:res.pages
+        }
+      })
     }
+  } catch (err) {
+    console.log(err)
+  } 
+
+})
+
+function redirectTo(role) {
+
+  try {
+    switch (role) {
+      case 'student':
+        return {
+          redirect: roles.student[0],
+          pages: roles.student
+        };
+      case 'teacher':
+        return {
+          redirect: roles.teacher[0],
+          pages: roles.teacher
+        };
+      case 'admin':
+        return {
+          redirect: roles.admin[0],
+          pages: roles.admin
+        };
+
+      case 'public':
+        return {
+          redirect: roles.public[0],
+          pages: roles.public
+        };
+
+      default:
+        return {
+          redirect: roles.public[0],
+          pages: roles.public
+        };
+    }
+  } catch (err) {
+    console.log(err);
+    return {
+      redirect: roles.public[0],
+      pages: roles.public
+    };
   }
+}
 
 
-  module.exports = router;
+module.exports = router;

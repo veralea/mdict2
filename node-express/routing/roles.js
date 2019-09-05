@@ -1,6 +1,6 @@
-let roles = {
+const roles = {
     admin: [
-        { link: '/adminPanel', name: 'Admin' },
+        { link: '/admin', name: 'Admin' },
         { link: '/teachersRoom', name: 'Teacher' },
         { link: '/dictionery', name: 'Dictionary' },
         { link: '/start', name: 'Home' },

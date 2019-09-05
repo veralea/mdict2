@@ -1,0 +1,23 @@
+table {
+    border: none;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+}
+
+thead {
+    background: #eabf6e;
+}
+
+tbody {
+    background: wheat;
+}
+
+td {
+    border: 0px solid;
+    padding: 4px 10px;
+}
+
+.tableEmail {
+    word-break: break-all;
+}

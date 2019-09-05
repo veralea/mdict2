@@ -3,14 +3,15 @@ const path = require('path');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
+const {DB_URL} = require('./utils/config.json') 
 const MongoClient = require("mongodb").MongoClient;
 // const url = "mongodb://localhost:27017/";
-const url =
-  "mongodb://mordict-6518:V5p6ZxwtJnGrKVSPCcogji6nURiR0a@db-mordict-6518.nodechef.com:5421/mordict";
+const url = DB_URL;
 
 //util
 const validateUser = require("./utils/user").validateUser;
 const authRouter = require('./routing/auth');
+const searchRouter = require('./routing/search');
 
 const app = express();
 app.use(express.static("public"));
@@ -80,6 +81,7 @@ MongoClient.connect(url, function(err, db) {
 });
 
 app.use("/auth", authRouter);
+app.use("/search", searchRouter);
 
 // app.post("/register", async (req, res) => {
 //   // validate the request body first
