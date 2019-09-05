@@ -63,9 +63,11 @@ class Password extends Component {
     e.preventDefault()
 
     let loginObj = {
+      name: e.currentTarget.elements.name.value,
       email: e.currentTarget.elements.email.value,
       password: e.currentTarget.elements.password.value,
-      password2: e.currentTarget.elements.password2.value
+      password2: e.currentTarget.elements.password2.value,
+      time:new Date()
     }
     if (loginObj.password !== loginObj.password2) {
       this.showErrorMsg("The password do not match");
@@ -139,6 +141,12 @@ class Password extends Component {
                 <form onSubmit={this.register}>
 
                   <h2>Register</h2>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder='Full Name'
+
+                  />
                   <input
                     name="email"
                     type="text"
