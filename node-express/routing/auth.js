@@ -91,7 +91,7 @@ router.post("/login", (req, res) => {
                   role: result.role || 'public'
                 }
 
-                let expires = 1000 * 60 * 60 * 24 * 3;
+                let expires = 1000 * 60 * 60 * 24 * 30;
 
                 res.cookie(COOKIE_NAME, jwt.encode(userObj, secret), { httpOnly: true, maxAge: expires });
                 res.send({
