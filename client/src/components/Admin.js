@@ -39,6 +39,7 @@ class Admin extends Component {
         this.state = {
             results: [{ email: 'jdfhdskjdhfskjdhfksd@fff.net', role: 'teacher', expDate:'13/8/2020'}]
         }
+        this.searchBy = 'email';
         this.search = this.search.bind(this)
     }
 
@@ -46,9 +47,9 @@ class Admin extends Component {
         e.preventDefault();
         let searchTerm = e.target[0].value.toString();
         searchTerm.replace('\+', '\\+')
-        console.log(searchTerm)
+        console.log(this.searchBy)
         
-        fetch('http://localhost:8000/search/emailOrName', {
+        fetch(`http://localhost:8000/search/by/${this.searchBy}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +79,8 @@ class Admin extends Component {
                 <form onSubmit={this.search} className='searchForm'>                    
                     <input type='text' placeholder='email' />
                     <div className='adminButtons'>
-                        <button type='submit' className='button'>Search</button>
+                        <button type='submit' className='button' onClick={()=>{this.searchBy = 'email'}}>by email</button>
+                        <button type='submit' className='button' onClick={() => { this.searchBy = 'name' }}>by name</button>
                         <button className='button' onClick={this.searchNew}>Show new</button>
                         <button className='button '>clear</button>
                     </div>

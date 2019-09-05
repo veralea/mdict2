@@ -8,24 +8,29 @@ const url = DB_URL;
 
 const validateRequest = require('./validateRequest');
 
-router.post('/emailOrName', validateRequest, (req, res) => {
-    console.log(res.permision)
+router.post('/by/:method', validateRequest, (req, res) => {
+    console.log(req.params.method)
     try {
         if (res.permision == true) {
             let searchTerm = req.body.searchTerm;          
-            
+            let searchSettings = {};
+            searchSettings[req.params.method || email] = new RegExp(searchTerm, 'g')
 
-            const regexp = new RegExp(searchTerm,'g');
+            
 
             MongoClient.connect(url, function (err, db) {
                 if (err) throw err;
                 var dbo = db.db("mordict");
                 
-                dbo.collection("users").find({ email: regexp}).toArray(function (err, result) {
+                dbo.collection("users").find(searchSettings).toArray(function (err, result) {
                     if (err) throw err;
+                    
+
                     res.send(result);
-                    console.log(result.length);
+
                     db.close()
+                    
+                   
                 }); 
             });
 
