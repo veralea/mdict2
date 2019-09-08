@@ -10,11 +10,11 @@ const url = DB_URL;
 const validateRequest = require('./validateRequest');
 
 router.post('/roleNExpDate', validateRequest, (req, res) => {
-    console.log(res.permision)
+  
     if (res.permision == true) {
         
         let roleAndExpDate = req.body;
-        console.log(roleAndExpDate)
+     
 
         MongoClient.connect(url, function (err, db) {
             if (err) throw err;
@@ -33,6 +33,35 @@ router.post('/roleNExpDate', validateRequest, (req, res) => {
     } else {
         res.send({error:'user do save to db '})
     }
- })
+})
+ 
+
+    
+router.post('/delete', validateRequest, (req, res) => {
+     
+        if (res.permision == true) {
+
+            let _id = req.body._id;           
+
+            MongoClient.connect(url, function (err, db) {
+                if (err) throw err;
+                const dbo = db.db("mordict");
+
+                const myquery = {
+                    _id: new ObjectId(_id)                   
+                };
+                
+
+                dbo.collection("users").deleteOne(myquery, function (err, resultsDB) {
+                    if (err) throw err;                   
+         
+                    db.close();
+                    res.send({ success: `${resultsDB.deletedCount} document removed` })
+                });
+            });
+        } else {
+            res.send({ error: 'user do save to db ' })
+        }
+    })
 
 module.exports = router;

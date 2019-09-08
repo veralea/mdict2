@@ -19,7 +19,7 @@ class Admin extends Component {
             ),
         }
         ).then(response => response.json()).then(res => {
-            console.dir(res) //if no permision, redirect to login page
+         
             if (res.permision == false) {
                 this.props.redirectAfterFetch(res);
             }
@@ -32,15 +32,50 @@ class Admin extends Component {
 
     searchByEmail(e) {
         e.preventDefault();
-        console.log('search')
+       
     }
     constructor(props) {
         super(props);
         this.state = {
-            results: [{ email: 'jdfhdskjdhfskjdhfksd@fff.net', role: 'teacher', expDate:'13/8/2020'}]
+            results: [],
+            toBeDeleted: {}
         }
         this.searchBy = 'email';
-        this.search = this.search.bind(this)
+        this.search = this.search.bind(this);
+        this.handleToBeDeleted = this.handleToBeDeleted.bind(this);
+    }
+
+    handleToBeDeleted(toDeleteUserObj) {
+     
+        // this.setState({ toBeDeleted: toDeleteUserObj})
+        let toDelete = confirm(`Are you sure you want to delete ${toDeleteUserObj.email} ${toDeleteUserObj.name||''}`)
+        
+        if (toDelete) {
+            fetch(`http://localhost:8000/write/delete`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify({
+                    _id: toDeleteUserObj._id,
+                    requestedPage: '/admin'
+                }),
+            })
+                .then(response => response.json())
+                .then(res => {
+                   
+                    //search and delte from DOM
+                    
+                    let tempResults = this.state.results;
+                    let resultIndex = tempResults.findIndex(result => result._id === toDeleteUserObj._id);
+                    if (resultIndex > -1) {
+                        tempResults.splice(resultIndex, 1);
+                    }
+                    this.setState({ results: tempResults})
+                  
+                }).catch(err => console.error(err))
+        }
     }
 
     search(e) {
@@ -62,9 +97,9 @@ class Admin extends Component {
         })
             .then(response => response.json())
             .then(res => {
-                console.dir(res)
+                
                 this.setState({results:res})
-               console.dir(res)
+              
             }).catch(err => console.error(err))
         // })
     }
@@ -86,7 +121,7 @@ class Admin extends Component {
                         <button className='button '>clear</button>
                     </div>
                 </form>
-                <Table results={this.state.results} />
+                <Table results={this.state.results} toBeDeleted={this.handleToBeDeleted} />
             </div>
                 )
         }

@@ -160,7 +160,11 @@ class Tr extends Component {
                         }}
                     >{!this.state.isEdit ? 'edit' : 'set'}</div>
                 </td>
-                <td className='adminTdBtn'><div className='button adminBtn'>delete</div></td>
+                <td className='adminTdBtn'>
+                    <div className='button adminBtn'
+                        onClick={() => { this.props.toBeDeleted(this.props.result) }}
+                    >
+                        delete</div></td>
             </tr>
         )
     }

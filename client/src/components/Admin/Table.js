@@ -31,7 +31,7 @@ class Table extends Component {
                             {
                                 this.props.results.map((result, index) => {
                                     return (
-                                        <Tr result={result} key={index}/>
+                                        <Tr result={result} key={index} toBeDeleted={this.props.toBeDeleted}/>
                                     )
                                 })
                             }
