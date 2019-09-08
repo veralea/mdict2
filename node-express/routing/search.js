@@ -9,7 +9,7 @@ const url = DB_URL;
 const validateRequest = require('./validateRequest');
 
 router.post('/by/:method', validateRequest, (req, res) => {
-    console.log(req.params.method)
+   
     try {
         if (res.permision == true) {
             let searchTerm = req.body.searchTerm;          

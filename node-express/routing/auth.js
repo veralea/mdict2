@@ -65,7 +65,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // console.log(req.cookies.mdict)
+ 
   try {
     if (Object.prototype.toString.call(req.body) !== "[object Object]")
       throw "request body is not an object";
