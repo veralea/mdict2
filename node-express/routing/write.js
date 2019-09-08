@@ -27,7 +27,7 @@ router.post('/roleNExpDate', validateRequest, (req, res) => {
                 if (err) throw err;
                 console.log(`${resultsDB.matchedCount} document updated`);
                 db.close();
-                res.send({ success: "1 document updated"})
+                res.send({ success: `${resultsDB.matchedCount} document updated`})
             });
         });
     } else {

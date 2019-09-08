@@ -62,6 +62,7 @@ class Admin extends Component {
         })
             .then(response => response.json())
             .then(res => {
+                console.dir(res)
                 this.setState({results:res})
                console.dir(res)
             }).catch(err => console.error(err))

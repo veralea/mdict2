@@ -11,11 +11,18 @@ class Tr extends Component {
             userRole = props.result.role.toLowerCase()
         }
 
+        let expDate = new Date(props.result.expDate) || undefined;
+        
+        if (isNaN(expDate.getTime())) {
+            expDate ='--'
+        }
         this.state = {
             isEdit: false,
             role: userRole,
-            expDate: props.result.expDate || undefined
+            expDate: expDate 
         }
+
+        console.dir(this.state)
 
         this.roleChange = this.roleChange.bind(this);
         this.addSubsractYear = this.addSubsractYear.bind(this);
@@ -41,9 +48,11 @@ class Tr extends Component {
             this.setState({ expDate: undefined })
         }
     }
-    convertDate(oldDate, outputType) {
+    convertDate(oldDate1, outputType) {
+        let oldDate = new Date(oldDate1);
+       
         if (outputType == 'input') {
-            if (Object.prototype.toString.call(oldDate) == "[object Date]") {
+            if (!isNaN(oldDate.getTime())) {
                 let year = oldDate.getFullYear();
                 let month = (oldDate.getMonth() + 1).toString();
                 if (month.length == 1) { month = `0${month}` };
@@ -55,7 +64,7 @@ class Tr extends Component {
 
             return undefined;
         } else {
-            if (Object.prototype.toString.call(oldDate) == "[object Date]") {
+            if (!isNaN(oldDate.getTime()))  {
                 let year = oldDate.getFullYear();
                 let month = (oldDate.getMonth() + 1).toString();
                 if (month.length == 1) { month = `0${month}` };
@@ -115,7 +124,13 @@ class Tr extends Component {
                     :
                     <td className='inputDateTD'>
                         <div className='plusMinusDate' onClick={() => this.addSubsractYear(-1)}>-</div>
-                        <input type='date' value={this.convertDate(this.state.expDate, 'input')} />
+                        <input type='date'
+                            value={this.convertDate(this.state.expDate, 'input')}
+                            onInput={(e) => {
+                                console.log(e.currentTarget.value)
+                                this.setState({ expDate: e.currentTarget.value })
+                            }}
+                        />
                         <div className='plusMinusDate' onClick={() => this.addSubsractYear(1)}>+</div>
                     </td>
                 }
