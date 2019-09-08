@@ -43,6 +43,7 @@ class Admin extends Component {
         this.searchBy = 'email';
         this.search = this.search.bind(this);
         this.handleToBeDeleted = this.handleToBeDeleted.bind(this);
+        this.searchNew = this.searchNew.bind();
     }
 
     handleToBeDeleted(toDeleteUserObj) {
@@ -104,6 +105,24 @@ class Admin extends Component {
         // })
     }
     searchNew(e) {
+        e.stopPropagation();
+        console.log('search new')
+        fetch(`http://localhost:8000/search/by/new`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({               
+                requestedPage: '/admin'
+            }),
+        })
+            .then(response => response.json())
+            .then(res => {
+                console.dir(res);
+                this.setState({ results: res })
+
+            }).catch(err => console.error(err))
         
     }
 
@@ -113,11 +132,12 @@ class Admin extends Component {
                 <h1>Admin Panel</h1>
                 <h3>Search for users</h3>
                 <form onSubmit={this.search} className='searchForm'>                    
-                    <input type='text' placeholder='email' />
+                    <input type='text' placeholder='Email or Name' />
                     <div className='adminButtons'>
                         <button type='submit' className='button' onClick={()=>{this.searchBy = 'email'}}>by email</button>
                         <button type='submit' className='button' onClick={() => { this.searchBy = 'name' }}>by name</button>
-                        <button className='button' onClick={this.searchNew}>Show new</button>
+                        <button type='submit' className='button' onClick={() => { this.searchBy = 'new' }}>New</button>
+                        
                         <button className='button '>clear</button>
                     </div>
                 </form>
