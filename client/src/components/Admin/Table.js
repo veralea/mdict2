@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Table.css';
-
+import Tr from './Tr';
 
 class Table extends Component {
 
@@ -8,12 +8,11 @@ class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+          
         }
     }
     render() {
-        console.log(this.props)
-        console.log(this.props.results.length)
+     
         return (
             <div>
                 {this.props.results.length > 0 ?
@@ -24,20 +23,14 @@ class Table extends Component {
                                 <th>Email</th>
                                 <th>Expire date</th>
                                 <th>Role</th>
-                                <th>Delete</th>
+                                <th colSpan='3'>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.props.results.map((result, index) => {
                                     return (
-                                        < tr key={index} >
-                                            <td>{result.name}</td>
-                                            <td className='tableEmail'>{result.email}</td>
-                                            <td>{result.expDate}</td>
-                                            <td>{result.role}</td>
-                                            <td><div className='adminDeleteBtn'>DELETE</div></td>
-                                        </tr>
+                                        <Tr result={result} key={index} toBeDeleted={this.props.toBeDeleted}/>
                                     )
                                 })
                             }
@@ -50,5 +43,7 @@ class Table extends Component {
         )
     }
 }
+
+
 
 export default Table;

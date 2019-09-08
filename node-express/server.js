@@ -12,6 +12,7 @@ const url = DB_URL;
 const validateUser = require("./utils/user").validateUser;
 const authRouter = require('./routing/auth');
 const searchRouter = require('./routing/search');
+const writeRouter = require('./routing/write');
 
 const app = express();
 app.use(express.static("public"));
@@ -82,6 +83,7 @@ MongoClient.connect(url, function(err, db) {
 
 app.use("/auth", authRouter);
 app.use("/search", searchRouter);
+app.use("/write", writeRouter);
 
 // app.post("/register", async (req, res) => {
 //   // validate the request body first
