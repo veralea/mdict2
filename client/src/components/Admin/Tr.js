@@ -27,6 +27,7 @@ class Tr extends Component {
         this.roleChange = this.roleChange.bind(this);
         this.addSubsractYear = this.addSubsractYear.bind(this);
         this.setToRoleExpToDB = this.setToRoleExpToDB.bind(this);
+        this.changePassword = this.changePassword.bind(this);
     }
 
     roleChange(e) {
@@ -114,6 +115,28 @@ class Tr extends Component {
 
     }
 
+    changePassword() {
+        let newPassword = prompt("please insert new password");
+        if (newPassword !== null) {
+            fetch(`http://localhost:8000/write/updatePassword`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify({
+                    _id: this.props.result._id,
+                    newPassword: newPassword,
+                    requestedPage: '/admin'
+                }),
+            })
+                .then(response => response.json())
+                .then(res => {
+                    console.dir(res)
+                }).catch(err => console.error(err))
+        }
+    }
+
     render() {
         return (
             <tr>
@@ -148,7 +171,11 @@ class Tr extends Component {
                     </td>
                 }
 
-                <td className='adminTdBtn'><div className='button adminBtn'>change password</div></td>
+                <td className='adminTdBtn'>
+                    <div className='button adminBtn' onClick={this.changePassword}>
+                        change password
+                        </div>
+                </td>
                 <td className='adminTdBtn'>
                     <div
                         className='button adminBtn'
@@ -164,7 +191,9 @@ class Tr extends Component {
                     <div className='button adminBtn'
                         onClick={() => { this.props.toBeDeleted(this.props.result) }}
                     >
-                        delete</div></td>
+                        delete
+                        </div>
+                </td>
             </tr>
         )
     }
