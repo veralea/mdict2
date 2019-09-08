@@ -9,12 +9,10 @@ const url = DB_URL;
 const validateRequest = require('./validateRequest');
 
 router.post('/by/:method', validateRequest, (req, res) => {
-    console.log(req.params.method)
+   
     try {
         if (res.permision == true) {
-            if (req.params.method === 'new') {
-
-                console.log('new')
+            if (req.params.method === 'new') {              
 
                 MongoClient.connect(url, function (err, db) {
                     if (err) throw err;

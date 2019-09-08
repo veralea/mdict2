@@ -12,8 +12,7 @@ class Table extends Component {
         }
     }
     render() {
-        console.log(this.props)
-        console.log(this.props.results.length)
+     
         return (
             <div>
                 {this.props.results.length > 0 ?

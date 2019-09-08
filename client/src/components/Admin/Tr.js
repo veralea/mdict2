@@ -22,7 +22,7 @@ class Tr extends Component {
             expDate: expDate 
         }
 
-        console.dir(this.state)
+       
 
         this.roleChange = this.roleChange.bind(this);
         this.addSubsractYear = this.addSubsractYear.bind(this);
@@ -59,7 +59,7 @@ class Tr extends Component {
                 if (month.length == 1) { month = `0${month}` };
                 let day = (oldDate.getDate()).toString();
                 if (day.length == 1) { day = `0${day}` };
-                // console.log(`${year+1}-${month}-${day}`)
+              
                 return `${year}-${month}-${day}`
             }
 
@@ -71,7 +71,6 @@ class Tr extends Component {
                 if (month.length == 1) { month = `0${month}` };
                 let day = (oldDate.getDate()).toString();
                 if (day.length == 1) { day = `0${day}` };
-                // console.log(`${year+1}-${month}-${day}`)
                 return `${day}/${month}/${year}`
             }
 
@@ -93,7 +92,7 @@ class Tr extends Component {
     }
 
     setToRoleExpToDB() {
-        console.dir(this.props.result)
+    
 
         fetch(`http://localhost:8000/write/roleNExpDate`, {
             method: 'POST',
@@ -110,7 +109,7 @@ class Tr extends Component {
         })
             .then(response => response.json())
             .then(res => {               
-                console.dir(res)
+        
             }).catch(err => console.error(err))
 
     }
@@ -132,7 +131,7 @@ class Tr extends Component {
             })
                 .then(response => response.json())
                 .then(res => {
-                    console.dir(res)
+                
                 }).catch(err => console.error(err))
         }
     }
@@ -150,7 +149,7 @@ class Tr extends Component {
                         <input type='date'
                             value={this.convertDate(this.state.expDate, 'input')}
                             onInput={(e) => {
-                                console.log(e.currentTarget.value)
+                             
                                 this.setState({ expDate: e.currentTarget.value })
                             }}
                         />

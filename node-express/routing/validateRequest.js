@@ -16,19 +16,16 @@ function validateRequest(req, res, next) {
             const cookieDecoded = jwt.decode(cookie, secret);
             const requestedPage = req.body.requestedPage;
             const role = cookieDecoded.role;
-            console.log(cookieDecoded)
+          
            
         
             let permision = false;
-            res.pages = roles[role]
-
-            console.log('role:', role)
-            console.log(roles[role])
+            res.pages = roles[role];         
 
        
             //check if page is in the user's permitied pages
             for (i in roles[role]) {
-                console.log(roles[role][i].link)
+              
                 if (roles[role][i].link === requestedPage) {
                     permision = true;
                     break;

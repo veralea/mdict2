@@ -43,7 +43,7 @@ class Admin extends Component {
         this.searchBy = 'email';
         this.search = this.search.bind(this);
         this.handleToBeDeleted = this.handleToBeDeleted.bind(this);
-        this.searchNew = this.searchNew.bind();
+       
     }
 
     handleToBeDeleted(toDeleteUserObj) {
@@ -83,7 +83,7 @@ class Admin extends Component {
         e.preventDefault();
         let searchTerm = e.target[0].value.toString();
         searchTerm.replace('\+', '\\+')
-        console.log(this.searchBy)
+       
         
         fetch(`http://localhost:8000/search/by/${this.searchBy}`, {
             method: 'POST',
@@ -104,27 +104,7 @@ class Admin extends Component {
             }).catch(err => console.error(err))
         // })
     }
-    searchNew(e) {
-        e.stopPropagation();
-        console.log('search new')
-        fetch(`http://localhost:8000/search/by/new`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify({               
-                requestedPage: '/admin'
-            }),
-        })
-            .then(response => response.json())
-            .then(res => {
-                console.dir(res);
-                this.setState({ results: res })
-
-            }).catch(err => console.error(err))
-        
-    }
+    
 
     render() {
         return (
