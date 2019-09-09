@@ -12962,9 +12962,9 @@ class MainTheacherPage extends Component {
     fetch('http://localhost:8000/getroots/' + this.state.benjan + "/" + this.state.letter1 + '/' + this.state.letter2 +
       '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
         return response.json().then(data => {
-        this.setState({
-          roots: data
-        });
+          this.setState({
+            roots: data
+          });
       })
       });
   }
