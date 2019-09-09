@@ -12959,14 +12959,47 @@ class MainTheacherPage extends Component {
     this.setState({ sentence3TranslateFr: event.target.value.replace("?", "@@").replace("\\", "&&").replace("/", "№№") });
   }
   getRoots() {
-    fetch('http://localhost:8000/getroots/' + this.state.benjan + "/" + this.state.letter1 + '/' + this.state.letter2 +
-      '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
-        return response.json().then(data => {
-          this.setState({
+    fetch('http://localhost:8000/dict/getroots', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // 'Content-Type': 'application/x-www-form-urlencoded',
+      }
+      , body: JSON.stringify({
+        benjan: this.state.benjan,
+        letter1: this.state.letter1,
+        letter2: this.state.letter2,
+        letter3: this.state.letter3,
+        letter4: this.state.letter4
+      }),
+    }
+    ).then(response => response.json()).then(data => {
+
+      console.dir(data)
+      this.setState({
             roots: data
           });
-      })
-      });
+
+    }
+    ).catch(err => console.error(err))
+    // fetch('http://localhost:8000/dict/getroots/' + this.state.benjan + "/" + this.state.letter1 + '/' + this.state.letter2 +
+    //   '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
+    //     console.log(response)
+    //     return response.json().then(data => {
+    //       console.log(data)
+    //       this.setState({
+    //         roots: data
+    //       });
+    //   })
+    //   });
+    // fetch('http://localhost:8000/dict/getroots').then(response => {
+    //   console.log(response)
+    //   return response.json().then(data => {
+    //     console.log(data)
+    //     this.setState({
+    //       roots: data
+    //     });
+    //   })
+    // });
   }
   getVerbsByLetters() {
     fetch('http://localhost:8000/getverbsbyletters/' + root_id + '/' + this.state.letter1 + '/' + this.state.letter2 + '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
