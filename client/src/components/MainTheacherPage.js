@@ -317,7 +317,7 @@ class MainTheacherPage extends Component {
 
   isPageAutorized() {
     const pageUrl = this.props.match.path || '';
-    fetch('http://localhost:8000/auth/isAuthorized', {
+    fetch('http://localhost:8000/dict/auth/isAuthorized', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -13002,7 +13002,7 @@ class MainTheacherPage extends Component {
     // });
   }
   getVerbsByLetters() {
-    fetch('http://localhost:8000/getverbsbyletters/' + root_id + '/' + this.state.letter1 + '/' + this.state.letter2 + '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
+    fetch('http://localhost:8000/dict/getverbsbyletters/' + root_id + '/' + this.state.letter1 + '/' + this.state.letter2 + '/' + this.state.letter3 + '/' + this.state.letter4).then(response => {
       return response.json();
     }).then(data => {
       this.setState({
@@ -13012,7 +13012,7 @@ class MainTheacherPage extends Component {
   }
 
   createDump() {
-    fetch('http://localhost:8000/createdump/').then(response => {
+    fetch('http://localhost:8000/dict/createdump/').then(response => {
       if (response) {
         alert("נתונים הועתקו");
       } else {
@@ -13023,7 +13023,7 @@ class MainTheacherPage extends Component {
   getVerbByRootId(rootNumber, e) {
     e.preventDefault();
     root_id = rootNumber;
-    fetch('http://localhost:8000/getroot/' + rootNumber).then(response => {
+    fetch('http://localhost:8000/dict/getroot/' + rootNumber).then(response => {
       return response.json();
     }).then(data1 => {
       this.setState({
@@ -13043,11 +13043,15 @@ class MainTheacherPage extends Component {
         ism: data1[0].ism, ismS: data1[0].ismS, isw: data1[0].isw, iswS: data1[0].iswS, imm: data1[0].imm,
         immS: data1[0].immS, imw: data1[0].imw, imwS: data1[0].imwS, ns: data1[0].ns, nsS: data1[0].nsS,
         nm: data1[0].nm, nmS: data1[0].nmS, asm: data1[0].asm, asmS: data1[0].asmS, asw: data1[0].asw,
-        aswS: data1[0].aswS, amm: data1[0].amm, ammS: data1[0].ammS, amw: data1[0].amw, amwS: data1[0].amwS, translations: data1[0].translations,
-        families: data1[0].families.sort((a, b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0)),
-        familiesverbs: data1[0].familiesverbs.sort((a, b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0)),
-        synonyms: data1[0].synonyms, antonyms: data1[0].antonyms, phrases: data1[0].phrases,
-        active_id: data1[0].active_id, passive_id: data1[0].passive_id
+        aswS: data1[0].aswS, amm: data1[0].amm, ammS: data1[0].ammS, amw: data1[0].amw, amwS: data1[0].amwS, 
+        translations: data1[0].translations ? data1[0].translations : [],
+        families: data1[0].families ? data1[0].families.sort((a, b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0)) : [],
+        familiesverbs: data1[0].familiesverbs ? data1[0].familiesverbs.sort((a, b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0)) : [],
+        synonyms: data1[0].synonyms ? data1[0].synonyms : [], 
+        antonyms: data1[0].antonyms ? data1[0].antonyms : [], 
+        phrases: data1[0].phrases ? data1[0].phrases : [],
+        active_id: data1[0].active_id ? data1[0].active_id : "_", 
+        passive_id: data1[0].passive_id ? data1[0].passive_id : "_"
       })
     });
     // fetch('http://localhost:8000/gettranslations/'+rootNumber).then(response => {
@@ -13279,7 +13283,7 @@ class MainTheacherPage extends Component {
   }
   getAllActivePassives() {
     if (this.state.benjan.indexOf("נפעל") > -1 || this.state.benjan.indexOf("פועל") > -1 || this.state.benjan.indexOf("הופעל") > -1) {
-      fetch('http://localhost:8000/getactive/' + root_id).then(response => {
+      fetch('http://localhost:8000/dict/getactive/' + root_id).then(response => {
         return response.json();
       }).then(data9 => {
         this.setState({
@@ -13288,7 +13292,7 @@ class MainTheacherPage extends Component {
         arrOfRootsId.length = 0;
       });
     } else {
-      fetch('http://localhost:8000/getpassive/' + root_id).then(response => {
+      fetch('http://localhost:8000/dict/getpassive/' + root_id).then(response => {
         return response.json();
       }).then(data8 => {
         this.setState({
@@ -13300,7 +13304,7 @@ class MainTheacherPage extends Component {
 
   }
   getAllTranslations() {
-    fetch('http://localhost:8000/gettranslations/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/gettranslations/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
@@ -13310,28 +13314,28 @@ class MainTheacherPage extends Component {
     });
   }
   getAllFamilies() {
-    fetch('http://localhost:8000/getfamilies/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/getfamilies/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
         // familiesByNumber:data2
-        families: data2[0].families.sort((a, b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0))
+        families: data2[0].families ? data2[0].families.sort((a, b) => (a.familyPosition > b.familyPosition) ? 1 : ((b.familyPosition > a.familyPosition) ? -1 : 0)) : []
       })
     });
   }
 
   getAllFamiliesverbs() {
-    fetch('http://localhost:8000/getfamiliesverbs/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/getfamiliesverbs/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
-        familiesverbs: data2[0].familiesverbs.sort((a, b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0))
+        familiesverbs: data2[0].familiesverbs ? data2[0].familiesverbs.sort((a, b) => (a.familyverbPosition > b.familyverbPosition) ? 1 : ((b.familyverbPosition > a.familyverbPosition) ? -1 : 0)) : []
       })
     });
   }
 
   getAllSynonyms() {
-    fetch('http://localhost:8000/getsynonyms/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/getsynonyms/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
@@ -13340,7 +13344,7 @@ class MainTheacherPage extends Component {
     });
   }
   getAllAntonyms() {
-    fetch('http://localhost:8000/getantonyms/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/getantonyms/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
@@ -13349,7 +13353,7 @@ class MainTheacherPage extends Component {
     });
   }
   getAllPhrases() {
-    fetch('http://localhost:8000/getphrases/' + root_id).then(response => {
+    fetch('http://localhost:8000/dict/getphrases/' + root_id).then(response => {
       return response.json();
     }).then(data2 => {
       this.setState({
@@ -13372,14 +13376,14 @@ class MainTheacherPage extends Component {
       this.setState({ thisIsPassive: "0" })
     }
 
-    fetch('http://localhost:8000/countroots/').then(response => {
+    fetch('http://localhost:8000/dict/countroots/').then(response => {
       return response.json();
     }).then(data => {
-      root_id = String(data.length + 1);
+      root_id = String(Number(data[data.length - 1].root_id)+1);
       alert(root_id);
 
     }).then(() => {
-      fetch('http://localhost:8000/newroot/' + root_id + '/' + this.state.benjan + '/' + this.state.letter1 + '/' + this.state.letter2 +
+      fetch('http://localhost:8000/dict/newroot/' + root_id + '/' + this.state.benjan + '/' + this.state.letter1 + '/' + this.state.letter2 +
         '/' + this.state.letter3 + '/' + this.state.letter4 + '/' + this.state.descript + '/' + root_id + '.wav/' + this.state.inf + '/' + this.state.infS + '/' + this.state.p1s + '/' + this.state.p1sS +
         '/' + this.state.p2sm + '/' + this.state.p2smS + '/' + this.state.p2sw + '/' + this.state.p2swS + '/' + this.state.p3sm +
         '/' + this.state.p3smS + '/' + this.state.p3sw + '/' + this.state.p3swS + '/' + this.state.p1m + '/' + this.state.p1mS + '/' +
@@ -13406,7 +13410,7 @@ class MainTheacherPage extends Component {
   }
 
   addNewFamily(familyNumber) {
-    fetch('http://localhost:8000/newfamily/' + root_id + '/' + familyNumber + '/' + this.state.family + '/' + this.state.familyPosition + '/' + this.state.familyTranslateRu +
+    fetch('http://localhost:8000/dict/newfamily/' + root_id + '/' + familyNumber + '/' + this.state.family + '/' + this.state.familyPosition + '/' + this.state.familyTranslateRu +
       '/' + this.state.familyTranslateEn + '/' + this.state.familyTranslateFr, { method: 'POST' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13426,7 +13430,7 @@ class MainTheacherPage extends Component {
   }
 
   addNewFamilyverb(familyverbNumber) {
-    fetch('http://localhost:8000/newfamilyverb/' + root_id + '/' + familyverbNumber + '/' + this.state.familyverb + '/' + this.state.familyverbPosition + '/' + this.state.familyverbTranslateRu +
+    fetch('http://localhost:8000/dict/newfamilyverb/' + root_id + '/' + familyverbNumber + '/' + this.state.familyverb + '/' + this.state.familyverbPosition + '/' + this.state.familyverbTranslateRu +
       '/' + this.state.familyverbTranslateEn + '/' + this.state.familyverbTranslateFr, { method: 'POST' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13446,7 +13450,7 @@ class MainTheacherPage extends Component {
   }
 
   addNewSynonym(synonymNumber) {
-    fetch('http://localhost:8000/newsynonym/' + root_id + '/' + synonymNumber + '/' + this.state.synonym + '/' + this.state.synonymTranslateRu +
+    fetch('http://localhost:8000/dict/newsynonym/' + root_id + '/' + synonymNumber + '/' + this.state.synonym + '/' + this.state.synonymTranslateRu +
       '/' + this.state.synonymTranslateEn + '/' + this.state.synonymTranslateFr, { method: 'POST' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13466,7 +13470,7 @@ class MainTheacherPage extends Component {
   }
   putFamiliesverbs(e) {
     e.preventDefault();
-    fetch('http://localhost:8000/putfamiliesverbs/').then(response => {
+    fetch('http://localhost:8000/dict/putfamiliesverbs/').then(response => {
       if (response.ok) {
         return response.json();
       } else {
@@ -13475,7 +13479,7 @@ class MainTheacherPage extends Component {
     });
   }
   addNewAntonym(antonymNumber) {
-    fetch('http://localhost:8000/newantonym/' + root_id + '/' + antonymNumber + '/' + this.state.antonym + '/' + this.state.antonymTranslateRu +
+    fetch('http://localhost:8000/dict/newantonym/' + root_id + '/' + antonymNumber + '/' + this.state.antonym + '/' + this.state.antonymTranslateRu +
       '/' + this.state.antonymTranslateEn + '/' + this.state.antonymTranslateFr, { method: 'POST' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13494,7 +13498,7 @@ class MainTheacherPage extends Component {
 
   }
   addNewPhrase(phraseNumber) {
-    fetch('http://localhost:8000/newphrase/' + root_id + '/' + phraseNumber + '/' + this.state.phrase + '/' + this.state.phraseTranslateRu +
+    fetch('http://localhost:8000/dict/newphrase/' + root_id + '/' + phraseNumber + '/' + this.state.phrase + '/' + this.state.phraseTranslateRu +
       '/' + this.state.phraseTranslateEn + '/' + this.state.phraseTranslateFr, { method: 'POST' }).then((response) => {
         if (response.ok) {
           this.setState({
@@ -13515,7 +13519,7 @@ class MainTheacherPage extends Component {
 
   addNewSentence(sentenceNumber, e) {
     e.preventDefault();
-    fetch('http://localhost:8000/newtranslation/' + root_id + '/' + sentenceNumber + '/' + this.state.preposition + '/' + this.state.translateRu +
+    fetch('http://localhost:8000/dict/newtranslation/' + root_id + '/' + sentenceNumber + '/' + this.state.preposition + '/' + this.state.translateRu +
       '/' + this.state.translateEn + '/' + this.state.translateFr + '/' + this.state.sentence1 + '/' + this.state.sentence2 + '/' + this.state.sentence3
       + '/' + this.state.sentence1TranslateRu + '/' + this.state.sentence2TranslateRu + '/' + this.state.sentence3TranslateRu +
       '/' + this.state.sentence1TranslateEn + '/' + this.state.sentence2TranslateEn + '/' + this.state.sentence3TranslateEn +
@@ -13553,7 +13557,7 @@ class MainTheacherPage extends Component {
   setActivePassive(activPassivId, e) {
     e.preventDefault();
     if (this.state.benjan.indexOf("נפעל") > -1 || this.state.benjan.indexOf("נפועל") > -1 || this.state.benjan.indexOf("הופעל") > -1) {
-      fetch('http://localhost:8000/newactive/' + root_id + '/' + activPassivId, { method: 'PUT' }).then((response) => {
+      fetch('http://localhost:8000/dict/newactive/' + root_id + '/' + activPassivId, { method: 'PUT' }).then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -13567,7 +13571,7 @@ class MainTheacherPage extends Component {
     } else if (this.state.benjan.indexOf("התפעל") > -1) {
       alert("בניין התפעל");
     } else {
-      fetch('http://localhost:8000/newpassive/' + root_id + '/' + activPassivId, { method: 'PUT' }).then((response) => {
+      fetch('http://localhost:8000/dict/newpassive/' + root_id + '/' + activPassivId, { method: 'PUT' }).then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -13587,7 +13591,7 @@ class MainTheacherPage extends Component {
     } else {
       this.setState({ thisIsPassive: "0" })
     }
-    fetch('http://localhost:8000/updateforms/' + root_id + '/' + this.state.benjan + '/' + this.state.letter1 + '/' + this.state.letter2 +
+    fetch('http://localhost:8000/dict/updateforms/' + root_id + '/' + this.state.benjan + '/' + this.state.letter1 + '/' + this.state.letter2 +
       '/' + this.state.letter3 + '/' + this.state.letter4 + '/' + this.state.descript + '/' + root_id + '.wav/' + this.state.inf + '/' + this.state.infS + '/' + this.state.p1s + '/' + this.state.p1sS +
       '/' + this.state.p2sm + '/' + this.state.p2smS + '/' + this.state.p2sw + '/' + this.state.p2swS + '/' + this.state.p3sm +
       '/' + this.state.p3smS + '/' + this.state.p3sw + '/' + this.state.p3swS + '/' + this.state.p1m + '/' + this.state.p1mS + '/' +
@@ -13611,7 +13615,7 @@ class MainTheacherPage extends Component {
   updateTranslation(translationId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updatetranslation/' + root_id + '/' + translationId + '/' + this.state.preposition + '/' + this.state.translateRu +
+    fetch('http://localhost:8000/dict/updatetranslation/' + root_id + '/' + translationId + '/' + this.state.preposition + '/' + this.state.translateRu +
       '/' + this.state.translateEn + '/' + this.state.translateFr + '/' + this.state.sentence1 + '/' + this.state.sentence2 + '/' + this.state.sentence3
       + '/' + this.state.sentence1TranslateRu + '/' + this.state.sentence2TranslateRu + '/' + this.state.sentence3TranslateRu +
       '/' + this.state.sentence1TranslateEn + '/' + this.state.sentence2TranslateEn + '/' + this.state.sentence3TranslateEn +
@@ -13648,7 +13652,7 @@ class MainTheacherPage extends Component {
   updateFamily(familyId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updatefamily/' + root_id + '/' + familyId + '/' + this.state.family + '/' + this.state.familyPosition + '/'
+    fetch('http://localhost:8000/dict/updatefamily/' + root_id + '/' + familyId + '/' + this.state.family + '/' + this.state.familyPosition + '/'
       + this.state.familyTranslateRu + '/' + this.state.familyTranslateEn + '/' + this.state.familyTranslateFr, { method: 'PUT' })
       .then(response => {
         if (response.ok) {
@@ -13671,7 +13675,7 @@ class MainTheacherPage extends Component {
   updateFamilyverb(familyverbId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updatefamilyverb/' + root_id + '/' + familyverbId + '/' + this.state.familyverb + '/' + this.state.familyverbPosition + '/' + this.state.familyverbTranslateRu +
+    fetch('http://localhost:8000/dict/updatefamilyverb/' + root_id + '/' + familyverbId + '/' + this.state.familyverb + '/' + this.state.familyverbPosition + '/' + this.state.familyverbTranslateRu +
       '/' + this.state.familyverbTranslateEn + '/' + this.state.familyverbTranslateFr, { method: 'PUT' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13693,7 +13697,7 @@ class MainTheacherPage extends Component {
   updateSynonym(synonymId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updatesynonym/' + root_id + '/' + synonymId + '/' + this.state.synonym + '/' + this.state.synonymTranslateRu +
+    fetch('http://localhost:8000/dict/updatesynonym/' + root_id + '/' + synonymId + '/' + this.state.synonym + '/' + this.state.synonymTranslateRu +
       '/' + this.state.synonymTranslateEn + '/' + this.state.synonymTranslateFr, { method: 'PUT' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13714,7 +13718,7 @@ class MainTheacherPage extends Component {
   updateAntonym(antonymId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updateantonym/' + root_id + '/' + antonymId + '/' + this.state.antonym + '/' + this.state.antonymTranslateRu +
+    fetch('http://localhost:8000/dict/updateantonym/' + root_id + '/' + antonymId + '/' + this.state.antonym + '/' + this.state.antonymTranslateRu +
       '/' + this.state.antonymTranslateEn + '/' + this.state.antonymTranslateFr, { method: 'PUT' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13735,7 +13739,7 @@ class MainTheacherPage extends Component {
   updatePhrase(phraseId, e) {
     e.preventDefault();
 
-    fetch('http://localhost:8000/updatephrase/' + root_id + '/' + phraseId + '/' + this.state.phrase + '/' + this.state.phraseTranslateRu +
+    fetch('http://localhost:8000/dict/updatephrase/' + root_id + '/' + phraseId + '/' + this.state.phrase + '/' + this.state.phraseTranslateRu +
       '/' + this.state.phraseTranslateEn + '/' + this.state.phraseTranslateFr, { method: 'PUT' }).then(response => {
         if (response.ok) {
           this.setState({
@@ -13754,7 +13758,7 @@ class MainTheacherPage extends Component {
   }
   deleteVerbByRootId(rootNumber, e) {
     e.preventDefault();
-    fetch('http://localhost:8000/deleteroot/' + rootNumber, { method: 'DELETE' }).then((response) => {
+    fetch('http://localhost:8000/dict/deleteroot/' + rootNumber, { method: 'DELETE' }).then((response) => {
       if (response.ok) {
         return response.json();
       } else {
@@ -13765,7 +13769,7 @@ class MainTheacherPage extends Component {
   deleteTranslationbById(translationId, e) {
     e.preventDefault();
     this.setState({ thisIsNewTranslation: "1" });
-    fetch('http://localhost:8000/deletetranslation/' + root_id + '/' + translationId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deletetranslation/' + root_id + '/' + translationId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           preposition: '_',
@@ -13795,7 +13799,7 @@ class MainTheacherPage extends Component {
   deleteFamilyById(familyId, e) {
     e.preventDefault();
     this.setState({ thisIsNewFamily: "1" });
-    fetch('http://localhost:8000/deletefamily/' + root_id + '/' + familyId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deletefamily/' + root_id + '/' + familyId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           family: '_',
@@ -13813,7 +13817,7 @@ class MainTheacherPage extends Component {
   deleteFamilyverbById(familyverbId, e) {
     e.preventDefault();
     this.setState({ thisIsNewFamilyverb: "1" });
-    fetch('http://localhost:8000/deletefamilyverb/' + root_id + '/' + familyverbId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deletefamilyverb/' + root_id + '/' + familyverbId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           familyverb: '_',
@@ -13831,7 +13835,7 @@ class MainTheacherPage extends Component {
   deleteSynonymById(synonymId, e) {
     e.preventDefault();
     this.setState({ thisIsNewSynonym: "1" });
-    fetch('http://localhost:8000/deletesynonym/' + root_id + '/' + synonymId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deletesynonym/' + root_id + '/' + synonymId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           synonym: '_',
@@ -13849,7 +13853,7 @@ class MainTheacherPage extends Component {
   deleteAntonymById(antonymId, e) {
     e.preventDefault();
     this.setState({ thisIsNewAntonym: "1" });
-    fetch('http://localhost:8000/deleteantonym/' + root_id + '/' + antonymId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deleteantonym/' + root_id + '/' + antonymId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           antonym: '_',
@@ -13867,7 +13871,7 @@ class MainTheacherPage extends Component {
   deletePhraseById(phraseId, e) {
     e.preventDefault();
     this.setState({ thisIsNewPhrase: "1" });
-    fetch('http://localhost:8000/deletephrase/' + root_id + '/' + phraseId, { method: 'PUT' }).then((response) => {
+    fetch('http://localhost:8000/dict/deletephrase/' + root_id + '/' + phraseId, { method: 'PUT' }).then((response) => {
       if (response.ok) {
         this.setState({
           phrase: '_',
@@ -13885,7 +13889,7 @@ class MainTheacherPage extends Component {
     e.preventDefault();
     arrOfRootsId.length = 0;
     if (this.state.benjan.indexOf("נפעל") > -1 || this.state.benjan.indexOf("פועל") > -1 || this.state.benjan.indexOf("הופעל") > -1) {
-      fetch('http://localhost:8000/deleteactive/' + root_id, { method: 'PUT' }).then((response) => {
+      fetch('http://localhost:8000/dict/deleteactive/' + root_id, { method: 'PUT' }).then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -13893,7 +13897,7 @@ class MainTheacherPage extends Component {
         }
       }).then(() => { this.getAllActivePassives() })
     } else {
-      fetch('http://localhost:8000/deletepassive/' + root_id, { method: 'PUT' }).then((response) => {
+      fetch('http://localhost:8000/dict/deletepassive/' + root_id, { method: 'PUT' }).then((response) => {
         if (response.ok) {
           return response.json();
         } else {

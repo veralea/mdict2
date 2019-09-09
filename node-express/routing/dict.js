@@ -2258,6 +2258,14 @@ router.post(
                 amw: amw,
                 amwS: amwS,
                 root_id_old: root_id,
+                translations: [],
+                phrases: [],
+                families: [],
+                familiesverbs: [],
+                synonyms: [],
+                antonyms: [],
+                passive_id: "_",
+                active_id: "_",
                 soundFileExist: "0"
             };
             dbo.collection("roots").insertOne(newroot, function (err, result) {
